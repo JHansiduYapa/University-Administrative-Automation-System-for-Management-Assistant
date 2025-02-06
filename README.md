@@ -1,1 +1,0 @@
-# Management-Assistant-AR-Project
