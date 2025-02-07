@@ -1,11 +1,9 @@
 package com.example.ARManagement.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.Set;
 
 @Entity
 @Table(name = "students")
@@ -13,7 +11,7 @@ public class Student {
 
     @Id
     @Column(name = "student_id")
-    private Long studentId;
+    private String studentId;
 
     @Column(name = "first_name", nullable = false)
     private String firstName;
@@ -48,12 +46,22 @@ public class Student {
     @Column(name = "address", nullable = false)
     private String address;
 
+    // make a join table that student_course
+    // there is ManyToMany relationship that get by the
+    @ManyToMany
+    @JoinTable(
+            name = "student_course",
+            joinColumns = @JoinColumn(name = "student_id"),
+            inverseJoinColumns = @JoinColumn(name = "course_id")
+    )
+    private Set<Course> courses;
+
     // Default constructor
     public Student() {
     }
 
     // Parameterized constructor
-    public Student(Long studentId, String firstName, String middleName, String lastName, Integer semester,
+    public Student(String studentId, String firstName, String middleName, String lastName, Integer semester,
                    LocalDate dateOfBirth, String gender, String email, Double gpa, LocalDate registrationDate,
                    Long departmentId, String address) {
         this.studentId = studentId;
@@ -72,11 +80,11 @@ public class Student {
 
     // Getters and Setters
 
-    public Long getStudentId() {
+    public String getStudentId() {
         return studentId;
     }
 
-    public void setStudentId(Long studentId) {
+    public void setStudentId(String studentId) {
         this.studentId = studentId;
     }
 

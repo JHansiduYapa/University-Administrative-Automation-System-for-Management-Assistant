@@ -24,7 +24,8 @@ public class Course {
     @Column(name = "department_id", nullable = false)
     private Long departmentId;
 
-    // Define the many-to-many relationship with Student (mappedBy set on Student side)
+    // Define the many-to-many relationship with Student
+    // one Course has many student that can be got from the students
     @ManyToMany(mappedBy = "courses")
     private Set<Student> students = new HashSet<>();
 
