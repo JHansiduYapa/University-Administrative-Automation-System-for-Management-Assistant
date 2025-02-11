@@ -3,6 +3,7 @@ package com.example.ARManagement.entity;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -55,6 +56,19 @@ public class Student {
             inverseJoinColumns = @JoinColumn(name = "course_id")
     )
     private Set<Course> courses;
+
+    // Fetch roles eagerly for authentication
+    /**
+     * It is common practice to prefix role names with "ROLE_" (e.g., "ROLE_STUDENT", "ROLE_ADMIN")
+     * so that Spring Security can automatically recognize them when using expressions like hasRole("STUDENT").
+     */
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "student_roles",
+            joinColumns = @JoinColumn(name = "student_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id")
+    )
+    private Set<Role> roles = new HashSet<>();
 
     // Default constructor
     public Student() {
@@ -174,5 +188,21 @@ public class Student {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
+    }
+
+    public Set<Course> getCourses() {
+        return courses;
+    }
+
+    public void setCourses(Set<Course> courses) {
+        this.courses = courses;
     }
 }
