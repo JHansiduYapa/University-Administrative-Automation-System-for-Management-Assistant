@@ -14,6 +14,7 @@ public class Result {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long resultId;
 
+
     @Column(name = "grade", nullable = false)
     private Grade grade;
 

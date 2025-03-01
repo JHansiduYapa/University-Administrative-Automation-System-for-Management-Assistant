@@ -34,4 +34,9 @@ public class Semester {
     @Column(nullable = false)
     @JsonProperty("semesterName")
     private SemesterName semesterName;
+
+    @OneToOne(mappedBy = "semester",cascade = CascadeType.ALL)
+    private Batch batch;
+
+
 }
