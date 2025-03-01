@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 
 @Entity
 @Getter
-@Table(name = "batch")
+@Table(name = "Advisor")
 public class Advisor {
 
     @Id
