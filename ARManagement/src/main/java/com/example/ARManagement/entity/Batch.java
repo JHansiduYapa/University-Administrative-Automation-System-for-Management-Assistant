@@ -1,17 +1,19 @@
 package com.example.ARManagement.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.HashSet;
-import java.util.Set;
-
 @Entity
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "batch")
 public class Batch {
     @Id
@@ -23,10 +25,13 @@ public class Batch {
     private String batchName;
 
     @Column(name = "reg_date", nullable = false)
+    @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate regDate;
 
-    @Column(name = "student_count", nullable = false)
+    @Column(name = "student_count")
     private Integer studentCount;
 
-
+    @OneToOne
+    @JoinColumn(name = "semesterId", nullable = false)
+    private Semester semester;
 }
