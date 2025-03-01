@@ -18,12 +18,6 @@ public class Course {
     @Column(name = "credit", nullable = false)
     private Integer credit;
 
-    @Column(name = "semester_id", nullable = false)
-    private Integer semesterId;
-
-    @Column(name = "department_id", nullable = false)
-    private Long departmentId;
-
     // Define the many-to-many relationship with Student
     // one Course has many student that can be got from the students
     @ManyToMany(mappedBy = "courses")
@@ -41,8 +35,7 @@ public class Course {
         this.courseId = courseId;
         this.courseName = courseName;
         this.credit = credit;
-        this.semesterId = semesterId;
-        this.departmentId = departmentId;
+
     }
 
     // Getters and Setters
@@ -70,21 +63,7 @@ public class Course {
         this.credit = credit;
     }
 
-    public Integer getSemesterId() {
-        return semesterId;
-    }
 
-    public void setSemesterId(Integer semesterId) {
-        this.semesterId = semesterId;
-    }
-
-    public Long getDepartmentId() {
-        return departmentId;
-    }
-
-    public void setDepartmentId(Long departmentId) {
-        this.departmentId = departmentId;
-    }
 
     public Set<Student> getStudents() {
         return students;

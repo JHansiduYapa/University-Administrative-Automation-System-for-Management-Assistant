@@ -2,11 +2,13 @@ package com.example.ARManagement.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.Setter;
 
 import java.time.LocalDateTime;
 
 @Entity
 @Getter
+@Setter
 @Table(name = "batch")
 public class Advisor {
 

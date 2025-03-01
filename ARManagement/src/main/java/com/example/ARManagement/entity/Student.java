@@ -17,14 +17,12 @@ public class Student {
     @Column(name = "first_name", nullable = false)
     private String firstName;
 
+
     @Column(name = "middle_name")
     private String middleName;
 
     @Column(name = "last_name", nullable = false)
     private String lastName;
-
-    @Column(name = "semester", nullable = false)
-    private Integer semester;
 
     @Column(name = "date_of_birth", nullable = false)
     private LocalDate dateOfBirth;
@@ -40,9 +38,6 @@ public class Student {
 
     @Column(name = "registration_date", nullable = false)
     private LocalDate registrationDate;
-
-    @Column(name = "department_id", nullable = false)
-    private Long departmentId;
 
     @Column(name = "address", nullable = false)
     private String address;
@@ -82,13 +77,13 @@ public class Student {
         this.firstName = firstName;
         this.middleName = middleName;
         this.lastName = lastName;
-        this.semester = semester;
+
         this.dateOfBirth = dateOfBirth;
         this.gender = gender;
         this.email = email;
         this.gpa = gpa;
         this.registrationDate = registrationDate;
-        this.departmentId = departmentId;
+
         this.address = address;
     }
 
@@ -126,13 +121,6 @@ public class Student {
         this.lastName = lastName;
     }
 
-    public Integer getSemester() {
-        return semester;
-    }
-
-    public void setSemester(Integer semester) {
-        this.semester = semester;
-    }
 
     public LocalDate getDateOfBirth() {
         return dateOfBirth;
@@ -174,13 +162,6 @@ public class Student {
         this.registrationDate = registrationDate;
     }
 
-    public Long getDepartmentId() {
-        return departmentId;
-    }
-
-    public void setDepartmentId(Long departmentId) {
-        this.departmentId = departmentId;
-    }
 
     public String getAddress() {
         return address;
