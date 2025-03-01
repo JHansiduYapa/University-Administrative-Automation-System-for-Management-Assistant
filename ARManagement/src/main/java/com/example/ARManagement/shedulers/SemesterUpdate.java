@@ -13,7 +13,7 @@ public class SemesterUpdate {
     private SemesterRepo SemesterRepo;
 
     // Cron expression for running at midnight every day
-    @Scheduled(cron = "* * * * * ?")  // This cron expression runs the task at midnight every day
+    @Scheduled(cron = "0 0 0 * * ?")  // This cron expression runs the task at midnight every day
     public void runAtMidnight() {
         // Get today's date dynamically
         LocalDate currentDate = LocalDate.now();
