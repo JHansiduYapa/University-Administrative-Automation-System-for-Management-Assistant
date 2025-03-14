@@ -7,11 +7,13 @@ import PersonalDetails from "./Components/PersonalDetails/PersonalDetails";
 import ContactUs from "./Components/ContactUs/ContactUs";
 import MAPage from "./Components/MAPage/MAPage";
 import UserInfo from "./Components/UserInfo/UserInfo";
+import AuthProvider from "./AuthContext";
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
+    <AuthProvider>
     <Router>
       {/* Main Content */}
       <div className="app-content">
@@ -19,6 +21,7 @@ function App() {
         <Header />
         {/* Routes */}
         <Routes>
+          {/* Sign-In Page */}
           <Route path="/" element={<SignInPage />} />
           {/* MAPage */}
           <Route path="/ma-page" element={<MAPage />} />
@@ -45,6 +48,7 @@ function App() {
         <Footer />
       </div>
     </Router>
+    </AuthProvider>
   );
 }
 

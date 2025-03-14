@@ -1,40 +1,22 @@
-/* Ensures full viewport height while keeping header and footer in place */
-.app {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh; /* Takes full viewport height */
-  background-image: url("./assets/Background.jpg");
-  background-size: 100% auto; /* Ensures full width, height adjusts automatically */
-  background-position: center; /* Aligns to top */
-  background-repeat: no-repeat;
+
+/* Global Background Styling */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+.app-content {
+  min-height: 100vh; /* Ensures full viewport height */
+  background-image: url('./assets/background.jpg'); /* Path to the background image */
+  background-size: cover; /* Ensures the image covers the entire screen */
+  background-position: center; /* Centers the image */
+  background-repeat: no-repeat; /* Prevents tiling */
+}
+
+/* Adjust content spacing */
+.page-content {
+  padding: 20px;
 }
 
 
-.sidebar-container {
-  width: 250px;
-  position: fixed;
-  top: 0;
-  left: -250px; /* Hidden by default */
-}
-
-.sidebar-container.open {
-  left: 0; /* Show when toggled */
-}
-
-/* Allow SignInPage to fill space */
-.SignInPage {
-  flex: 1; /* Expands to fill space between header and footer */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* Ensure footer is fixed at the bottom */
-.footer {
-  position: relative;
-  width: 100%;
-  background-color: #334b8e;
-  color: white;
-  text-align: center;
-  padding: 10px 0;
-}
