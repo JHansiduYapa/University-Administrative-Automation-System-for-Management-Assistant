@@ -1,0 +1,40 @@
+/* Ensures full viewport height while keeping header and footer in place */
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Takes full viewport height */
+  background-image: url("./assets/Background.jpg");
+  background-size: 100% auto; /* Ensures full width, height adjusts automatically */
+  background-position: center; /* Aligns to top */
+  background-repeat: no-repeat;
+}
+
+
+.sidebar-container {
+  width: 250px;
+  position: fixed;
+  top: 0;
+  left: -250px; /* Hidden by default */
+}
+
+.sidebar-container.open {
+  left: 0; /* Show when toggled */
+}
+
+/* Allow SignInPage to fill space */
+.SignInPage {
+  flex: 1; /* Expands to fill space between header and footer */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Ensure footer is fixed at the bottom */
+.footer {
+  position: relative;
+  width: 100%;
+  background-color: #334b8e;
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+}

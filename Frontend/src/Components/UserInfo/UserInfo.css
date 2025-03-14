@@ -1,0 +1,24 @@
+.user-info-container {
+    position: fixed; /* Fix it to the page */
+    top: 95px; /* Distance from the top */
+    right: 20px; /* Distance from the right */
+    display: flex;
+    align-items: center;
+    background-color: rgb(241, 244, 246); /* Background for better visibility */
+    padding: 5px 10px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  }
+  
+  .user-icon {
+    width: 50px;
+    height: 40px;
+    border-radius: 50%; /* Circular icon */
+  }
+  
+  .user-name {
+    margin-left: 10px; /* Space between icon and name */
+    font-size: 16px;
+    color: #002147; /* Dark blue text color */
+  }
+  
