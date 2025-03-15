@@ -1,10 +1,11 @@
 package com.example.ARManagement.repository;
 
-import com.example.ARManagement.entity.Semester;
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.query.Procedure;
+import org.springframework.stereotype.Repository;
 
-public interface SemesterRepo extends JpaRepository<Semester, Long> {
+@Repository
+public interface SemesterUpdateRepository {
+
     @Procedure(procedureName = "update_semester_name")
     void updateSemesterName(String dateParam);
 }
