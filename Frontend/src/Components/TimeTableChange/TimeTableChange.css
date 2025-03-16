@@ -1,0 +1,78 @@
+/* TimeTableChange Page Container */
+.time-table-change-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+/* Page Title */
+.page-title {
+  font-size: 38px;
+  font-weight: bold;
+  color: #ffffff; /* Dark blue */
+  margin-bottom: 20px;
+}
+
+/* Batch Table */
+.batch-table {
+  width: 80%;
+  margin-bottom: 20px;
+  border-collapse: collapse; /* Remove gaps between borders */
+}
+
+.table-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.batch-table th,
+.batch-table td {
+  border: solid #ddd thin; /* Light gray borders */
+  text-align: center;
+  padding: 10px; /* Add spacing inside cells */
+}
+
+.batch-table th {
+  background-color: #002147; /* Dark blue header background */
+  color: white; /* White text for header */
+}
+
+.batch-table td {
+  background-color: #ffffff; /* White background for cells */
+}
+
+/* Editable Semester Table */
+.semester-table {
+  width: 80%;
+  margin-top: 20px;
+  border-collapse: collapse; /* Remove gaps between borders */
+}
+
+.semester-table th,
+.semester-table td {
+  border: solid #ddd thin; /* Light gray borders */
+  text-align: center;
+  padding: 10px; /* Add spacing inside cells */
+}
+
+.semester-table th {
+  background-color: #002147; /* Dark blue header background */
+  color: white; /* White text for header */
+}
+
+.semester-table td {
+  background-color: #ffffff; /* White background for cells */
+}
+
+/* Editable Fields for Dates */
+.semester-table td input[type="date"] {
+  width: calc(100% - 20px); /* Adjust width to fit inside cells */
+}
+
+/* Edit Icon Styling */
+.edit-icon {
+  cursor: pointer;
+}
+

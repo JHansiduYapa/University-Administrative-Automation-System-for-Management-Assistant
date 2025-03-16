@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, Input, Button, Space } from 'antd';
+import { Form, Input, Button, Space, Select } from 'antd';
 import './PersonalDetails.css';
 import UserInfo from "../UserInfo/UserInfo";
 
@@ -31,7 +31,7 @@ const PersonalDetails = () => {
     {/*Untill here.........also import as above*/}
     
     <div className="personal-details-container">
-      <h1 className="form-title">Personal Details</h1>
+      <h1 className="form-title">New Student - Create Account</h1>
       <Form form={form} name="personalDetails" layout="vertical" autoComplete="off">
         <Form.Item
           name="nameWithInitials"
@@ -47,27 +47,15 @@ const PersonalDetails = () => {
         >
           <Input />
         </Form.Item>
+
         <Form.Item
-          name="dob"
-          label="Date of Birth"
-          rules={[{ required: true, message: 'Please enter your date of birth!' }]}
-        >
-          <Input type="date" />
-        </Form.Item>
-        <Form.Item
-          name="address"
-          label="Permanent Address"
-          rules={[{ required: true, message: 'Please enter your permanent address!' }]}
+          name="regNo"
+          label="University Registration Number"
+          rules={[{ required: true, type: 'regNo', message: 'Please enter a valid registration number!' }]}
         >
           <Input />
         </Form.Item>
-        <Form.Item
-          name="telephone"
-          label="Telephone Number"
-          rules={[{ required: true, message: 'Please enter your telephone number!' }]}
-        >
-          <Input />
-        </Form.Item>
+
         <Form.Item
           name="email"
           label="University Email Address"
@@ -75,6 +63,53 @@ const PersonalDetails = () => {
         >
           <Input />
         </Form.Item>
+
+        <Form.Item
+          name="department"
+          label="Department (If have)"
+          rules={[{ required: true, message: 'Please choose your department!' }]}
+        >
+          <Select placeholder="Select your department">
+            <Select.Option value="Computer">Computer</Select.Option>
+            <Select.Option value="Electrical and Electronic">Electrical and Electronic</Select.Option>
+            <Select.Option value="Civil">Civil</Select.Option>
+            <Select.Option value="Mechanical">Mechanical</Select.Option>
+            <Select.Option value="None">None</Select.Option>
+          </Select>
+        </Form.Item>
+
+        <Form.Item
+          name="semester"
+          label="Semester"
+          rules={[{ required: true, type: 'semester', message: 'Please enter the semester!' }]}
+        >
+          <Input />
+        </Form.Item>
+
+        <Form.Item
+          name="dob"
+          label="Date of Birth"
+          rules={[{ required: false, message: 'Please enter your date of birth!' }]}
+        >
+          <Input type="date" />
+        </Form.Item>
+
+        <Form.Item
+          name="address"
+          label="Permanent Address"
+          rules={[{ required: false, message: 'Please enter your permanent address!' }]}
+        >
+          <Input />
+        </Form.Item>
+
+        <Form.Item
+          name="telephone"
+          label="Telephone Number"
+          rules={[{ required: false, message: 'Please enter your telephone number!' }]}
+        >
+          <Input />
+        </Form.Item>
+      
         <Form.Item>
           <Space>
             <SubmitButton form={form}>Submit</SubmitButton>

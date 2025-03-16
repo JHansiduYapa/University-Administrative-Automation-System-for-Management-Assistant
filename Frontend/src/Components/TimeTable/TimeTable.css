@@ -1,0 +1,82 @@
+/* TimeTable Page Container */
+.time-table-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+/* Page Title */
+.page-title {
+  font-size: 28px;
+  font-weight: bold;
+  color: #002147; /* Dark blue */
+  margin-bottom: 20px;
+}
+
+/* Calendar Section */
+.calendar-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white; /* White background for calendar */
+  border-radius: 12px; /* Rounded corners */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  padding: 30px; /* Increased padding for better spacing */
+}
+
+.react-calendar {
+  width: calc(100% - 40px); /* Adjust width dynamically */
+  max-width: 900px; /* Maximum width for larger screens */
+}
+
+.react-calendar__tile {
+  font-size: 18px; /* Larger font size for better readability */
+}
+
+.react-calendar__navigation {
+  font-size: 20px; /* Larger font size for navigation arrows and month/year display */
+}
+
+.react-calendar__navigation button {
+  color: #002147; /* Dark blue for arrows and buttons */
+}
+
+.react-calendar__navigation button:hover {
+  background-color: #004080; /* Lighter blue hover effect */
+}
+
+/* Selected Date Display */
+.selected-date {
+  font-size: 18px;
+  color: #002147; /* Dark blue */
+}
+
+/* Semester and Vacation Tiles */
+.current-semester-tile {
+  background-color: #2eff31 !important; /* Green for current semester */
+}
+
+.next-semester-tile {
+  background-color: #eef608 !important; /* Yellow for next semester */
+}
+
+.vacation-tile {
+  background-color: #ea3916 !important; /* Red for vacation */
+}
+
+/* Buttons Section */
+.buttons-section {
+  margin-top: 20px;
+}
+
+.change-period-btn {
+  padding: 10px 20px;
+  border-radius: 5px;
+  background-color: #002147; /* Dark blue button */
+  color: white;
+}
+
+.change-period-btn:hover {
+  background-color: #004080; /* Lighter blue hover effect for button */
+}

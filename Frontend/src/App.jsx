@@ -6,10 +6,13 @@ import SignInPage from "./Components/SignInPage/SignInPage";
 import PersonalDetails from "./Components/PersonalDetails/PersonalDetails";
 import ContactUs from "./Components/ContactUs/ContactUs";
 import MAPage from "./Components/MAPage/MAPage";
+import TimeTable from "./Components/TimeTable/TimeTable";
+import TimeTableChange from "./Components/TimeTableChange/TimeTableChange";
 import UserInfo from "./Components/UserInfo/UserInfo";
 import AuthProvider from "./AuthContext";
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
 
 function App() {
   return (
@@ -43,6 +46,26 @@ function App() {
               </>
             }
           />
+
+          <Route
+            path="/time-table"
+            element={
+              <>
+                <Sidebar />
+                <TimeTable />
+              </>
+            }
+          />
+
+          <Route
+            path="/time-table-change"
+            element={
+              <>
+                <TimeTableChange />
+              </>
+            }
+          />
+
         </Routes>
         {/* Footer */}
         <Footer />
