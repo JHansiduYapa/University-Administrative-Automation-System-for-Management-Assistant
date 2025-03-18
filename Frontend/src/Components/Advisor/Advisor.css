@@ -1,5 +1,5 @@
 .advisor-container {
-    width: 80%;
+    width: 60%;
     margin: auto;
     padding: 20px;
     background: #f9f9f9;
@@ -44,7 +44,7 @@
   }
   
   .advisor-table th {
-    background: #007bff;
+    background:#003366;
     color: white;
   }
   

@@ -8,8 +8,9 @@ import ContactUs from "./Components/ContactUs/ContactUs";
 import MAPage from "./Components/MAPage/MAPage";
 import TimeTable from "./Components/TimeTable/TimeTable";
 import TimeTableChange from "./Components/TimeTableChange/TimeTableChange";
-import Advisor from "./Components/Advisor/Advisor"; // Import Advisor Component
+import Advisor from "./Components/Advisor/Advisor"; 
 import Advisee from "./Components/Advisee/Advisee";
+import Coordinator from "./Components/Coordinator/Coordinator"; // Import Coordinator Component
 
 import AuthProvider from "./AuthContext";
 import React from "react";
@@ -32,6 +33,9 @@ function App() {
             {/* Advisor Page Route */}
             <Route path="/advisor" element={<><Sidebar /><Advisor /></>} />
             <Route path="/advisee" element={<><Sidebar /><Advisee /></>} />
+
+            {/* Coordinator Page Route */}
+            <Route path="/coordinator" element={<><Sidebar /><Coordinator /></>} />
           </Routes>
           <Footer />
         </div>

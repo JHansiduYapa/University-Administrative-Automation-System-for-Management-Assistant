@@ -1,0 +1,117 @@
+/* Container for Coordinator Page */
+.coordinator-container {
+    display: flex;
+    font-family: 'Arial', sans-serif;
+}
+  
+.coordinator-content {
+    flex-grow: 1;
+    padding: 20px;
+    margin-left: 220px;
+    border-radius: 8px;
+}
+  
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Filter Section (Dropdowns for Semester and Department) */
+.filter-section {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+    padding: 10px;
+    border-radius: 8px;
+    gap: 20px; /* Added gap for spacing between the dropdowns */
+}
+  
+.filter-section select {
+    padding: 12px 14px;
+    font-size: 16px;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    color: #003366;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+  
+.filter-section select:hover {
+    background-color: #f1f1f1;
+}
+  
+/* Course Table Styling */
+.course-table {
+    width: 80%;
+    border-collapse: collapse;
+    margin-top: 30px;
+}
+  
+.course-table th,
+.course-table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+    font-size: 16px;
+    color: #333;
+}
+  
+.course-table th {
+    background-color: #003366;
+    color: white;
+}
+  
+.course-table td {
+    background-color: #ffffff;
+}
+  
+.course-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+  
+.course-table tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Input Fields for New Course */
+.input-field {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    background-color: #f9f9f9;
+    margin: 5px 0;
+    box-sizing: border-box;
+}
+
+/* Action Buttons */
+.add-btn,
+.delete-btn {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    cursor: pointer;
+    border-radius: 6px;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.delete-btn {
+    background-color: #dc3545;
+}
+
+.add-btn:hover {
+    background-color: #218838;
+}
+
+.delete-btn:hover {
+    background-color: #c82333;
+}
+
+/* Additional Styling */
+.add-btn, .delete-btn {
+    text-transform: uppercase;
+}
