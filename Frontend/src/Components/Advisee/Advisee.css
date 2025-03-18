@@ -1,0 +1,48 @@
+.advisee-container {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+  }
+  
+  .controls {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 20px 0;
+  }
+  
+  .controls select,
+  .controls button {
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    cursor: pointer;
+  }
+  
+  .controls button.active {
+    background-color: #3949ab;
+    color: white;
+  }
+  
+  .student-table table {
+    width: 80%;
+    margin: 0 auto;
+    border-collapse: collapse;
+    margin-top: 15px;
+    background-color: white;
+  }
+  
+  .student-table th,
+  .student-table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+  }
+  
+  .student-table th {
+    background-color: #3949ab;
+    color: white;
+  }
+  

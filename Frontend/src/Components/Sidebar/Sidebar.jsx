@@ -16,7 +16,7 @@ const Sidebar = () => {
     return (
         <>
             {/* Sidebar Toggle Button */}
-            <button className="sidebar-toggle-btn" onClick={toggleSidebar}>
+            <button className="sidebar-toggle-btn" onClick={toggleSidebar} aria-label="Toggle Sidebar">
                 <i className="toggle-icon">{isOpen ? "❌" : "☰"}</i>
             </button>
 
@@ -24,9 +24,8 @@ const Sidebar = () => {
             {isOpen && <div className="sidebar-overlay" onClick={closeSidebar}></div>}
 
             {/* Sidebar */}
-            <div className={`sidebar-container ${isOpen ? "open" : "closed"}`}>
+            <nav className={`sidebar-container ${isOpen ? "open" : "closed"}`} aria-label="Main Sidebar">
                 <ul className="sidebar-menu">
-                   
                     <li>
                         <Link to="/time-table" onClick={closeSidebar}>
                             <i className="icon timetable-icon"></i> Time Table
@@ -48,12 +47,12 @@ const Sidebar = () => {
                         </Link>
                     </li>
                     <li>
-                        <Link to="/advisor" onClick={closeSidebar}>
+                        <Link to="/advisee" onClick={closeSidebar}>
                             <i className="icon advisee-icon"></i> Advisee
                         </Link>
                     </li>
                     <li>
-                        <Link to="/advisor" onClick={closeSidebar}>
+                        <Link to="/coordinator" onClick={closeSidebar}>
                             <i className="icon coordinator-icon"></i> Coordinator
                         </Link>
                     </li>
@@ -83,7 +82,7 @@ const Sidebar = () => {
                         </Link>
                     </li>
                 </ul>
-            </div>
+            </nav>
         </>
     );
 };

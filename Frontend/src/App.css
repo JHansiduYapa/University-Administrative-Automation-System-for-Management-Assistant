@@ -1,4 +1,3 @@
-
 /* Global Background Styling */
 body {
   margin: 0;
@@ -16,7 +15,56 @@ body {
 
 /* Adjust content spacing */
 .page-content {
+  padding: 40px;
+}
+
+/* Header Styling */
+.header {
+  display: flex;
+  justify-content: space-between; /* Align items horizontally */
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #003366; /* Dark blue color for header */
+  color: white;
+}
+
+.header .user-icon {
+  position: absolute;
+  top: 70px; /* Moves it below the header */
+  right: 20px; /* Aligns it to the right corner */
+}
+.app-container {
+  display: flex;
+}
+
+.content {
+  margin-left: 200px;
   padding: 20px;
+  width: 100%;
 }
 
 
+/* Table Styling */
+.advisor-table {
+  margin-top: 100px; /* Moves table slightly downward */
+}
+
+.advisor-table table {
+  width: 90%;
+  border-collapse:collapse;
+}
+
+.advisor-table th,
+.advisor-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.advisor-table th {
+  background-color: #102b47; /* Dark blue for table header */
+  color: white;
+}
+
+.advisor-table .action-button {
+  color: white;
+}
