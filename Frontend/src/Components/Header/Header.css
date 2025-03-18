@@ -1,8 +1,9 @@
+/* Base styles */
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #002147;
+  background-color: #002147; /* Default light mode color */
   color: white;
   padding: 21px 20px;
 }
@@ -28,9 +29,11 @@
   margin: 0;
 }
 
+/* Adjusted for header-nav to move it right */
 .header-nav {
   display: flex;
-  gap: 15px;
+  gap: 25px;
+  margin-left: auto; /* This will push the navigation links to the right */
 }
 
 .header-nav a {
@@ -41,4 +44,10 @@
 
 .header-nav a:hover {
   text-decoration: underline;
+}
+
+/* Dark mode styles */
+body.dark-mode .header {
+  background-color: black; /* Black background in dark mode */
+  color: white; /* White text for contrast */
 }
