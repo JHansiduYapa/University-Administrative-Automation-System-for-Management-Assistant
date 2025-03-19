@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
 import { FaArrowLeft, FaMoon, FaSun } from "react-icons/fa";
-import { ThemeContext } from "../../context/ThemeContext"; // Corrected import path
+import { ThemeContext } from "../../context/ThemeContext"; // Ensure correct import path
 import "./Settings.css";
 import { useNavigate } from "react-router-dom";
 

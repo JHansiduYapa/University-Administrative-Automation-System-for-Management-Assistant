@@ -12,11 +12,12 @@ import Advisor from "./Components/Advisor/Advisor";
 import Advisee from "./Components/Advisee/Advisee";
 import Coordinator from "./Components/Coordinator/Coordinator"; // Import Coordinator Component
 import Settings from "./Components/Settings/Settings"; // Import Settings Page
-import ThemeProvider from "./context/ThemeContext"; // Import ThemeProvider
+import LectureDetails from "./Components/LectureDetails/LectureDetails"; // Corrected import for LectureDetails
 
 import AuthProvider from "./AuthContext";
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import ThemeProvider from "./context/ThemeContext"; // Import ThemeProvider
 
 function App() {
   return (
@@ -39,6 +40,8 @@ function App() {
               <Route path="/coordinator" element={<><Sidebar /><Coordinator /></>} />
               {/* Settings Page Route */}
               <Route path="/settings" element={<><Sidebar /><Settings /></>} />
+              {/* Lecture Details Page Route (Fixed path to lowercase) */}
+              <Route path="/lecture-details" element={<><Sidebar /><LectureDetails /></>} />
             </Routes>
             <Footer />
           </div>
@@ -49,3 +52,5 @@ function App() {
 }
 
 export default App;
+
+// hjnnmlkmk
