@@ -1,68 +1,67 @@
 .contact-us-container {
-    max-width: 1200px;
-    margin: 50px auto;
-    padding: 20px;
-    background-color: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-  }
-  
-  .contact-us-container h1 {
-    text-align: center;
-    font-size: 32px;
-    font-weight: bold;
-    color: #002147;
-    margin-bottom: 30px;
-  }
-  
-  .contact-details {
-    display: flex;
-    justify-content: space-between;
-    gap: 20px;
-  }
-  
-  .contact-item {
-    flex-basis: calc(33.33% - 20px);
-    background-color: #f9f9f9;
-    border-radius: 10px;
-    padding: 20px;
-    text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  
-  .contact-item:hover {
-    transform: translateY(-10px);
-    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
-  }
-  
-  .contact-item h3 {
-    font-size: 20px;
-    margin-bottom: 15px;
-  }
-  
-  .contact-item p {
-    font-size: 16px;
-  }
-  
-  .contact-item i {
-    font-size: 40px;
-    color: #002147;
-  }
-  
-  .contact-item i + h3 {
-    margin-top: 10px;
-  }
-  
-  /* Icons for Address, Phone, and Email */
-  .icon-address::before {
-    content: "\1F3E0"; /* Unicode for house icon */
-  }
-  
-  .icon-phone::before {
-    content: "\260E"; /* Unicode for phone icon */
-  }
-  
-  .icon-email::before {
-    content: "\2709"; /* Unicode for email icon */
-  }
-  
+  max-width: 1200px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.contact-us-container h1 {
+  text-align: center;
+  font-size: 32px;
+  font-weight: bold;
+  color: #002147;
+  margin-bottom: 30px;
+}
+
+.contact-details {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.contact-item {
+  flex-basis: calc(33.33% - 20px);
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-item:hover {
+  transform: translateY(-10px);
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.contact-item h3 {
+  font-size: 20px;
+  margin-bottom: 15px;
+}
+
+.contact-item p {
+  font-size: 16px;
+}
+
+.contact-item i {
+  font-size: 40px;
+  color: #002147;
+}
+
+.contact-item i + h3 {
+  margin-top: 10px;
+}
+
+/* Icons for Address, Phone, and Email */
+.icon-address::before {
+  content: "\1F3E0"; /* Unicode for house icon */
+}
+
+.icon-phone::before {
+  content: "\260E"; /* Unicode for phone icon */
+}
+
+.icon-email::before {
+  content: "\2709"; /* Unicode for email icon */
+}

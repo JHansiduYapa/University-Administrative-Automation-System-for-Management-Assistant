@@ -1,0 +1,81 @@
+/* Lecture Details Page */
+.lecture-details-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    max-height: 90vh; /* Limits height */
+    overflow-y: auto; /* Enables scrolling */
+ 
+  }
+  /* juiji */
+.page-title {
+    font-size: 35px;
+    font-weight: bold;
+    color: white; /* White text for better readability */
+}
+
+/* Filter Section */
+.filter-section {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+/*Filter Section */
+.filter-section label {
+    font-size: 18px;
+    font-weight: bold;
+    color :#f8f9fa ; /* White text */
+}
+white
+.filter-section select {
+    padding: 8px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+}
+
+/* Lecturer Cards Section */
+.lecturer-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    justify-content: center;
+    width: 100%;
+    max-height: 75vh; /* Restrict height */
+    overflow-y: auto; /* Enable scrolling */
+}
+
+.lecturer-card {
+    background-color: #f8f9fa;
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.2);
+    padding: 20px;
+    width: 320px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.lecturer-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 6px 12px rgba(255, 255, 255, 0.3);
+}
+
+.lecturer-info h3 {
+    margin: 0 0 10px;
+    color: #007bff;
+}
+
+.lecturer-info p {
+    margin: 5px 0;
+    font-size: 14px;
+    color: #333;
+}
+
+.department-text {
+    color: white; /* White text for Department */
+    font-weight: bold;
+}

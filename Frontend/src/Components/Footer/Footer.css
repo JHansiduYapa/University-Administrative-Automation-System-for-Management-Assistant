@@ -1,11 +1,17 @@
+/* Default Footer */
 .footer {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    background-color: #002147;
-    color: white;
-    text-align: center;
-    padding: 10px 0;
-    font-size: 14px;
-  }
-  
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #002147; /* Dark blue */
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+  font-size: 14px;
+}
+
+/* Dark Mode Footer */
+body.dark-mode .footer {
+  background-color: black; /* Black background in dark mode */
+  color: white; /* White text for contrast */
+}

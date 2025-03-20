@@ -1,29 +1,28 @@
 /* Main Page Container */
 .ma-page {
-    display: flex;
-    flex-direction: column;
-    height: 100vh; /* Full viewport height */
-  }
-  
-  /* Main Content */
-  .main-content { /* Adjust for sidebar width */
-    display: flex;
-    flex-direction: column;
-    justify-content: center; /* Center content vertically */
-    align-items: center; /* Center content horizontally */
-    height: calc(100vh - 60px); /* Full height minus header height */
-    text-align: center;
-  }
-  
-  .main-content h1 {
-    font-size: 48px; /* Larger font size for emphasis */
-    color: white; /* White text for visibility on background */
-    text-shadow: 2px 2px 5px #000000; /* Dark shadow for highlighting text */
-  }
-  
-  .main-content p {
-    font-size: 35px;
-    color: white; /* White text for visibility on background */
-    text-shadow: 2px 2px 5px #000000; /* Dark shadow for highlighting text */
-  }
-  
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* Full viewport height */
+}
+
+/* Main Content */
+.main-content { /* Adjust for sidebar width */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Center content vertically */
+  align-items: center; /* Center content horizontally */
+  height: calc(100vh - 60px); /* Full height minus header height */
+  text-align: center;
+}
+
+.main-content h1 {
+  font-size: 48px; /* Larger font size for emphasis */
+  color: white; /* White text for visibility on background */
+  text-shadow: 2px 2px 5px #000000; /* Dark shadow for highlighting text */
+}
+
+.main-content p {
+  font-size: 35px;
+  color: white; /* White text for visibility on background */
+  text-shadow: 2px 2px 5px #000000; /* Dark shadow for highlighting text */
+}
