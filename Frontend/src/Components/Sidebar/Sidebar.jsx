@@ -17,7 +17,7 @@ const Sidebar = () => {
     <>
       {/* Sidebar Toggle Button */}
       <button className="sidebar-toggle-btn" onClick={toggleSidebar} aria-label="Toggle Sidebar">
-        <i className="toggle-icon">{isOpen ? "❌" : "☰"}</i>
+        <span className="toggle-icon">{isOpen ? "❌" : "☰"}</span>
       </button>
 
       {/* Overlay (closes sidebar when clicked) */}
@@ -28,57 +28,57 @@ const Sidebar = () => {
         <ul className="sidebar-menu">
           <li>
             <Link to="/time-table" onClick={closeSidebar}>
-              <i className="icon timetable-icon"></i> Time Table
+              <span className="icon timetable-icon"></span> Time Table
             </Link>
           </li>
           <li>
             <Link to="/personal-details" onClick={closeSidebar}>
-              <i className="icon newstudent-icon"></i> New Student
+              <span className="icon newstudent-icon"></span> New Student
             </Link>
           </li>
           <li>
             <Link to="/grades" onClick={closeSidebar}>
-              <i className="icon grades-icon"></i> Grades
+              <span className="icon grades-icon"></span> Grades
             </Link>
           </li>
           <li>
             <Link to="/advisor" onClick={closeSidebar}>
-              <i className="icon advisor-icon"></i> Advisor
+              <span className="icon advisor-icon"></span> Advisor
             </Link>
           </li>
           <li>
             <Link to="/advisee" onClick={closeSidebar}>
-              <i className="icon advisee-icon"></i> Advisee
+              <span className="icon advisee-icon"></span> Advisee
             </Link>
           </li>
           <li>
             <Link to="/coordinator" onClick={closeSidebar}>
-              <i className="icon coordinator-icon"></i> Coordinator
+              <span className="icon coordinator-icon"></span> Coordinator
             </Link>
           </li>
           <li>
             <Link to="/lecture-details" onClick={closeSidebar}>
-              <i className="icon lecture-icon"></i> Lecture Details
+              <span className="icon lecture-icon"></span> Lecture Details
             </Link>
           </li>
           <li>
             <Link to="/student-details" onClick={closeSidebar}>
-              <i className="icon student-icon"></i> Student Details
+              <span className="icon student-icon"></span> Student Details
             </Link>
           </li>
           <li>
             <Link to="/contact-us" onClick={closeSidebar}>
-              <i className="icon contact-icon"></i> Contact Us
+              <span className="icon contact-icon"></span> Contact Us
             </Link>
           </li>
           <li>
             <Link to="/settings" onClick={closeSidebar}>
-              <i className="icon settings-icon"></i> Settings
+              <span className="icon settings-icon"></span> Settings
             </Link>
           </li>
           <li>
             <Link to="/logout" onClick={closeSidebar}>
-              <i className="icon logout-icon"></i> Log Out
+              <span className="icon logout-icon"></span> Log Out
             </Link>
           </li>
         </ul>

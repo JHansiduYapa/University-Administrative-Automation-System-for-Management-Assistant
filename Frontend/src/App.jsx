@@ -13,6 +13,7 @@ import Advisee from "./Components/Advisee/Advisee";
 import Coordinator from "./Components/Coordinator/Coordinator"; 
 import Settings from "./Components/Settings/Settings"; 
 import LectureDetails from "./Components/LectureDetails/LectureDetails"; 
+import StudentDetails from "./Components/StudentDetails/StudentDetails"; // Import StudentDetails
 
 import AuthProvider from "./AuthContext";
 import ThemeProvider from "./context/ThemeContext"; // Import ThemeProvider
@@ -38,6 +39,7 @@ function App() {
               <Route path="/coordinator" element={<><Sidebar /><Coordinator /></>} />
               <Route path="/settings" element={<><Sidebar /><Settings /></>} />
               <Route path="/lecture-details" element={<><Sidebar /><LectureDetails /></>} />
+              <Route path="/student-details" element={<><Sidebar /><StudentDetails /></>} /> {/* Add StudentDetails route */}
             </Routes>
             <Footer />
           </div>
