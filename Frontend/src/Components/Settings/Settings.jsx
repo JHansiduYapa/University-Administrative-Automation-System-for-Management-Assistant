@@ -47,7 +47,7 @@ const Settings = () => {
         />
       </div>
       <div className="settings-options">
-        <div className="option">
+        {/*<div className="option">
           <h3>Theme</h3>
           <div className="theme-options">
             <div
@@ -63,7 +63,7 @@ const Settings = () => {
               <FaMoon /> Dark
             </div>
           </div>
-        </div>
+        </div>*/}
         <div className="option">
           <h3>Dark Mode</h3>
           <div className="toggle-option" onClick={handleDarkModeToggle}>

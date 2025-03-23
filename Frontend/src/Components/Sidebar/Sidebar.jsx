@@ -77,7 +77,7 @@ const Sidebar = () => {
             </Link>
           </li>
           <li>
-            <Link to="/logout" onClick={closeSidebar}>
+            <Link to="/SignInPage" onClick={closeSidebar}>
               <span className="icon logout-icon"></span> Log Out
             </Link>
           </li>

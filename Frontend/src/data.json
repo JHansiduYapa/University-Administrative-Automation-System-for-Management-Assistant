@@ -1,10 +1,14 @@
 {
-    "managementOfficer": [
+    "managementAssistants": [
       {
+        "name": "A.K.Pushpa",
+        "MA Id": "M001", 
         "email": "admin@example.com",
         "password": "23"
       },
       {
+        "name": "L.P.Shali",
+        "MA Id": "M002", 
         "email": "dimuthushali2021@gmail.com",
         "password": "d"
       }

@@ -10,7 +10,7 @@ const SignInPage = () => {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [managementOfficers, setManagementOfficers] = useState([]);
+  const [managementAssistants, setManagementAssistants] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -18,10 +18,10 @@ const SignInPage = () => {
   useEffect(() => {
     try {
       console.log("Data loaded:", jsonData);
-      if (jsonData && jsonData.managementOfficer) {
-        setManagementOfficers(jsonData.managementOfficer);
+      if (jsonData && jsonData.managementAssistants) {
+        setManagementAssistants(jsonData.managementAssistants);
       } else {
-        setError("Management officer data not found");
+        setError("Management Assistant data not found");
       }
       setLoading(false);
     } catch (error) {
@@ -34,10 +34,10 @@ const SignInPage = () => {
   const handleSignIn = (e) => {
     e.preventDefault();
     console.log("Attempting login with:", email, password);
-    console.log("Available officers:", managementOfficers);
+    console.log("Available Assistants:", managementAssistants);
 
     // Check if entered email & password match any management officer
-    const user = managementOfficers.find(
+    const user = managementAssistants.find(
       (user) => user.email === email && user.password === password
     );
 
