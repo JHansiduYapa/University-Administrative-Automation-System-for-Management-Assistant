@@ -13,33 +13,84 @@ import Advisee from "./Components/Advisee/Advisee";
 import Coordinator from "./Components/Coordinator/Coordinator"; 
 import Settings from "./Components/Settings/Settings"; 
 import LectureDetails from "./Components/LectureDetails/LectureDetails"; 
-import StudentDetails from "./Components/StudentDetails/StudentDetails"; // Import StudentDetails
+import StudentDetails from "./Components/StudentDetails/StudentDetails";
 
-import AuthProvider from "./AuthContext";
-import ThemeProvider from "./context/ThemeContext"; // Import ThemeProvider
-import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import AuthProvider, { AuthContext } from "./AuthContext";
+import ThemeProvider from "./context/ThemeContext";
+import React, { useContext } from "react";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+
+// PrivateRoute component to protect routes
+const PrivateRoute = ({ children }) => {
+  const { isAuthenticated } = useContext(AuthContext);
+  return isAuthenticated ? children : <Navigate to="/" />;
+};
 
 function App() {
   return (
     <AuthProvider>
-      <ThemeProvider> {/* Wrap the entire app with ThemeProvider */}
+      <ThemeProvider>
         <Router>
           <div className="app-content">
             <Header />
             <Routes>
               <Route path="/" element={<SignInPage />} />
-              <Route path="/ma-page" element={<MAPage />} />
-              <Route path="/personal-details" element={<><Sidebar /><PersonalDetails /></>} />
-              <Route path="/contact-us" element={<><Sidebar /><ContactUs /></>} />
-              <Route path="/time-table" element={<><Sidebar /><TimeTable /></>} />
-              <Route path="/time-table-change" element={<TimeTableChange />} />
-              <Route path="/advisor" element={<><Sidebar /><Advisor /></>} />
-              <Route path="/advisee" element={<><Sidebar /><Advisee /></>} />
-              <Route path="/coordinator" element={<><Sidebar /><Coordinator /></>} />
-              <Route path="/settings" element={<><Sidebar /><Settings /></>} />
-              <Route path="/lecture-details" element={<><Sidebar /><LectureDetails /></>} />
-              <Route path="/student-details" element={<><Sidebar /><StudentDetails /></>} /> {/* Add StudentDetails route */}
+              <Route path="/ma-page" element={
+                <PrivateRoute>
+                  <MAPage />
+                </PrivateRoute>
+              } />
+              <Route path="/personal-details" element={
+                <PrivateRoute>
+                  <Sidebar /><PersonalDetails />
+                </PrivateRoute>
+              } />
+              <Route path="/contact-us" element={
+                <PrivateRoute>
+                  <Sidebar /><ContactUs />
+                </PrivateRoute>
+              } />
+              <Route path="/time-table" element={
+                <PrivateRoute>
+                  <Sidebar /><TimeTable />
+                </PrivateRoute>
+              } />
+              <Route path="/time-table-change" element={
+                <PrivateRoute>
+                  <Sidebar /><TimeTableChange />
+                </PrivateRoute>
+              } />
+              <Route path="/advisor" element={
+                <PrivateRoute>
+                  <Sidebar /><Advisor />
+                </PrivateRoute>
+              } />
+              <Route path="/advisee" element={
+                <PrivateRoute>
+                  <Sidebar /><Advisee />
+                </PrivateRoute>
+              } />
+              <Route path="/coordinator" element={
+                <PrivateRoute>
+                  <Sidebar /><Coordinator />
+                </PrivateRoute>
+              } />
+              <Route path="/settings" element={
+                <PrivateRoute>
+                  <Sidebar /><Settings />
+                </PrivateRoute>
+              } />
+              <Route path="/lecture-details" element={
+                <PrivateRoute>
+                  <Sidebar /><LectureDetails />
+                </PrivateRoute>
+              } />
+              <Route path="/student-details" element={
+                <PrivateRoute>
+                  <Sidebar /><StudentDetails />
+                </PrivateRoute>
+              } />
+              <Route path="*" element={<Navigate to="/" />} />
             </Routes>
             <Footer />
           </div>

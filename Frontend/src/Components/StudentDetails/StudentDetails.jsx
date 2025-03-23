@@ -1,40 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./StudentDetails.css";
-import { FaUserCircle, FaEnvelope, FaPhone, FaHome, FaCalendar, FaUniversity, FaIdBadge, FaStar } from "react-icons/fa"; 
-
-const students = [
-  {
-    name: "John D.",
-    regNumber: "2021/E/124",
-    department: "Computing",
-    semester: "5",
-    email: "john.doe@example.com",
-    fullName: "John Doe",
-    dob: "1999-05-20",
-    address: "123, Main Street, City",
-    phone: "+94771234567",
-    gpa: "3.85",
-    date: "2024-03-22",
-  },
-  {
-    name: "Jane S.",
-    regNumber: "2021/E/125",
-    department: "Mechanical",
-    semester: "4",
-    email: "jane.smith@example.com",
-    fullName: "Jane Smith",
-    dob: "2000-07-15",
-    address: "456, Elm Street, Town",
-    phone: "+94781234567",
-    gpa: "3.75",
-    date: "2024-03-22",
-  },
-];
+import { FaUserCircle, FaEnvelope, FaPhone, FaHome, FaCalendar, FaUniversity, FaIdBadge, FaStar } from "react-icons/fa";
+import jsonData from "../../data.json";
 
 const StudentDetails = () => {
+  const [students, setStudents] = useState([]);
   const [selectedStudent, setSelectedStudent] = useState(null);
   const [filterDept, setFilterDept] = useState("");
   const [searchReg, setSearchReg] = useState("");
+
+  useEffect(() => {
+    // Load students from the JSON data
+    if (jsonData && jsonData.students) {
+      setStudents(jsonData.students);
+    }
+  }, []);
 
   const handleViewProfile = (student) => {
     setSelectedStudent(student);
@@ -47,7 +27,7 @@ const StudentDetails = () => {
   const filteredStudents = students.filter(
     (student) =>
       (filterDept === "" || student.department === filterDept) &&
-      (searchReg === "" || student.regNumber.includes(searchReg))
+      (searchReg === "" || student.registration_number.includes(searchReg))
   );
 
   return (
@@ -57,10 +37,10 @@ const StudentDetails = () => {
       <div className="filters">
         <select onChange={(e) => setFilterDept(e.target.value)}>
           <option value="">All Departments</option>
-          <option value="Civil">Civil</option>
-          <option value="Computing">Computing</option>
-          <option value="Mechanical">Mechanical</option>
-          <option value="Electrical">Electrical</option>
+          <option value="Computer Engineering">Computer Engineering</option>
+          <option value="Civil Engineering">Civil Engineering</option>
+          <option value="Mechanical Engineering">Mechanical Engineering</option>
+          <option value="Electrical Engineering">Electrical Engineering</option>
         </select>
         <input
           type="text"
@@ -82,11 +62,11 @@ const StudentDetails = () => {
           </tr>
         </thead>
         <tbody>
-          {filteredStudents.map((student, index) => (
-            <tr key={index}>
-              <td>{student.name}</td>
-              <td>{student.regNumber}</td>
-              <td>{student.department}</td>
+          {filteredStudents.map((student) => (
+            <tr key={student.id}>
+              <td>{student.name.split(" ")[0]} {student.name.split(" ")[1].charAt(0)}.</td>
+              <td>{student.registration_number}</td>
+              <td>{student.department.split(" ")[0]}</td>
               <td>{student.semester}</td>
               <td>{student.email}</td>
               <td>
@@ -104,7 +84,7 @@ const StudentDetails = () => {
         <div className="modal-overlay">
           <div className="modal">
             <h3>Student Profile</h3>
-            <p><FaIdBadge className="icon" /> <strong>Name:</strong> {selectedStudent.fullName}</p>
+            <p><FaIdBadge className="icon" /> <strong>Name:</strong> {selectedStudent.name}</p>
             <p><FaCalendar className="icon" /> <strong>DOB:</strong> {selectedStudent.dob}</p>
             <p><FaHome className="icon" /> <strong>Address:</strong> {selectedStudent.address}</p>
             <p><FaPhone className="icon" /> <strong>Phone:</strong> {selectedStudent.phone}</p>

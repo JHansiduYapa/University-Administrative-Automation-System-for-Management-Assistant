@@ -2,7 +2,6 @@
   width: 60%;
   margin: auto;
   padding: 20px;
-  background: #f9f9f9;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   text-align: center;
@@ -23,9 +22,27 @@
 }
 
 .advisor-title {
-  font-size: 24px;
+  font-size: 40px;
   margin-bottom: 20px;
-  color: #333;
+  color: #f2f2f2;
+}
+
+/* Search Section Styling */
+.search-section {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  gap: 10px;
+}
+
+.search-input, 
+.search-select {
+  padding: 10px;
+  width: 200px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  height: 40px;
+  box-sizing: border-box;
 }
 
 /* Table Styling */
@@ -44,7 +61,7 @@
 }
 
 .advisor-table th {
-  background:#003366;
+  background: #003366;
   color: white;
 }
 
@@ -59,7 +76,7 @@
   border: none;
   padding: 8px 12px;
   cursor: pointer;
-  border-radius: 5px;
+  border-radius: 10px;
 }
 
 .delete-btn:hover {
@@ -71,14 +88,18 @@
   display: flex;
   justify-content: center;
   margin-top: 20px;
+  gap: 10px;
 }
 
-.add-advisor input {
+.add-advisor input,
+.department-input,
+.advisor-input {
   padding: 10px;
-  margin: 5px;
   width: 200px;
   border: 1px solid #ccc;
   border-radius: 5px;
+  height: 40px;
+  box-sizing: border-box;
 }
 
 .add-btn {
@@ -87,8 +108,9 @@
   border: none;
   padding: 10px 15px;
   cursor: pointer;
-  border-radius: 5px;
-  margin-left: 10px;
+  border-radius: 15px;
+  height: 40px;
+  box-sizing: border-box;
 }
 
 .add-btn:hover {

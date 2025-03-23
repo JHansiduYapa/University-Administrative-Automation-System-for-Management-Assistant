@@ -1,17 +1,57 @@
-import React, { useContext } from "react";
-import "./SignInPage.css";
+import React, { useContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { AuthContext } from "../../AuthContext"; // Import mock authentication context
+import { AuthContext } from "../../AuthContext";
+import "./SignInPage.css";
+import jsonData from "../../data.json"; // Import directly from src folder
 
 const SignInPage = () => {
   const navigate = useNavigate();
-  const { setIsAuthenticated } = useContext(AuthContext); // Access authentication state
+  const { setIsAuthenticated } = useContext(AuthContext);
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [managementOfficers, setManagementOfficers] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  // Load data from imported JSON
+  useEffect(() => {
+    try {
+      console.log("Data loaded:", jsonData);
+      if (jsonData && jsonData.managementOfficer) {
+        setManagementOfficers(jsonData.managementOfficer);
+      } else {
+        setError("Management officer data not found");
+      }
+      setLoading(false);
+    } catch (error) {
+      console.error("Error loading data:", error);
+      setError(error.message);
+      setLoading(false);
+    }
+  }, []);
 
   const handleSignIn = (e) => {
-    e.preventDefault(); // Prevent form submission behavior
-    setIsAuthenticated(true); // Simulate successful login
-    navigate("/ma-page"); // Navigate to MAPage
+    e.preventDefault();
+    console.log("Attempting login with:", email, password);
+    console.log("Available officers:", managementOfficers);
+
+    // Check if entered email & password match any management officer
+    const user = managementOfficers.find(
+      (user) => user.email === email && user.password === password
+    );
+
+    if (user) {
+      console.log("Login successful for:", user);
+      setIsAuthenticated(true);
+      navigate("/ma-page");
+    } else {
+      alert("Invalid email or password");
+    }
   };
+
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error}</div>;
 
   return (
     <div className="signin-container">
@@ -19,10 +59,22 @@ const SignInPage = () => {
         <h2>Sign In</h2>
         <form onSubmit={handleSignIn}>
           <label>Email Address:</label>
-          <input type="email" placeholder="Enter your email" required />
+          <input
+            type="email"
+            placeholder="Enter your email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
 
           <label>Password:</label>
-          <input type="password" placeholder="Enter your password" required />
+          <input
+            type="password"
+            placeholder="Enter your password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
 
           <button type="submit">Sign In</button>
         </form>

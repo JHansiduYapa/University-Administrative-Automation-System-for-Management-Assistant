@@ -1,43 +1,59 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Advisor.css";
+import jsonData from "../../data.json";
 
 const Advisor = () => {
-  // Initial Data
-  const [advisors, setAdvisors] = useState([
-    { id: 1, name: "Dr. John Doe", department: "Computer Engineering" },
-    { id: 2, name: "Dr. Jane Smith", department: "Mechanical Engineering" },
-    { id: 3, name: "Dr. Alice Brown", department: "Civil Engineering" },
-    { id: 4, name: "Dr. Bob White", department: "Electrical Engineering" },
-  ]);
-
+  const [advisors, setAdvisors] = useState([]);
+  const [lecturers, setLecturers] = useState([]);
+  const [searchName, setSearchName] = useState("");
+  const [searchDepartment, setSearchDepartment] = useState("");
   const [newAdvisor, setNewAdvisor] = useState({ name: "", department: "" });
-  const [searchName, setSearchName] = useState(""); // Search by advisor name
-  const [searchDepartment, setSearchDepartment] = useState(""); // Search by department
+  const [availableLecturers, setAvailableLecturers] = useState([]);
 
-  // Handle Input Change
-  const handleInputChange = (e) => {
-    setNewAdvisor({ ...newAdvisor, [e.target.name]: e.target.value });
+  useEffect(() => {
+    if (jsonData && jsonData.lecturers) {
+      setLecturers(jsonData.lecturers);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (newAdvisor.department) {
+      if (newAdvisor.department === "Interdisciplinary") {
+        setAvailableLecturers(lecturers);
+      } else {
+        const filteredLecturers = lecturers.filter(
+          lecturer => lecturer.department === newAdvisor.department
+        );
+        setAvailableLecturers(filteredLecturers);
+      }
+    } else {
+      setAvailableLecturers([]);
+    }
+  }, [newAdvisor.department, lecturers]);
+
+  const handleDepartmentChange = (e) => {
+    const department = e.target.value;
+    setNewAdvisor({ ...newAdvisor, department, name: "" });
   };
 
-  // Add a New Row
+  const handleNameChange = (e) => {
+    const name = e.target.value;
+    setNewAdvisor({ ...newAdvisor, name });
+  };
+
   const addRow = () => {
     if (newAdvisor.name && newAdvisor.department) {
-      setAdvisors([
-        ...advisors,
-        { id: Date.now(), name: newAdvisor.name, department: newAdvisor.department },
-      ]);
+      setAdvisors([...advisors, { ...newAdvisor, id: Date.now() }]);
       setNewAdvisor({ name: "", department: "" });
     } else {
-      alert("Please enter both Name and Department");
+      alert("Please select both Department and Advisor Name");
     }
   };
 
-  // Delete a Specific Row
   const deleteRow = (id) => {
     setAdvisors(advisors.filter((advisor) => advisor.id !== id));
   };
 
-  // Filter Advisors Based on Search Inputs
   const filteredAdvisors = advisors.filter(
     (advisor) =>
       advisor.name.toLowerCase().includes(searchName.toLowerCase()) &&
@@ -46,14 +62,8 @@ const Advisor = () => {
 
   return (
     <div className="advisor-container">
-      {/* User Profile Icon */}
-      <div className="user-icon">
-        <img src="https://via.placeholder.com/40" alt="User" />
-      </div>
-
       <h2 className="advisor-title">Advisor List</h2>
 
-      {/* Search Section */}
       <div className="search-section">
         <input
           type="text"
@@ -68,14 +78,14 @@ const Advisor = () => {
           className="search-select"
         >
           <option value="">All Departments</option>
-          <option value="Computer Engineering">Computing</option>
-          <option value="Civil Engineering">Civil</option>
-          <option value="Mechanical Engineering">Mechanical</option>
-          <option value="Electrical Engineering">Electrical</option>
+          <option value="Computer Engineering">Computer Engineering</option>
+          <option value="Civil Engineering">Civil Engineering</option>
+          <option value="Mechanical Engineering">Mechanical Engineering</option>
+          <option value="Electrical Engineering">Electrical Engineering</option>
+          <option value="Interdisciplinary">Interdisciplinary</option>
         </select>
       </div>
 
-      {/* Table */}
       <table className="advisor-table">
         <thead>
           <tr>
@@ -91,7 +101,7 @@ const Advisor = () => {
               <td>{advisor.department}</td>
               <td>
                 <button className="delete-btn" onClick={() => deleteRow(advisor.id)}>
-                  Delete
+                  DELETE
                 </button>
               </td>
             </tr>
@@ -99,24 +109,36 @@ const Advisor = () => {
         </tbody>
       </table>
 
-      {/* Add New Advisor Inputs */}
       <div className="add-advisor">
-        <input
-          type="text"
-          name="name"
-          placeholder="Advisor Name"
-          value={newAdvisor.name}
-          onChange={handleInputChange}
-        />
-        <input
-          type="text"
-          name="department"
-          placeholder="Department"
+        <select
           value={newAdvisor.department}
-          onChange={handleInputChange}
-        />
+          onChange={handleDepartmentChange}
+          className="department-input"
+        >
+          <option value="">Select Department</option>
+          <option value="Computer Engineering">Computer Engineering</option>
+          <option value="Civil Engineering">Civil Engineering</option>
+          <option value="Mechanical Engineering">Mechanical Engineering</option>
+          <option value="Electrical Engineering">Electrical Engineering</option>
+          <option value="Interdisciplinary">Interdisciplinary</option>
+        </select>
+        
+        <select
+          value={newAdvisor.name}
+          onChange={handleNameChange}
+          className="advisor-input"
+          disabled={!newAdvisor.department}
+        >
+          <option value="">Select Advisor Name</option>
+          {availableLecturers.map((lecturer) => (
+            <option key={lecturer.id} value={lecturer.name}>
+              {lecturer.name}
+            </option>
+          ))}
+        </select>
+        
         <button className="add-btn" onClick={addRow}>
-          Add New Row
+          ADD NEW ROW
         </button>
       </div>
     </div>
