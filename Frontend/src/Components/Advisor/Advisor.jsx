@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./Advisor.css";
 import jsonData from "../../data.json";
+import UserInfo from "../UserInfo/UserInfo";
 
 const Advisor = () => {
   const [advisors, setAdvisors] = useState([]);

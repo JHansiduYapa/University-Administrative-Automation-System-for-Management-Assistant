@@ -5,6 +5,7 @@ import "./RegisterMA.css";
 
 const RegisterMA = () => {
   const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     name: "",
     maId: "",
@@ -56,6 +57,12 @@ const RegisterMA = () => {
 
   return (
     <div className="register-container">
+
+      {/* Back Button */}
+      <button className="back-button" onClick={() => navigate(-1)}>
+        &#8592; 
+      </button>
+
       <div className="register-box">
         <h2>New MA Registration</h2>
         {error && <p className="error">{error}</p>}

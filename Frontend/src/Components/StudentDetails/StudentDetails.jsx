@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./StudentDetails.css";
 import { FaUserCircle, FaEnvelope, FaPhone, FaHome, FaCalendar, FaUniversity, FaIdBadge, FaStar } from "react-icons/fa";
 import jsonData from "../../data.json";
+import UserInfo from "../UserInfo/UserInfo";
 
 const StudentDetails = () => {
   const [students, setStudents] = useState([]);

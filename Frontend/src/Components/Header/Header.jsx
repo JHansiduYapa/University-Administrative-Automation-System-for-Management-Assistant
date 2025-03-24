@@ -33,10 +33,12 @@ const Header = () => {
         <Link to="/settings">Settings</Link>
       </nav>
 
-      {/* Dark Mode Toggle */}
+      
+      {/* Dark Mode Toggle 
       <div className="dark-mode-toggle" onClick={toggleDarkMode}>
-        {darkMode ? "🌙" : "🌞"} {/* Display moon for dark mode, sun for light mode */}
-      </div>
+        {darkMode ? "🌙" : "🌞"} /* Display moon for dark mode, sun for light mode 
+      </div> */}
+     
     </header>
   );
 };

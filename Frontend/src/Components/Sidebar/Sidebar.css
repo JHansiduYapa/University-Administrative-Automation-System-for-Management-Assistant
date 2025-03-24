@@ -1,15 +1,16 @@
 /* Sidebar Container */
 .sidebar-container {
   width: 250px;
-  height: 100vh;
-  background-color: #002147; /* Dark blue */
+  height: 100%;
+  background-color: #062a54; /* Dark blue */
   position: fixed;
-  top: 80px; /* Align below header */
+  top: 85; /* Align below header */
   left: -250px; /* Hidden by default */
   overflow-y: auto;
   box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.2);
   transition: left 0.3s ease; /* Smooth transition for showing/hiding */
   z-index: 1001; /* Ensure it is above the overlay */
+  border-radius: 20px;
 }
 
 /* Sidebar Open State */
@@ -45,14 +46,18 @@
 
 /* Sidebar Toggle Button */
 .sidebar-toggle-btn {
-  position: fixed;
-  top: calc(80px + 15px); /* Position below header with spacing */
+  position: absolute;
+  top: 100px; /* Position below header with spacing */
   left: 20px;
   background-color: #002147;
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 4px;
   padding: 10px;
+  box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.5);
+  transition: left 0.3s ease; /* Smooth slide-in animation */
+  z-index: 1000; /* Ensures it stays above other elements */
+  overflow-y: auto; /* Allows scrolling within the sidebar if content overflows */
 }
 
 .sidebar-toggle-btn:hover {
@@ -66,11 +71,13 @@
 /* Overlay (closes sidebar when clicked) */
 .sidebar-overlay {
   position: fixed;
-  top: calc(60px); /* Start below the header */
+  top: calc(85px); /* Start below the header */
   left: 0;
   width: calc(100vw); /* Full viewport width */
-  height: calc(100vh - calc(80px)); /* Full height minus header height */
+  height: calc(100vh - calc(85px)); /* Full height minus header height */
   background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+  z-index: 999; /* Just below the sidebar z-index */
+  
 }
 
 /* Example Icons (Unicode-based) */
@@ -87,7 +94,7 @@
 }
 
 .newstudent-icon::before {
-  content: "\1F464"; /* Unicode for person icon */
+  content: "\1F9B1"; /* Unicode for person icon */
 }
 
 .lecture-icon::before {
@@ -99,11 +106,11 @@
 }
 
 .contact-icon::before {
-  content: "\2709"; /* Unicode for envelope icon */
+  content: "\1F4DE"; /* Unicode for envelope icon */
 }
 
 .settings-icon::before {
-  content: "\2699"; /* Unicode for gear icon */
+  content: "\1F527"; /* Unicode for gear icon */
 }
 
 .logout-icon::before {
@@ -115,7 +122,7 @@
 }
 
 .coordinator-icon::before {
-  content: "\270E"; /* Unicode for chart icon */
+  content: "\1F4DC"; /* Unicode for chart icon */
 }
 
 /* Dark Mode Sidebar */

@@ -1,10 +1,20 @@
 import React from 'react';
 import { FaHome, FaPhone, FaEnvelope } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import './ContactUs.css';
 
 const ContactUs = () => {
+  const navigate = useNavigate(); // Define navigate
+
   return (
+
     <div className="contact-us-container">
+
+      {/* Back Button */}
+      <button className="back-button" onClick={() => navigate(-1)}>
+        &#8592;
+      </button>
+
       <h1>Contact Us</h1>
       <div className="contact-details">
         

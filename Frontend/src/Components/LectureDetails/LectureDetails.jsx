@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./LectureDetails.css";
 import jsonData from "../../data.json";
+import UserInfo from "../UserInfo/UserInfo";
 
 const LectureDetails = () => {
   const [selectedDepartment, setSelectedDepartment] = useState("All");

@@ -7,10 +7,12 @@ const Sidebar = () => {
 
   const toggleSidebar = () => {
     setIsOpen(!isOpen);
+    document.body.style.overflow = isOpen ? "" : "hidden"; // Disable/enable body scroll
   };
 
   const closeSidebar = () => {
     setIsOpen(false);
+    document.body.style.overflow = ""; // Re-enable body scroll
   };
 
   return (
@@ -88,4 +90,3 @@ const Sidebar = () => {
 };
 
 export default Sidebar;
-//fgfg//

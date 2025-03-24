@@ -1,6 +1,6 @@
 .user-info-container {
-  position: fixed; /* Fix it to the page */
-  top: 95px; /* Distance from the top */
+  position: absolute; /* Fix it to the page */
+  top: 100px; /* Distance from the top */
   right: 20px; /* Distance from the right */
   display: flex;
   align-items: center;

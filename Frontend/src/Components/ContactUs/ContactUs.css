@@ -5,6 +5,7 @@
   background-color: #ffffff;
   border-radius: 12px;
   box-shadow: 0px 5px 12px rgba(0, 0, 0, 0.15);
+  position: relative;
 }
 
 .contact-us-container h1 {
@@ -75,4 +76,26 @@
   .contact-item {
     width: 90%;
   }
+}
+
+.back-button {
+  position: absolute; /* Position relative to the container */
+  top: 20px; /* Adjust vertical placement */
+  left: 20px; /* Adjust horizontal placement */
+  background-color: #002147; /* Blue background */
+  color: white; /* White text */
+  border: none;
+  border-radius: 12px;
+  padding: 10px 15px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.back-button:hover {
+  background-color: #013164; /* Darker blue on hover */
+}
+
+.back-button:active {
+  background-color: #023770; /* Even darker blue when clicked */
 }

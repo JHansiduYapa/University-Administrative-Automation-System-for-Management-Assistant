@@ -3,6 +3,7 @@ import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import './TimeTable.css';
 import { useNavigate } from 'react-router-dom';
+import UserInfo from "../UserInfo/UserInfo";
 
 const TimeTable = () => {
   const navigate = useNavigate();

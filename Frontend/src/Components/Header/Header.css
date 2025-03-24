@@ -6,6 +6,7 @@
   background-color: #002147; /* Default light mode color */
   color: white;
   padding: 21px 20px;
+  height: 85px;
 }
 
 .header-left {

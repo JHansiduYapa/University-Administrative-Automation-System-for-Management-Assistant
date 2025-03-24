@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./Advisee.css";
+import UserInfo from "../UserInfo/UserInfo";
 
 const Advisee = () => {
   const [batch, setBatch] = useState("E21");

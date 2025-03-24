@@ -2,7 +2,7 @@ import React, { useContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../AuthContext";
 import "./SignInPage.css";
-import jsonData from "../../data.json"; // Import directly from src folder
+import jsonData from "../../data.json"; // Import mock data
 
 const SignInPage = () => {
   const navigate = useNavigate();
@@ -14,19 +14,22 @@ const SignInPage = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // Load data from imported JSON
+  // Load data from localStorage or fallback to jsonData
   useEffect(() => {
     try {
-      console.log("Data loaded:", jsonData);
-      if (jsonData && jsonData.managementAssistants) {
+      const storedMAs = JSON.parse(localStorage.getItem("managementAssistants"));
+
+      if (storedMAs && storedMAs.length > 0) {
+        setManagementAssistants(storedMAs);
+      } else if (jsonData && jsonData.managementAssistants) {
         setManagementAssistants(jsonData.managementAssistants);
       } else {
         setError("Management Assistant data not found");
       }
-      setLoading(false);
     } catch (error) {
       console.error("Error loading data:", error);
-      setError(error.message);
+      setError("Failed to load data");
+    } finally {
       setLoading(false);
     }
   }, []);
@@ -36,7 +39,7 @@ const SignInPage = () => {
     console.log("Attempting login with:", email, password);
     console.log("Available Assistants:", managementAssistants);
 
-    // Check if entered email & password match any management officer
+    // Check if entered email & password match any management assistant
     const user = managementAssistants.find(
       (user) => user.email === email && user.password === password
     );
@@ -78,7 +81,7 @@ const SignInPage = () => {
 
           <button type="submit">Sign In</button>
         </form>
-        <p className="create-new">Create New</p>
+        <p className="create-new" onClick={() => navigate("/register-ma")}>Create New</p>
       </div>
     </div>
   );

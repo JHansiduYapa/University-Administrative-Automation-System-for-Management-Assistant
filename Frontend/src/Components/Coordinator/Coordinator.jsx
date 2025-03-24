@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./Coordinator.css";
 import Sidebar from "../Sidebar/Sidebar";
+import UserInfo from "../UserInfo/UserInfo";
 
 const Coordinator = () => {
   const [selectedSemester, setSelectedSemester] = useState("semester1");
