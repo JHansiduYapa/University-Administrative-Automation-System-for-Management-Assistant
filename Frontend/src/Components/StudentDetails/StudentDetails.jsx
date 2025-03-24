@@ -8,12 +8,18 @@ const StudentDetails = () => {
   const [students, setStudents] = useState([]);
   const [selectedStudent, setSelectedStudent] = useState(null);
   const [filterDept, setFilterDept] = useState("");
+  const [filterBatch, setFilterBatch] = useState("");
   const [searchReg, setSearchReg] = useState("");
+  const [availableBatches, setAvailableBatches] = useState([]);
 
   useEffect(() => {
     // Load students from the JSON data
     if (jsonData && jsonData.students) {
       setStudents(jsonData.students);
+      
+      // Extract unique batches from students data
+      const batches = [...new Set(jsonData.students.map(student => student.batch))];
+      setAvailableBatches(batches);
     }
   }, []);
 
@@ -28,6 +34,7 @@ const StudentDetails = () => {
   const filteredStudents = students.filter(
     (student) =>
       (filterDept === "" || student.department === filterDept) &&
+      (filterBatch === "" || student.batch === filterBatch) &&
       (searchReg === "" || student.registration_number.includes(searchReg))
   );
 
@@ -43,6 +50,16 @@ const StudentDetails = () => {
           <option value="Mechanical Engineering">Mechanical Engineering</option>
           <option value="Electrical Engineering">Electrical Engineering</option>
         </select>
+        
+        <select onChange={(e) => setFilterBatch(e.target.value)}>
+          <option value="">All Batches</option>
+          {availableBatches.map((batch, index) => (
+            <option key={index} value={batch}>
+              {batch}
+            </option>
+          ))}
+        </select>
+        
         <input
           type="text"
           placeholder="Search by Reg Number"
