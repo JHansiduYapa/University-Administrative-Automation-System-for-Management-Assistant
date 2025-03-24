@@ -1,0 +1,99 @@
+{
+    "managementAssistants": [
+      {
+        "name": "A.K.Pushpa",
+        "MA Id": "M001", 
+        "email": "admin@example.com",
+        "password": "23"
+      },
+      {
+        "name": "L.P.Shali",
+        "MA Id": "M002", 
+        "email": "dimuthushali2021@gmail.com",
+        "password": "d"
+      }
+    ],
+    "students": [
+      {
+        "id": 1,
+        "batch": "E21",
+        "name": "John Doe",
+        "registration_number": "2021/E/124",
+        "department": "Computer Engineering",
+        "semester": 4,
+        "email": "john.doe@example.com",
+        "dob": "2002-05-12",
+        "phone": "+94 71 234 5678",
+        "gpa": 3.8,
+        "address": "123 Main Street, Colombo"
+      },
+      {
+        "id": 2,
+        "batch": "E22",
+        "name": "Jane Smith",
+        "registration_number": "2021/C/105",
+        "department": "Civil Engineering",
+        "semester": 3,
+        "email": "jane.smith@example.com",
+        "dob": "2003-02-20",
+        "phone": "+94 77 654 3210",
+        "gpa": 3.5,
+        "address": "456 Green Road, Kandy"
+      }
+    ],
+    "lecturers": [
+      {
+        "id": 201,
+        "name": "Dr. Smith",
+        "qualifications": [
+          "B.Sc (Hons) in Computer Science (Jaffna)",
+          "PhD (Southampton, UK)"
+        ],
+        "post": "Senior Lecturer Grade II",
+        "department": "Computer Engineering",
+        "email": "smith@example.com",
+        "phone": "+94 71 123 4567"
+       
+      },
+      {
+        "id": 202,
+        "name": "Dr. Williams",
+        "qualifications": [
+          "B.Sc (Hons) in Civil Engineering (Peradeniya)",
+          "PhD (Tokyo, Japan)"
+        ],
+        "post": "Professor",
+        "department": "Civil Engineering",
+        "email": "williams@example.com",
+        "phone": "+94 76 456 7890"
+       
+      }
+    ],
+    "courses": [
+      {
+        "course_code": "CMD3210",
+        "course_name": "Data Structures and Algorithms",
+        "department": "Computer Engineering",
+        "semester": 3
+      },
+      {
+        "course_code": "ED3210",
+        "course_name": "Digital Electronics",
+        "department": "Electrical Engineering",
+        "semester": 3
+      },
+      {
+        "course_code": "CD3210",
+        "course_name": "Structural Engineering",
+        "department": "Civil Engineering",
+        "semester": 4
+      },
+      {
+        "course_code": "MD3210",
+        "course_name": "Thermodynamics",
+        "department": "Mechanical Engineering",
+        "semester": 4
+      }
+    ]
+  }
+  

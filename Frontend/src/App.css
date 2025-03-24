@@ -1,0 +1,91 @@
+/* Global Background Styling */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Dark Mode Styles */
+body.dark-mode {
+  background-color: #121212;
+  color: white;
+}
+
+.app-content {
+  min-height: 100vh; /* Ensures full viewport height */
+  background-image: url('./assets/background.jpg'); /* Path to the background image */
+  background-size: cover; /* Ensures the image covers the entire screen */
+  background-position: center; /* Centers the image */
+  background-repeat: no-repeat; /* Prevents tiling */
+}
+
+/* Header Styling */
+.header {
+  display: flex;
+  justify-content: space-between; /* Align items horizontally */
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #003366; /* Dark blue color for header */
+  color: white;
+}
+
+body.dark-mode .header {
+  background-color: #333; /* Darken header for dark mode */
+}
+
+.header .user-icon {
+  position: absolute;
+  top: 70px; /* Moves it below the header */
+  right: 20px; /* Aligns it to the right corner */
+}
+
+.app-container {
+  display: flex;
+}
+
+.content {
+  margin-left: 200px;
+  padding: 20px;
+  width: 100%;
+}
+
+/* Table Styling */
+.advisor-table {
+  margin-top: 100px; /* Moves table slightly downward */
+}
+
+.advisor-table table {
+  width: 90%;
+  border-collapse: collapse;
+}
+
+.advisor-table th,
+.advisor-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.advisor-table th {
+  background-color: #102b47; /* Dark blue for table header */
+  color: white;
+}
+
+.advisor-table .action-button {
+  color: white;
+}
+
+/* Dark Mode Toggle Styling */
+.dark-mode-toggle {
+  font-size: 24px;
+  cursor: pointer;
+  padding: 10px;
+  background-color: #003366;
+  color: white;
+  border-radius: 50%;
+  transition: background-color 0.3s;
+}
+
+body.dark-mode .dark-mode-toggle {
+  background-color: #333; /* Change toggle background in dark mode */
+}

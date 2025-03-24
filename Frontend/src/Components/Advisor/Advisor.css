@@ -1,0 +1,118 @@
+.advisor-container {
+  width: 60%;
+  margin: auto;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  position: relative;
+}
+
+/* User Icon */
+.user-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.user-icon img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.advisor-title {
+  font-size: 40px;
+  margin-bottom: 20px;
+  color: #f2f2f2;
+}
+
+/* Search Section Styling */
+.search-section {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  gap: 10px;
+}
+
+.search-input, 
+.search-select {
+  padding: 10px;
+  width: 200px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  height: 40px;
+  box-sizing: border-box;
+}
+
+/* Table Styling */
+.advisor-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  background: white;
+}
+
+.advisor-table th,
+.advisor-table td {
+  padding: 12px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+.advisor-table th {
+  background: #003366;
+  color: white;
+}
+
+.advisor-table tr:nth-child(even) {
+  background: #f2f2f2;
+}
+
+/* Delete Button */
+.delete-btn {
+  background: red;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+.delete-btn:hover {
+  background: darkred;
+}
+
+/* Add Advisor Section */
+.add-advisor {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  gap: 10px;
+}
+
+.add-advisor input,
+.department-input,
+.advisor-input {
+  padding: 10px;
+  width: 200px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  height: 40px;
+  box-sizing: border-box;
+}
+
+.add-btn {
+  background: green;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 15px;
+  height: 40px;
+  box-sizing: border-box;
+}
+
+.add-btn:hover {
+  background: darkgreen;
+}
