@@ -1,9 +1,11 @@
 package com.example.ARManagement.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -69,6 +71,36 @@ public class Student {
             inverseJoinColumns = @JoinColumn(name = "role_id")
     )
     private Set<Role> roles = new HashSet<>();
+
+
+    @ManyToOne
+    @JoinColumn(name = "proper_batch")
+    @JsonIgnore
+    private Batch properBatch;
+
+    @ManyToOne
+    @JoinColumn(name = "academic_batch")
+    @JsonIgnore
+    private Batch academicBatch;
+
+    public Student(String studentId, String firstName, String middleName, String lastName, Integer semester, LocalDate dateOfBirth, String gender, String email, Double gpa, LocalDate registrationDate, Long departmentId, String address, Set<Course> courses, Set<Role> roles, Batch properBatch, Batch academicBatch) {
+        this.studentId = studentId;
+        this.firstName = firstName;
+        this.middleName = middleName;
+        this.lastName = lastName;
+        this.semester = semester;
+        this.dateOfBirth = dateOfBirth;
+        this.gender = gender;
+        this.email = email;
+        this.gpa = gpa;
+        this.registrationDate = registrationDate;
+        this.departmentId = departmentId;
+        this.address = address;
+        this.courses = courses;
+        this.roles = roles;
+        this.properBatch = properBatch;
+        this.academicBatch = academicBatch;
+    }
 
     // Default constructor
     public Student() {
@@ -204,5 +236,21 @@ public class Student {
 
     public void setCourses(Set<Course> courses) {
         this.courses = courses;
+    }
+
+    public Batch getProperBatch() {
+        return properBatch;
+    }
+
+    public void setProperBatch(Batch properBatch) {
+        this.properBatch = properBatch;
+    }
+
+    public Batch getAcademicBatch() {
+        return academicBatch;
+    }
+
+    public void setAcademicBatch(Batch academicBatch) {
+        this.academicBatch = academicBatch;
     }
 }

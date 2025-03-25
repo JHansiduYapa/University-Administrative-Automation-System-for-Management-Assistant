@@ -18,5 +18,4 @@ public class Advisor {
     @Column(name = "student_count", nullable = false)
     private Integer studentCount;
 
-
 }

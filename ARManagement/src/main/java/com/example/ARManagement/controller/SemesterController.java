@@ -24,8 +24,8 @@ public class SemesterController {
     public String testing(){
         return "test pass";
     }
-    @PostMapping("/add")
-    public Semester addSemester(@RequestBody Semester semester){
-        return semesterService.addSemester(semester);
-    }
+//    @PostMapping("/add")
+//    public Semester addSemester(@RequestBody Semester semester){
+//        return semesterService.addSemester(semester);
+//    }
 }
