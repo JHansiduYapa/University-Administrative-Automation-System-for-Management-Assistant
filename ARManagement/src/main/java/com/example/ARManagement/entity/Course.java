@@ -36,6 +36,7 @@ public class Course {
     @ManyToMany(mappedBy = "courses")
     private Set<Lecturer> lecturers = new HashSet<>();
 
+
     // Default constructor
     public Course() {
     }

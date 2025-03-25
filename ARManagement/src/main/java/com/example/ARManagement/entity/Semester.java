@@ -1,13 +1,12 @@
 package com.example.ARManagement.entity;
 
-import com.example.ARManagement.enums.SemesterName;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 import lombok.*;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 @Entity
 @Getter
@@ -29,14 +28,18 @@ public class Semester {
     @Column(nullable = false)
     private LocalDate endDate;
 
-
-    @Enumerated(EnumType.STRING)
+    @Max(8)
+    @Min(0)
     @Column(nullable = false)
-    @JsonProperty("semesterName")
-    private SemesterName semesterName;
+    private int semesterNumber;
 
     @OneToOne(mappedBy = "semester",cascade = CascadeType.ALL)
     private Batch batch;
 
-
+    public Semester(LocalDate startDate, LocalDate endDate, int semesterNumber, Batch batch) {
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.semesterNumber = semesterNumber;
+        this.batch = batch;
+    }
 }

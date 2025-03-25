@@ -13,19 +13,18 @@ import java.util.List;
 @RestController
 @RequestMapping("api/batch")
 public class BatchController {
-
     @Autowired
     BatchService batchService;
     @RequestMapping("/")
-    public List<Batch> getSemesters(){
-        return batchService.allSemesters();
+    public List<Batch> getBatches(){
+        return batchService.allBatches();
     }
     @RequestMapping("/test")
     public String testing(){
         return "test pass";
     }
     @PostMapping("/add")
-    public Batch addSemester(@RequestBody Batch batch){
-        return batchService.addSemester(batch);
+    public Batch addBatch(@RequestBody Batch batch){
+        return batchService.addBatch(batch);
     }
 }

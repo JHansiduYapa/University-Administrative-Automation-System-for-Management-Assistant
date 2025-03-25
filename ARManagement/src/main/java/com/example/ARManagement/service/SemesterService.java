@@ -12,9 +12,9 @@ public class SemesterService {
     @Autowired
     SemesterRepo semesterRepo;
 
-    public Semester addSemester(Semester semester){
-        return semesterRepo.save(semester);
-    }
+//    public Semester addSemester(Semester semester){
+//        return semesterRepo.save(semester);
+//    }
     public List<Semester> allSemesters(){
         return semesterRepo.findAll();
     }
