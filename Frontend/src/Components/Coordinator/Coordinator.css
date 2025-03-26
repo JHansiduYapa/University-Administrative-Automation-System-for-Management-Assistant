@@ -2,6 +2,8 @@
 .coordinator-container {
     display: flex;
     font-family: 'Arial', sans-serif;
+    min-height: 100vh;
+    flex-direction: column;
 }
   
 .coordinator-content {
@@ -23,7 +25,8 @@ h2 {
     margin-bottom: 30px;
     padding: 10px;
     border-radius: 8px;
-    gap: 20px; /* Added gap for spacing between the dropdowns */
+    gap: 20px;
+    background-color: #f8f9fa;
 }
   
 .filter-section select {
@@ -40,10 +43,10 @@ h2 {
 .filter-section select:hover {
     background-color: #f1f1f1;
 }
-  
+
 /* Course Table Styling */
 .course-table {
-    width: 80%;
+    width: 100%;
     border-collapse: collapse;
     margin-top: 30px;
 }
@@ -54,14 +57,13 @@ h2 {
     padding: 12px;
     text-align: left;
     font-size: 16px;
-    color: #333;
 }
-  
+
 .course-table th {
     background-color: #003366;
     color: white;
 }
-  
+
 .course-table td {
     background-color: #ffffff;
 }
@@ -76,7 +78,7 @@ h2 {
 
 /* Input Fields for New Course */
 .input-field {
-    width: 100%;
+    width: calc(100% - 20px);
     padding: 10px;
     font-size: 16px;
     border-radius: 6px;
@@ -86,9 +88,10 @@ h2 {
     box-sizing: border-box;
 }
 
-/* Action Buttons */
+/* Action Buttons Styling */
 .add-btn,
-.delete-btn {
+.delete-btn,
+.edit-btn {
     background-color: #28a745;
     color: white;
     border: none;
@@ -96,11 +99,17 @@ h2 {
     cursor: pointer;
     border-radius: 6px;
     font-size: 16px;
-    transition: background-color 0.3s ease;
+    transition: 0.3s ease;
+    margin-right: 5px;
 }
 
 .delete-btn {
     background-color: #dc3545;
+}
+
+.edit-btn {
+    background-color: #ffc107;
+    color: black;
 }
 
 .add-btn:hover {
@@ -111,7 +120,22 @@ h2 {
     background-color: #c82333;
 }
 
-/* Additional Styling */
-.add-btn, .delete-btn {
+.edit-btn:hover {
+    background-color: #e0a800;
+}
+
+/* Additional Styling for Buttons */
+.add-btn,
+.delete-btn,
+.edit-btn {
     text-transform: uppercase;
+}
+
+/* Footer Styling */
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #003366;
+    color: white;
+    margin-top: auto;
 }

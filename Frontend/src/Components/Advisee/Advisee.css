@@ -1,28 +1,36 @@
 .advisee-container {
   font-family: Arial, sans-serif;
-  padding: 20px;
+  padding: 30px;
   background-size: cover;
   background-position: center;
   height: 100vh;
 }
 
+/* Adjust font size for the Advisee page statement */
+h2 {
+  text-align: center;
+  font-size: 32px; /* Increased font size */
+  color:  #002147; /* Optional: Add a color for better visibility */
+}
+
+/* Controls section styling */
 .controls {
   display: flex;
   justify-content: center;
-  gap: 10px;
-  margin: 20px 0;
+  gap: 15px; /* Increased gap between filters and buttons */
+  margin: 30px 0;
 }
 
 .controls select,
 .controls button {
-  padding: 8px;
-  border-radius: 5px;
+  padding: 12px; /* Increased padding for filters and buttons */
+  border-radius: 8px; /* Slightly rounded corners */
   border: 1px solid #ddd;
   cursor: pointer;
 }
 
 .controls button.active {
-  background-color: #003366;
+  background-color:  #002147;
   color: white;
 }
 
@@ -37,11 +45,11 @@
 .student-table th,
 .student-table td {
   border: 1px solid #ddd;
-  padding: 10px;
+  padding: 12px; /* Slightly increased padding for table cells */
   text-align: left;
 }
 
 .student-table th {
-  background-color: #3949ab;
+  background-color:  #002147;
   color: white;
 }

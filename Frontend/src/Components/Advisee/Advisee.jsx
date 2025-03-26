@@ -1,38 +1,49 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Advisee.css";
-import UserInfo from "../UserInfo/UserInfo";
+import jsonData from "../../data.json";
 
 const Advisee = () => {
-  const [batch, setBatch] = useState("E21");
+  const [batch, setBatch] = useState(""); // Default empty to show all batches
   const [category, setCategory] = useState("General");
-  const [department, setDepartment] = useState("Computing");
+  const [department, setDepartment] = useState("");
 
-  const students = [
-    { id: "2021/E013", name: "A.J.K. Ekanayaka", department: "Computing" },
-    { id: "2021/E124", name: "R.D.D.S. Rajamuni", department: "" }, // General
-  ];
+  const [students, setStudents] = useState([]);
+  const [advisors, setAdvisors] = useState([]);
 
-  const advisors = {
-    General: [{ name: "Mr. Wijesakara", role: "Lecturer" }],
-    Computing: [{ name: "Dr. Perera", role: "Senior Lecturer" }],
-    Civil: [{ name: "Dr. Fernando", role: "Senior Lecturer" }],
-    Electrical: [{ name: "Dr. Silva", role: "Professor" }],
-    Mechanical: [{ name: "Dr. Kumara", role: "Senior Lecturer" }],
-  };
+  useEffect(() => {
+    // Load students and advisors from JSON data
+    if (jsonData) {
+      setStudents(jsonData.students);
+      setAdvisors(jsonData.lecturers);
+    }
+  }, []);
+
+  // Get unique batches from students
+  const availableBatches = [...new Set(students.map((student) => student.batch))];
 
   return (
     <div className="advisee-container">
+      <h2>Advisee Page</h2>
+
+      {/* Filters */}
       <div className="controls">
+        {/* Batch Filter */}
         <select value={batch} onChange={(e) => setBatch(e.target.value)}>
-          <option value="E21">E21</option>
-          <option value="E22">E22</option>
-          <option value="E23">E23</option>
-          <option value="E24">E24</option>
+          <option value="">All Batches</option>
+          {availableBatches.map((batch, index) => (
+            <option key={index} value={batch}>
+              {batch}
+            </option>
+          ))}
         </select>
 
+        {/* Category Filter */}
         <button
           className={category === "General" ? "active" : ""}
-          onClick={() => setCategory("General")}
+          onClick={() => {
+            setCategory("General");
+            setDepartment(""); // Reset department for General category
+          }}
         >
           General
         </button>
@@ -43,19 +54,22 @@ const Advisee = () => {
           Special
         </button>
 
+        {/* Department Filter (only for Special category) */}
         {category === "Special" && (
           <select
             value={department}
             onChange={(e) => setDepartment(e.target.value)}
           >
-            <option value="Computing">Computing</option>
-            <option value="Civil">Civil</option>
-            <option value="Electrical">Electrical</option>
-            <option value="Mechanical">Mechanical</option>
+            <option value="">Select Department</option>
+            <option value="Computer Engineering">Computer Engineering</option>
+            <option value="Civil Engineering">Civil Engineering</option>
+            <option value="Electrical Engineering">Electrical Engineering</option>
+            <option value="Mechanical Engineering">Mechanical Engineering</option>
           </select>
         )}
       </div>
 
+      {/* Student Table */}
       <div className="student-table">
         <table>
           <thead>
@@ -68,28 +82,31 @@ const Advisee = () => {
           </thead>
           <tbody>
             {students
-              .filter(
-                (student) =>
-                  category === "General"
-                    ? !student.department
-                    : student.department === department
+              .filter((student) =>
+                // Filter by batch
+                batch === "" || student.batch === batch
               )
-              .map((student) => (
-                <tr key={student.id}>
-                  <td>{student.id}</td>
-                  <td>{student.name}</td>
-                  <td>
-                    {category === "General"
-                      ? advisors.General[0].name
-                      : advisors[department][0].name}
-                  </td>
-                  <td>
-                    {category === "General"
-                      ? advisors.General[0].role
-                      : advisors[department][0].role}
-                  </td>
-                </tr>
-              ))}
+              .filter((student) =>
+                // Filter by category and department
+                category === "General"
+                  ? !student.department // Show students without a main department
+                  : student.department === department // Show students with the selected department
+              )
+              .map((student) => {
+                const advisor =
+                  category === "General"
+                    ? advisors.find((advisor) => advisor.department === "Interdisciplinary")
+                    : advisors.find((advisor) => advisor.department === student.department);
+
+                return (
+                  <tr key={student.id}>
+                    <td>{student.registration_number}</td>
+                    <td>{student.name}</td>
+                    <td>{advisor?.name || "No Advisor Assigned"}</td>
+                    <td>{advisor?.post || "N/A"}</td>
+                  </tr>
+                );
+              })}
           </tbody>
         </table>
       </div>
