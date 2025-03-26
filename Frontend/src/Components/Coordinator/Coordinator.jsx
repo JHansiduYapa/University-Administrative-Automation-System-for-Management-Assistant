@@ -60,13 +60,25 @@ const Coordinator = () => {
       newCourse.courseName &&
       newCourse.coordinator
     ) {
-      setCourses([...courses, newCourse]); // Add the new course to the main courses array
+      // Ensure coordinator data is linked properly
+      const coordinatorDetails = lecturers.find(
+        (lecturer) => lecturer.name === newCourse.coordinator
+      );
+
+      const updatedNewCourse = {
+        ...newCourse,
+        coordinator: coordinatorDetails
+          ? `${coordinatorDetails.name} (${coordinatorDetails.post})`
+          : newCourse.coordinator,
+      };
+
+      setCourses([...courses, updatedNewCourse]); // Add the new course to the main courses array
       setNewCourse({ courseCode: "", courseName: "", coordinator: "", department: "" });
     }
   };
 
   const deleteCourse = (index) => {
-    const updatedCourses = filteredCourses.filter((_, i) => i !== index);
+    const updatedCourses = courses.filter((_, i) => i !== index);
     setCourses(updatedCourses); // Update the main courses array
   };
 
