@@ -31,6 +31,9 @@ public class Result {
     @JoinColumn(name = "student_id", nullable = false)
     private Student student;
 
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
     @Column(name = "grade", nullable = false)
     @Enumerated(EnumType.STRING)
@@ -42,5 +45,8 @@ public class Result {
 =======
 
 
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 }
