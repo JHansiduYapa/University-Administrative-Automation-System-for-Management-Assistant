@@ -56,6 +56,10 @@ const TimeTableChange = () => {
             <td>E23</td>
             <td>3</td>
           </tr>
+          <tr>
+            <td>E24</td>
+            <td>1</td>
+          </tr>
         </tbody>
       </table>
 

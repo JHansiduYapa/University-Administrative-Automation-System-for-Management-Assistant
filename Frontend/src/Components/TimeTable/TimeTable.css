@@ -21,21 +21,29 @@
   align-items: center;
   background-color: white; /* White background for calendar */
   border-radius: 12px; /* Rounded corners */
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15); /* Enhanced shadow */
   padding: 30px; /* Increased padding for better spacing */
 }
 
 .react-calendar {
   width: calc(100% - 40px); /* Adjust width dynamically */
   max-width: 900px; /* Maximum width for larger screens */
+  border: none; /* Remove default border */
 }
 
 .react-calendar__tile {
   font-size: 18px; /* Larger font size for better readability */
+  transition: all 0.3s ease;
+  border-radius: 3px;
+}
+
+.react-calendar__tile:hover {
+  background-color: #c1c4c4 !important; /* Smooth hover effect */
+  color: white;
 }
 
 .react-calendar__navigation {
-  font-size: 20px; /* Larger font size for navigation arrows and month/year display */
+  font-size: 15px; /* Larger font size for navigation arrows and month/year display */
 }
 
 .react-calendar__navigation button {
@@ -43,26 +51,24 @@
 }
 
 .react-calendar__navigation button:hover {
-  background-color: #004080; /* Lighter blue hover effect */
+  background-color: #273e5e; /* Deep navy hover effect */
+  color: rgb(6, 6, 6);
 }
 
-/* Selected Date Display */
-.selected-date {
-  font-size: 18px;
-  color: #002147; /* Dark blue */
-}
-
-/* Semester and Vacation Tiles */
+/* Semester and Vacation Tiles with Professional Colors */
 .current-semester-tile {
-  background-color: #2eff31 !important; /* Green for current semester */
+  background-color: #fde616 !important; /* Vibrant purple */
+  color: rgb(134, 28, 28) !important;
 }
 
 .next-semester-tile {
-  background-color: #eef608 !important; /* Yellow for next semester */
+  background-color: #a4a2a3 !important; /* Rich orange */
+  color: rgb(44, 41, 41) !important;
 }
 
 .vacation-tile {
-  background-color: #ea3916 !important; /* Red for vacation */
+  background-color: #e83a0f !important; /* Teal blue */
+  color: white !important;
 }
 
 /* Buttons Section */
@@ -75,8 +81,9 @@
   border-radius: 5px;
   background-color: #002147; /* Dark blue button */
   color: white;
+  transition: background-color 0.3s;
 }
 
 .change-period-btn:hover {
-  background-color: #004080; /* Lighter blue hover effect for button */
+  background-color: #1d3557; /* Deeper blue hover effect */
 }
