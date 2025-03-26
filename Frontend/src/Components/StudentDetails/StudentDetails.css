@@ -20,14 +20,14 @@
   .filters input {
     padding: 8px;
     font-size: 14px;
-    border-radius: 20px;
+    border-radius: 10px;
     height: 40px; /* Set a consistent height for input and select */
   }
   
   .filters button {
     padding: 8px;
     font-size: 14px;
-    border-radius: 20px;
+    border-radius: 10px;
     height: 40px; /* Set a consistent height for the button */
   }
   
@@ -35,6 +35,7 @@
     width: 100%;
     border-collapse: collapse;
     align-items: center;
+    border-radius: 10px;
   }
   
   th {
