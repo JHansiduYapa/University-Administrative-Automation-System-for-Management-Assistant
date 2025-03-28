@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import jsonData from "../../data.json"; // Import mock data
 import "./RegisterMA.css";
+import api from '../../api/api'
 
 const RegisterMA = () => {
   const navigate = useNavigate();
@@ -20,7 +21,7 @@ const RegisterMA = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (formData.password !== formData.confirmPassword) {
@@ -48,6 +49,20 @@ const RegisterMA = () => {
       },
     ];
 
+    //actual api call
+    try {
+      const response=await api.post('/register',
+        {
+          username: formData.email,
+          fullName: formData.name,
+          password: formData.password,
+        }
+      )
+      console.log(response)
+    } catch (error) {
+      console.error(error)
+    }
+
     // Save to localStorage
     localStorage.setItem("managementAssistants", JSON.stringify(updatedData));
 
@@ -70,8 +85,8 @@ const RegisterMA = () => {
           <label>Name with Initials:</label>
           <input type="text" name="name" onChange={handleChange} required />
 
-          <label>MA ID:</label>
-          <input type="text" name="maId" onChange={handleChange} required />
+          {/* <label>MA ID:</label>
+          <input type="text" name="maId" onChange={handleChange} required /> */}
 
           <label>Email:</label>
           <input type="email" name="email" onChange={handleChange} required />

@@ -3,10 +3,11 @@ import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../AuthContext";
 import "./SignInPage.css";
 import jsonData from "../../data.json"; // Import mock data
+import api from '../../api/api'
 
 const SignInPage = () => {
   const navigate = useNavigate();
-  const { setIsAuthenticated } = useContext(AuthContext);
+  const { setIsAuthenticated,setToken } = useContext(AuthContext);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -34,23 +35,43 @@ const SignInPage = () => {
     }
   }, []);
 
-  const handleSignIn = (e) => {
+  const handleSignIn = async (e) => {
     e.preventDefault();
     console.log("Attempting login with:", email, password);
     console.log("Available Assistants:", managementAssistants);
 
     // Check if entered email & password match any management assistant
-    const user = managementAssistants.find(
-      (user) => user.email === email && user.password === password
-    );
+    // const user = managementAssistants.find(
+    //   (user) => user.email === email && user.password === password
+    // );
 
-    if (user) {
-      console.log("Login successful for:", user);
+    // if (user) {
+    //   //console.log("Login successful for:", user);
+    //   //setIsAuthenticated(true);
+    //   //navigate("/ma-page");
+    // } else {
+    //   alert("Invalid email or password");
+    // }
+    
+    //atual api call
+    try {
+      const response=await api.post('/login',
+        {
+          username: email,
+          password: password,
+        }
+      )
+      console.log(response)
+      setToken(response)
       setIsAuthenticated(true);
+
       navigate("/ma-page");
-    } else {
+    } catch (error) {
+      console.log(error)
       alert("Invalid email or password");
     }
+
+
   };
 
   if (loading) return <div>Loading...</div>;

@@ -3,11 +3,13 @@ package com.example.ARManagement.controller;
 import com.example.ARManagement.entity.Users;
 import com.example.ARManagement.service.UserSevice;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@CrossOrigin
 public class UsersController {
 
     @Autowired
