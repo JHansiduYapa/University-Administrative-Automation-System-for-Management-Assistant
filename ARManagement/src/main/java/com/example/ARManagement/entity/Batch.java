@@ -35,14 +35,10 @@ public class Batch {
     @JoinColumn(name = "semesterId")
     private Semester semester;
 
-    @OneToMany(
-            mappedBy = "academicBatch"
-    )
+    @OneToMany(mappedBy = "academicBatch")
     private List<Student> allStudents;
 
-    @OneToMany(
-            mappedBy = "properBatch"
-    )
+    @OneToMany(mappedBy = "properBatch")
     private List<Student> properStudents;
 
     public Batch(Long batchId, String batchName, LocalDate regDate, Integer studentCount, Semester semester, List<Student> allStudents, List<Student> properStudents) {

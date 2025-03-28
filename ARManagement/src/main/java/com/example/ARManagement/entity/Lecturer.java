@@ -36,4 +36,8 @@ public class Lecturer {
     )
     private Set<Course> courses = new HashSet<>();
 
+    // ad
+    @OneToMany(mappedBy = "studentId")
+    private Set<Student> Advisee= new HashSet<>();
+
 }

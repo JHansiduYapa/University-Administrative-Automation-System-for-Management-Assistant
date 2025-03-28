@@ -18,7 +18,7 @@ public class Role {
     private String roleName;
 
     // Optional: if we want a bidirectional mapping to Student
-    @ManyToMany(mappedBy = "roles")
+    @OneToMany(mappedBy = "role")
     private Set<Student> students = new HashSet<>();
 
     // Constructors
