@@ -7,6 +7,7 @@ import jakarta.validation.constraints.Min;
 import lombok.*;
 
 import java.time.LocalDate;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -17,7 +18,7 @@ public class Semester {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(nullable = false)
+    @Column(name = "semester_id")
     private long semesterId;
 
     @JsonFormat(pattern = "dd/MM/yyyy")
@@ -27,6 +28,9 @@ public class Semester {
     @JsonFormat(pattern = "dd/MM/yyyy")
     @Column(nullable = false)
     private LocalDate endDate;
+
+    @OneToMany(mappedBy = "semester")
+    private Set<Student> students;  // A semester can have many students
 
     @Max(8)
     @Min(0)

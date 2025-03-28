@@ -2,17 +2,19 @@ package com.example.ARManagement.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.Setter;
 
 import java.util.HashSet;
 import java.util.Set;
 
 @Getter
+@Setter
 @Entity
 @Table(name = "courses")
 public class Course {
 
-    // Getters and Setters
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "course_id")
     private Long courseId;
 
@@ -22,55 +24,30 @@ public class Course {
     @Column(name = "credit", nullable = false)
     private Integer credit;
 
-    @Column(name = "semester_id", nullable = false)
-    private Integer semesterId;
+    // Fixing semester_id as a foreign key
+    @ManyToOne
+    @JoinColumn(name = "semester_id", nullable = false)
+    private Semester semester;
 
-    @Column(name = "department_id", nullable = false)
-    private Long departmentId;
+    @ManyToOne
+    @JoinColumn(name = "department_id", nullable = false)
+    private Department department;
 
-    // Define the many-to-many relationship with Student
-    // one Course has many student that can be got from the students
     @ManyToMany(mappedBy = "courses")
     private Set<Student> students = new HashSet<>();
 
     @ManyToMany(mappedBy = "courses")
     private Set<Lecturer> lecturers = new HashSet<>();
 
-
     // Default constructor
     public Course() {
     }
 
     // Parameterized constructor
-    public Course(Long courseId, String courseName, Integer credit, Integer semesterId, Long departmentId) {
-        this.courseId = courseId;
+    public Course(String courseName, Integer credit, Semester semester, Department department) {
         this.courseName = courseName;
         this.credit = credit;
-        this.semesterId = semesterId;
-        this.departmentId = departmentId;
-    }
-
-    public void setCourseId(Long courseId) {
-        this.courseId = courseId;
-    }
-
-    public void setCourseName(String courseName) {
-        this.courseName = courseName;
-    }
-
-    public void setCredit(Integer credit) {
-        this.credit = credit;
-    }
-
-    public void setSemesterId(Integer semesterId) {
-        this.semesterId = semesterId;
-    }
-
-    public void setDepartmentId(Long departmentId) {
-        this.departmentId = departmentId;
-    }
-
-    public void setStudents(Set<Student> students) {
-        this.students = students;
+        this.semester = semester;
+        this.department = department;
     }
 }

@@ -24,6 +24,7 @@ public class Department {
     @Column(name = "hod", nullable = false)
     private String hod;
 
+    // The mappedBy attribute tells Hibernate that this side of the relationship is not the owner of the foreign key.
     @OneToMany(mappedBy = "department", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Lecturer> lecturers;
 

@@ -11,11 +11,13 @@ import java.time.LocalDateTime;
 public class Advisor {
 
     @Id
-    @Column(name = "advisor_id")
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long advisorId;
+    @JoinColumn(name = "lecturer_id", nullable = false)
+    @ManyToOne(fetch = FetchType.EAGER)
+    private Lecturer advisorId;
 
-    @Column(name = "student_count", nullable = false)
-    private Integer studentCount;
+    @Id
+    @JoinColumn(name = "student_id", nullable = false)
+    @ManyToOne(fetch = FetchType.EAGER)
+    private Student studentId;
 
 }
