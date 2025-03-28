@@ -19,5 +19,5 @@ public interface ResultRepository extends JpaRepository<Result, Long> {
     List<Result> findResults(@Param("departmentId") Long departmentId,
                              @Param("batchId") Long batchId,
                              @Param("courseId") Long courseId,
-                             @Param("studentId") Long studentId);
+                             @Param("studentId") String studentId);
 }

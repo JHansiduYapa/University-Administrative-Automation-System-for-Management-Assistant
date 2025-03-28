@@ -17,7 +17,7 @@ public class ResultSearchService {
         this.resultRepository = resultRepository;
     }
 
-    public List<Result> searchResults(Long departmentId, Long batchId, Long courseId, Long studentId) {
+    public List<Result> searchResults(Long departmentId, Long batchId, Long courseId, String studentId) {
         return resultRepository.findResults(departmentId, batchId, courseId, studentId);
     }
 }

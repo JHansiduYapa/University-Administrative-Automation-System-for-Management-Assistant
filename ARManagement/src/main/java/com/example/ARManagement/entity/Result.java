@@ -2,8 +2,12 @@ package com.example.ARManagement.entity;
 
 import com.example.ARManagement.enums.Grade;
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.time.LocalDateTime;
+@Getter
+@Setter
 @Entity
 @Table(name = "results")
 public class Result {

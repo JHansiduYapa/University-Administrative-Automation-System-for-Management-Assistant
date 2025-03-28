@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/results")
+@RequestMapping("/api/results")
 public class ResultController {
 
     private final ResultSearchService resultSearchService;
@@ -25,7 +25,7 @@ public class ResultController {
             @RequestParam Long departmentId,
             @RequestParam Long batchId,
             @RequestParam Long courseId,
-            @RequestParam Long studentId) {
+            @RequestParam String studentId) {
 
         List<Result> results = resultSearchService.searchResults(departmentId, batchId, courseId, studentId);
         return new ResponseEntity<>(results, HttpStatus.OK);
