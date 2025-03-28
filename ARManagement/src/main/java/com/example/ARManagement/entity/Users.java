@@ -13,7 +13,6 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
 public class Users {
 
@@ -25,7 +24,27 @@ public class Users {
     private String username;
 
     @Column(nullable = false)
+    private String fullName;
+
+    @Column(nullable = false)
     private String password;
+
+    public String getFullName() {
+        return fullName;
+    }
+
+    public Users(Long id, String username, String fullName, String password) {
+        this.id = id;
+        this.username = username;
+        this.fullName = fullName;
+        this.password = password;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+
+
 
     public Long getId() {
         return id;
