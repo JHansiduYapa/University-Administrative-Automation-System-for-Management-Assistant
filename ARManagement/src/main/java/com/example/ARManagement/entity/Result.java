@@ -12,9 +12,6 @@ public class Result {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long resultId;
 
-<<<<<<< Updated upstream
-=======
-
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "department_id", nullable = false)
     private Department department;
@@ -31,22 +28,11 @@ public class Result {
     @JoinColumn(name = "student_id", nullable = false)
     private Student student;
 
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
     @Column(name = "grade", nullable = false)
     @Enumerated(EnumType.STRING)
     private Grade grade;
 
     @Column(name = "marks", nullable = false)
     private Integer marks;
-<<<<<<< Updated upstream
-=======
 
-
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 }
