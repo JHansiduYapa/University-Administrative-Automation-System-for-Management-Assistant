@@ -17,16 +17,18 @@ import lombok.Setter;
 public class Users {
 
     @Id
+    @Column(name = "user_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, unique = true)
+
+    @Column(name= "username", nullable = false, unique = true)
     private String username;
 
-    @Column(nullable = false)
+    @Column(name= "full_name")
     private String fullName;
 
-    @Column(nullable = false)
+    @Column(name= "password",nullable = false)
     private String password;
 
     public String getFullName() {

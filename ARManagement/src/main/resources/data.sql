@@ -51,11 +51,8 @@ VALUES ('2021E184', '120/C/2, Colombo road, Kaduwela', '2000-05-10', 2, 'ashanod
 
 /* Register above two users as users */
 -- Insert User for 'Janith'
-INSERT INTO users (username, password) VALUES ('janithhansidu@gmail.com', '123');
+INSERT INTO users (user_id, username, full_name, password) VALUES (1,'janithhansidu@gmail.com', 'janithhansidu', '123');
 
--- Insert User for 'Ashan'
-INSERT INTO users (username, password)
-VALUES ('ashanodi@gmail.com', '123');
 
 /* Add Student Registered courses */
 INSERT INTO student_course (student_id, course_id)
