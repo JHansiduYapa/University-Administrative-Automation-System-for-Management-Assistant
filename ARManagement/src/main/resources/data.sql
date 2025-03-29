@@ -41,12 +41,12 @@ VALUES (1, 'Student'),
 /* insert sample data to student */
 INSERT INTO students (student_id, address, date_of_birth, department_id, email, first_name,
                       gender, gpa, last_name, middle_name, registration_date, semester_id, role_id, batch_id, academic_batch)
-VALUES ('2021E183', '110/B/1, Ja ela road, Akarawita', '2001-01-15', 1, 'janithhansiduyapa1@gmail.com', 'Janith',
+VALUES (1, '110/B/1, Ja ela road, Akarawita', '2001-01-15', 1, 'janithhansiduyapa1@gmail.com', 'Janith',
            'Male', 0.0, 'Yapa', 'Hansidu', '2021-02-07', 1, 1, 1,1);
 
 INSERT INTO students (student_id, address, date_of_birth, department_id, email, first_name,
                       gender, gpa, last_name, middle_name, registration_date, semester_id, role_id, batch_id, academic_batch)
-VALUES ('2021E184', '120/C/2, Colombo road, Kaduwela', '2000-05-10', 2, 'ashanodi@gmail.com', 'Ashan',
+VALUES (2, '120/C/2, Colombo road, Kaduwela', '2000-05-10', 2, 'ashanodi@gmail.com', 'Ashan',
            'Male', 3.8, 'Odi', 'Ashan', '2021-03-01', 1, 1, 1, 1);
 
 /* Register above two users as users */
@@ -56,15 +56,14 @@ INSERT INTO users (user_id, username, full_name, password) VALUES (1,'janithhans
 
 /* Add Student Registered courses */
 INSERT INTO student_course (student_id, course_id)
-VALUES ('2021E183', 1),
-       ('2021E183', 2),
-       ('2021E183', 3),
-       ('2021E183', 4),
-       ('2021E183', 5),
-       ('2021E184', 1),
-       ('2021E184', 2),
-       ('2021E184', 3),
-       ('2021E184', 4);
+VALUES (1, 1),
+       (1, 2),
+       (1, 3),
+       (1, 4),
+       (1, 5),
+       (2, 1),
+       (2, 2),
+       (2, 4);
 
 /* Add Lecturer courses */
 INSERT INTO lecturer_course (lecturer_id, course_id)
@@ -76,13 +75,13 @@ VALUES (1, 1),
 
 /* Add Student results */
 INSERT INTO results (result_id, course_id, department_id, batch_id, student_id, grade, marks)
-VALUES (1,1,1,1, '2021E183', 'A', 90),
-       (2,2,1, 1,'2021E183', 'A_PLUS', 96),
-       (3,3,1,1, '2021E183', 'A_PLUS', 98);
+VALUES (1,1,1,1, 1, 'A', 90),
+       (2,2,1, 1,1, 'A_PLUS', 96),
+       (3,3,1,1, 1, 'A_PLUS', 98);
 
 /* add adviser advisee relation data */
 INSERT INTO advisor (lecturer_id, student_id)
-VALUES (3,'2021E183'),
-       (3,'2021E184');
+VALUES (3,1),
+       (3,2);
 
 

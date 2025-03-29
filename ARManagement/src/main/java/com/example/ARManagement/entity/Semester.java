@@ -1,9 +1,8 @@
 package com.example.ARManagement.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Max;
-import jakarta.validation.constraints.Min;
 import lombok.*;
 
 import java.time.LocalDate;
@@ -30,10 +29,9 @@ public class Semester {
     private LocalDate endDate;
 
     @OneToMany(mappedBy = "semester")
+    @JsonManagedReference
     private Set<Student> students;  // A semester can have many students
 
-    @Max(8)
-    @Min(0)
     @Column(nullable = false)
     private int semesterNumber;
 

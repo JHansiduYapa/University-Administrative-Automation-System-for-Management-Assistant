@@ -1,23 +1,26 @@
 package com.example.ARManagement.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.Getter;
-
-import java.time.LocalDateTime;
+import lombok.Setter;
 
 @Entity
 @Getter
+@Setter
 @Table(name = "Advisor")
 public class Advisor {
 
-    @Id
+    @EmbeddedId
+    private AdvisorId id;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @MapsId("lecturerId")
     @JoinColumn(name = "lecturer_id", nullable = false)
-    @ManyToOne(fetch = FetchType.EAGER)
-    private Lecturer advisorId;
+    private Lecturer advisor; // the lecturer acting as advisor
 
-    @Id
+    @ManyToOne(fetch = FetchType.EAGER)
+    @MapsId("studentId")
     @JoinColumn(name = "student_id", nullable = false)
-    @ManyToOne(fetch = FetchType.EAGER)
-    private Student studentId;
-
+    private Student student;
 }

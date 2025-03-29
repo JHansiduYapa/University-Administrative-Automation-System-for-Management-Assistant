@@ -1,17 +1,18 @@
 import React, { useState, useEffect } from "react";
 import "./LectureDetails.css";
-import jsonData from "../../data.json";
-import UserInfo from "../UserInfo/UserInfo";
 
 const LectureDetails = () => {
   const [selectedDepartment, setSelectedDepartment] = useState("All");
   const [lecturers, setLecturers] = useState([]);
 
   useEffect(() => {
-    // Load lecturers from the JSON data
-    if (jsonData && jsonData.lecturers) {
-      setLecturers(jsonData.lecturers);
-    }
+    // Fetch lecturers from the backend API
+    fetch("http://localhost:9080/api/lecturers")
+      .then((response) => response.json())
+      .then((data) => {
+        setLecturers(data);
+      })
+      .catch((error) => console.error("Error fetching lecturers:", error));
   }, []);
 
   const handleDepartmentChange = (event) => {
@@ -20,7 +21,7 @@ const LectureDetails = () => {
 
   const filteredLecturers = selectedDepartment === "All" 
     ? lecturers 
-    : lecturers.filter(lecturer => lecturer.department === selectedDepartment);
+    : lecturers.filter(lecturer => lecturer.departmentName === selectedDepartment);
 
   return (
     <div className="lecture-details-page">
@@ -48,12 +49,9 @@ const LectureDetails = () => {
         {filteredLecturers.map((lecturer) => (
           <div key={lecturer.id} className="lecturer-card">
             <div className="lecturer-info">
-              <h3>{lecturer.name}</h3>
-              <p><strong>Qualifications:</strong> {lecturer.qualifications.join(", ")}</p>
-              <p><strong>Post:</strong> {lecturer.post}</p>
-              <p className="department-text"><strong>Department:</strong> {lecturer.department}</p>
+              <h3>{lecturer.firstName} {lecturer.lastName}</h3>
+              <p><strong>Department:</strong> {lecturer.departmentName}</p>
               <p><strong>Email:</strong> {lecturer.email}</p>
-              <p><strong>Phone:</strong> {lecturer.phone}</p>
             </div>
           </div>
         ))}

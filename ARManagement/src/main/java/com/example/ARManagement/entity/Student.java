@@ -1,5 +1,6 @@
 package com.example.ARManagement.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -16,8 +17,9 @@ import java.util.Set;
 public class Student {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "student_id")
-    private String studentId;
+    private Long studentId;
 
     @Column(name = "first_name", nullable = false)
     private String firstName;
@@ -30,6 +32,7 @@ public class Student {
 
     @ManyToOne
     @JoinColumn(name = "semester_id", nullable = false)
+    @JsonBackReference
     private Semester semester;
 
     @Column(name = "date_of_birth", nullable = false)
@@ -49,6 +52,7 @@ public class Student {
 
     @ManyToOne
     @JoinColumn(name = "department_id", nullable = false)
+    @JsonBackReference
     private Department department;
 
     @Column(name = "address", nullable = false)
@@ -66,22 +70,24 @@ public class Student {
     // for simplicity assume only students are same class (no postgraduate students)
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "role_id")
+    @JsonBackReference
     private Role role;
 
     @ManyToOne
     @JoinColumn(name = "batch_id")
+    @JsonBackReference
     private Batch properBatch;
 
     @ManyToOne
     @JoinColumn(name = "academic_batch")
-    @JsonIgnore
+    @JsonBackReference
     private Batch academicBatch;
 
     // Default constructor
     public Student() {}
 
     // Parameterized constructor (excluding collections)
-    public Student(String studentId, String firstName, String middleName, String lastName, Semester semester,
+    public Student(Long studentId, String firstName, String middleName, String lastName, Semester semester,
                    LocalDate dateOfBirth, String gender, String email, Double gpa, LocalDate registrationDate,
                    Department department, String address) {
         this.studentId = studentId;
@@ -99,7 +105,7 @@ public class Student {
     }
 
     // Parameterized constructor (including collections)
-    public Student(String studentId, String firstName, String middleName, String lastName, Semester semester,
+    public Student(Long studentId, String firstName, String middleName, String lastName, Semester semester,
                    LocalDate dateOfBirth, String gender, String email, Double gpa, LocalDate registrationDate,
                    Department department, String address, Set<Course> courses, Role role,
                    Batch properBatch, Batch academicBatch) {

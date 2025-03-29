@@ -1,10 +1,10 @@
 package com.example.ARManagement.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
@@ -26,6 +26,8 @@ public class Department {
 
     // The mappedBy attribute tells Hibernate that this side of the relationship is not the owner of the foreign key.
     @OneToMany(mappedBy = "department", cascade = CascadeType.ALL, orphanRemoval = true)
+    // jsonManagedReference will parent side (the one that “owns” the collection) with @JsonManagedReference
+    @JsonManagedReference // This side will be serialized normally
     private List<Lecturer> lecturers;
 
 

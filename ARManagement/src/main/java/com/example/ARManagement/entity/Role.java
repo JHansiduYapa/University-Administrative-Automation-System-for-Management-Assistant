@@ -1,5 +1,6 @@
 package com.example.ARManagement.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -19,6 +20,7 @@ public class Role {
 
     // Optional: if we want a bidirectional mapping to Student
     @OneToMany(mappedBy = "role")
+    @JsonManagedReference
     private Set<Student> students = new HashSet<>();
 
     // Constructors

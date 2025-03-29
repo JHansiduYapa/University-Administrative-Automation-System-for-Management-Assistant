@@ -1,5 +1,7 @@
 package com.example.ARManagement.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 
@@ -19,13 +21,14 @@ public class Lecturer {
     private String firstName;
 
     @Column(name = "last_name", nullable = false)
-    private String regDate;
+    private String lastName;
 
     @Column(name = "email", nullable = false)
     private String email;
 
     @ManyToOne
     @JoinColumn(name = "department_id", nullable = false)
+    @JsonBackReference // This side will be omitted during serialization
     private Department department;
 
     @ManyToMany
@@ -38,6 +41,7 @@ public class Lecturer {
 
     // ad
     @OneToMany(mappedBy = "studentId")
+    @JsonManagedReference
     private Set<Student> Advisee= new HashSet<>();
 
 }

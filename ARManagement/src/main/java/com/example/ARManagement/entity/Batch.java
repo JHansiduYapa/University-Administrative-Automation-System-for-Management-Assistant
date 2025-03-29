@@ -1,11 +1,9 @@
 package com.example.ARManagement.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
@@ -36,9 +34,11 @@ public class Batch {
     private Semester semester;
 
     @OneToMany(mappedBy = "academicBatch")
+    @JsonManagedReference
     private List<Student> allStudents;
 
     @OneToMany(mappedBy = "properBatch")
+    @JsonManagedReference
     private List<Student> properStudents;
 
     public Batch(Long batchId, String batchName, LocalDate regDate, Integer studentCount, Semester semester, List<Student> allStudents, List<Student> properStudents) {
