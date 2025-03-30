@@ -28,9 +28,9 @@ public class Student {
     @Column(name = "last_name", nullable = false)
     private String lastName;
 
-    @ManyToOne
-    @JoinColumn(name = "semester_id", nullable = false)
-    private Semester semester;
+//    @ManyToOne
+//    @JoinColumn(name = "semester_id", nullable = false)
+//    private Semester semester;
 
     @Column(name = "date_of_birth", nullable = false)
     private LocalDate dateOfBirth;
@@ -88,7 +88,7 @@ public class Student {
         this.firstName = firstName;
         this.middleName = middleName;
         this.lastName = lastName;
-        this.semester = semester;
+        //this.semester = semester;
         this.dateOfBirth = dateOfBirth;
         this.gender = gender;
         this.email = email;
@@ -107,6 +107,126 @@ public class Student {
         this.courses = courses;
         this.role = role;
         this.properBatch = properBatch;
+        this.academicBatch = academicBatch;
+    }
+
+    public String getStudentId() {
+        return studentId;
+    }
+
+    public void setStudentId(String studentId) {
+        this.studentId = studentId;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getMiddleName() {
+        return middleName;
+    }
+
+    public void setMiddleName(String middleName) {
+        this.middleName = middleName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public LocalDate getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public void setDateOfBirth(LocalDate dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public Double getGpa() {
+        return gpa;
+    }
+
+    public void setGpa(Double gpa) {
+        this.gpa = gpa;
+    }
+
+    public LocalDate getRegistrationDate() {
+        return registrationDate;
+    }
+
+    public void setRegistrationDate(LocalDate registrationDate) {
+        this.registrationDate = registrationDate;
+    }
+
+    public Department getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(Department department) {
+        this.department = department;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public Set<Course> getCourses() {
+        return courses;
+    }
+
+    public void setCourses(Set<Course> courses) {
+        this.courses = courses;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
+    public Batch getProperBatch() {
+        return properBatch;
+    }
+
+    public void setProperBatch(Batch properBatch) {
+        this.properBatch = properBatch;
+    }
+
+    public Batch getAcademicBatch() {
+        return academicBatch;
+    }
+
+    public void setAcademicBatch(Batch academicBatch) {
         this.academicBatch = academicBatch;
     }
 }

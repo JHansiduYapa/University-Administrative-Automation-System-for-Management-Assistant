@@ -28,9 +28,9 @@ public class Semester {
     @JsonFormat(pattern = "dd/MM/yyyy")
     @Column(nullable = false)
     private LocalDate endDate;
-
-    @OneToMany(mappedBy = "semester")
-    private Set<Student> students;  // A semester can have many students
+//
+//    @OneToMany(mappedBy = "semester")
+//    private Set<Student> students;  // A semester can have many students
 
     @Max(8)
     @Min(0)

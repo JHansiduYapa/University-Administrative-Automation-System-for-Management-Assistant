@@ -1,10 +1,15 @@
-import React from 'react';
-import { Form, Input, Button, Space, Select } from 'antd';
-import './PersonalDetails.css';
+import React,{useContext} from "react";
+import { Form, Input, Button, Space, Select, DatePicker } from "antd";
+import "./PersonalDetails.css";
 import UserInfo from "../UserInfo/UserInfo";
+import dayjs from "dayjs";
+import api from "../../api/api";
+import { AuthContext } from "../../AuthContext";
 
 const PersonalDetails = () => {
   const [form] = Form.useForm();
+
+  const { token } = useContext(AuthContext);
 
   const SubmitButton = ({ form, children }) => {
     const [submittable, setSubmittable] = React.useState(false);
@@ -24,100 +29,168 @@ const PersonalDetails = () => {
     );
   };
 
+  const departmentMapping = {
+    Computer: 101,
+    "Electrical and Electronic": 102,
+    Civil: 103,
+    Mechanical: 104,
+    None: 0,
+  };
+
+  const onFinish = async(values) => {
+    const formattedValues = {
+      studentId:values.regno,
+      firstName: values.firstName,
+      middleName: values.middleName,
+      lastName: values.lastName,
+      semester: parseInt(values.semester, 10),
+      dateOfBirth: values.dateOfBirth.format("YYYY-MM-DD"),
+      gender: values.gender,
+      email: values.email,
+      registrationDate: values.registrationDate.format("YYYY-MM-DD"),
+      address: values.address,
+    };
+
+    console.log(token.data)
+    console.log(formattedValues)
+
+    try {
+      const response = await api.post('/api/students/register?department='+values.department, formattedValues, {
+        headers: { Authorization: `Bearer ${token.data}` },
+      });
+  
+      console.log("Response:", response.data);
+      
+    } catch (error) {
+      console.error("Error submitting form:", error);
+    }
+  };
+
   return (
     <>
-    {/* Include User Info */}
-    <UserInfo username="John Doe" profilePicture="https://via.placeholder.com/40" />
-    {/*Untill here.........also import as above*/}
-    
-    <div className="personal-details-container">
-      <h1 className="form-title">New Student - Create Account</h1>
-      <Form form={form} name="personalDetails" layout="vertical" autoComplete="off">
-        <Form.Item
-          name="nameWithInitials"
-          label="Name with Initials"
-          rules={[{ required: true, message: 'Please enter your name with initials!' }]}
-        >
-          <Input />
-        </Form.Item>
-        <Form.Item
-          name="fullName"
-          label="Full Name"
-          rules={[{ required: true, message: 'Please enter your full name!' }]}
-        >
-          <Input />
-        </Form.Item>
+      <UserInfo
+        username="John Doe"
+        profilePicture="https://via.placeholder.com/40"
+      />
 
-        <Form.Item
-          name="regNo"
-          label="University Registration Number"
-          rules={[{ required: true, type: 'regNo', message: 'Please enter a valid registration number!' }]}
+      <div className="personal-details-container">
+        <h1 className="form-title">New Student - Create Account</h1>
+        <Form
+          form={form}
+          name="personalDetails"
+          layout="vertical"
+          autoComplete="off"
+          onFinish={onFinish}
         >
-          <Input />
-        </Form.Item>
+          <Form.Item
+            name="regno"
+            label="Reg No"
+            rules={[{ required: true, message: "Please enter your Reg No" }]}
+          >
+            <Input />
+          </Form.Item>
 
-        <Form.Item
-          name="email"
-          label="University Email Address"
-          rules={[{ required: true, type: 'email', message: 'Please enter a valid email address!' }]}
-        >
-          <Input />
-        </Form.Item>
+          <Form.Item
+            name="firstName"
+            label="First Name"
+            rules={[{ required: true, message: "Please enter your first name" }]}
+          >
+            <Input />
+          </Form.Item>
 
-        <Form.Item
-          name="department"
-          label="Department (If have)"
-          rules={[{ required: true, message: 'Please choose your department!' }]}
-        >
-          <Select placeholder="Select your department">
-            <Select.Option value="Computer">Computer</Select.Option>
-            <Select.Option value="Electrical and Electronic">Electrical and Electronic</Select.Option>
-            <Select.Option value="Civil">Civil</Select.Option>
-            <Select.Option value="Mechanical">Mechanical</Select.Option>
-            <Select.Option value="None">None</Select.Option>
-          </Select>
-        </Form.Item>
+          <Form.Item
+            name="middleName"
+            label="Middle Name"
+            rules={[{ required: true, message: "Please enter your middle name" }]}
+          >
+            <Input />
+          </Form.Item>
 
-        <Form.Item
-          name="semester"
-          label="Semester"
-          rules={[{ required: true, type: 'semester', message: 'Please enter the semester!' }]}
-        >
-          <Input />
-        </Form.Item>
+          <Form.Item
+            name="lastName"
+            label="Last Name"
+            rules={[{ required: true, message: "Please enter your last name" }]}
+          >
+            <Input />
+          </Form.Item>
 
-        <Form.Item
-          name="dob"
-          label="Date of Birth"
-          rules={[{ required: false, message: 'Please enter your date of birth!' }]}
-        >
-          <Input type="date" />
-        </Form.Item>
+          <Form.Item
+            name="email"
+            label="University Email Address"
+            rules={[
+              { required: true, type: "email", message: "Please enter a valid email address!" },
+            ]}
+          >
+            <Input />
+          </Form.Item>
 
-        <Form.Item
-          name="address"
-          label="Permanent Address"
-          rules={[{ required: false, message: 'Please enter your permanent address!' }]}
-        >
-          <Input />
-        </Form.Item>
+          <Form.Item
+            name="gender"
+            label="Gender"
+            rules={[{ required: true, message: "Please choose your gender" }]}
+          >
+            <Select placeholder="Select your gender">
+              <Select.Option value="Male">Male</Select.Option>
+              <Select.Option value="Female">Female</Select.Option>
+            </Select>
+          </Form.Item>
 
-        <Form.Item
-          name="telephone"
-          label="Telephone Number"
-          rules={[{ required: false, message: 'Please enter your telephone number!' }]}
-        >
-          <Input />
-        </Form.Item>
-      
-        <Form.Item>
-          <Space>
-            <SubmitButton form={form}>Submit</SubmitButton>
-            <Button htmlType="reset">Reset</Button>
-          </Space>
-        </Form.Item>
-      </Form>
-    </div>
+          <Form.Item
+            name="department"
+            label="Department"
+            rules={[{ required: true, message: "Please choose your department!" }]}
+          >
+            <Select placeholder="Select your department">
+              <Select.Option value="Computer">Computer</Select.Option>
+              <Select.Option value="Electrical and Electronic">
+                Electrical and Electronic
+              </Select.Option>
+              <Select.Option value="Civil">Civil</Select.Option>
+              <Select.Option value="Mechanical">Mechanical</Select.Option>
+              <Select.Option value="None">None</Select.Option>
+            </Select>
+          </Form.Item>
+
+          <Form.Item
+            name="semester"
+            label="Semester"
+            rules={[{ required: true, message: "Please enter the semester!" }]}
+          >
+            <Input type="number" />
+          </Form.Item>
+
+          <Form.Item
+            name="dateOfBirth"
+            label="Date of Birth"
+            rules={[{ required: true, message: "Please enter your date of birth!" }]}
+          >
+            <DatePicker />
+          </Form.Item>
+
+          <Form.Item
+            name="registrationDate"
+            label="Registration Date"
+            rules={[{ required: true, message: "Please enter the registration date!" }]}
+          >
+            <DatePicker />
+          </Form.Item>
+
+          <Form.Item
+            name="address"
+            label="Permanent Address"
+            rules={[{ required: true, message: "Please enter your permanent address!" }]}
+          >
+            <Input />
+          </Form.Item>
+
+          <Form.Item>
+            <Space>
+              <SubmitButton form={form}>Submit</SubmitButton>
+              <Button htmlType="reset">Reset</Button>
+            </Space>
+          </Form.Item>
+        </Form>
+      </div>
     </>
   );
 };

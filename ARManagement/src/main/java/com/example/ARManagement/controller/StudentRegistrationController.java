@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/students")
-@CrossOrigin
+@CrossOrigin("http://localhost:5173")
 public class StudentRegistrationController {
 
     @Autowired
@@ -37,9 +37,10 @@ public class StudentRegistrationController {
      * @return the registered student with GPA set to 0.
      */
     @PostMapping("/register")
-    public ResponseEntity<Student> registerStudent(@RequestBody Student student) {
+    public ResponseEntity<Student> registerStudent(@RequestBody Student student,@RequestParam("department") String department) {
         // give to the service class to enter the student details to the repository
-        Student savedStudent = registrationService.registerStudent(student);
+        Student savedStudent = registrationService.registerStudent(student,department);
+
         // response back to the ResponseEntity ok result
         return ResponseEntity.ok(savedStudent);
     }

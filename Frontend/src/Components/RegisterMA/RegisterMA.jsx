@@ -64,7 +64,7 @@ const RegisterMA = () => {
     }
 
     // Save to localStorage
-    localStorage.setItem("managementAssistants", JSON.stringify(updatedData));
+    //localStorage.setItem("managementAssistants", JSON.stringify(updatedData));
 
     alert("Registration successful!");
     navigate("/sign-in");
