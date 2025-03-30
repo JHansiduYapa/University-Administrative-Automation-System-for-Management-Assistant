@@ -1,26 +1,23 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { FaUserCircle } from "react-icons/fa";
 import "./StudentDetails.css";
-import { FaUserCircle, FaEnvelope, FaPhone, FaHome, FaCalendar, FaUniversity, FaIdBadge, FaStar } from "react-icons/fa";
-import jsonData from "../../data.json";
-import UserInfo from "../UserInfo/UserInfo";
 
 const StudentDetails = () => {
   const [students, setStudents] = useState([]);
   const [selectedStudent, setSelectedStudent] = useState(null);
   const [filterDept, setFilterDept] = useState("");
-  const [filterBatch, setFilterBatch] = useState("");
-  const [searchReg, setSearchReg] = useState("");
-  const [availableBatches, setAvailableBatches] = useState([]);
 
   useEffect(() => {
-    // Load students from the JSON data
-    if (jsonData && jsonData.students) {
-      setStudents(jsonData.students);
-      
-      // Extract unique batches from students data
-      const batches = [...new Set(jsonData.students.map(student => student.batch))];
-      setAvailableBatches(batches);
-    }
+    // Fetch students from the backend API using Axios
+    axios
+      .get("http://localhost:9080/api/student-details")
+      .then((response) => {
+        setStudents(response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching students:", error);
+      });
   }, []);
 
   const handleViewProfile = (student) => {
@@ -31,11 +28,9 @@ const StudentDetails = () => {
     setSelectedStudent(null);
   };
 
+  // Filter students by departmentName if a filter is applied
   const filteredStudents = students.filter(
-    (student) =>
-      (filterDept === "" || student.department === filterDept) &&
-      (filterBatch === "" || student.batch === filterBatch) &&
-      (searchReg === "" || student.registration_number.includes(searchReg))
+    (student) => filterDept === "" || student.departmentName === filterDept
   );
 
   return (
@@ -45,34 +40,16 @@ const StudentDetails = () => {
       <div className="filters">
         <select onChange={(e) => setFilterDept(e.target.value)}>
           <option value="">All Departments</option>
-          <option value="Computer Engineering">Computer Engineering</option>
-          <option value="Civil Engineering">Civil Engineering</option>
-          <option value="Mechanical Engineering">Mechanical Engineering</option>
-          <option value="Electrical Engineering">Electrical Engineering</option>
+          <option value="Computer">Computer</option>
+          <option value="Electrical and Electronic">Electrical and Electronic</option>
+          {/* Add more options as needed */}
         </select>
-        
-        <select onChange={(e) => setFilterBatch(e.target.value)}>
-          <option value="">All Batches</option>
-          {availableBatches.map((batch, index) => (
-            <option key={index} value={batch}>
-              {batch}
-            </option>
-          ))}
-        </select>
-        
-        <input
-          type="text"
-          placeholder="Search by Reg Number"
-          onChange={(e) => setSearchReg(e.target.value)}
-        />
-        <button>Search</button>
       </div>
 
       <table>
         <thead>
           <tr>
             <th>Name</th>
-            <th>Registration Number</th>
             <th>Department</th>
             <th>Semester</th>
             <th>Email Address</th>
@@ -81,11 +58,12 @@ const StudentDetails = () => {
         </thead>
         <tbody>
           {filteredStudents.map((student) => (
-            <tr key={student.id}>
-              <td>{student.name.split(" ")[0]} {student.name.split(" ")[1].charAt(0)}.</td>
-              <td>{student.registration_number}</td>
-              <td>{student.department.split(" ")[0]}</td>
-              <td>{student.semester}</td>
+            <tr key={student.studentId}>
+              <td>
+                {student.firstName} {student.lastName}
+              </td>
+              <td>{student.departmentName}</td>
+              <td>{student.semesterName}</td>
               <td>{student.email}</td>
               <td>
                 <FaUserCircle
@@ -102,14 +80,22 @@ const StudentDetails = () => {
         <div className="modal-overlay">
           <div className="modal">
             <h3>Student Profile</h3>
-            <p><FaIdBadge className="icon" /> <strong>Name:</strong> {selectedStudent.name}</p>
-            <p><FaCalendar className="icon" /> <strong>DOB:</strong> {selectedStudent.dob}</p>
-            <p><FaHome className="icon" /> <strong>Address:</strong> {selectedStudent.address}</p>
-            <p><FaPhone className="icon" /> <strong>Phone:</strong> {selectedStudent.phone}</p>
-            <p><FaEnvelope className="icon" /> <strong>Email:</strong> {selectedStudent.email}</p>
-            <p><FaUniversity className="icon" /> <strong>Department:</strong> {selectedStudent.department}</p>
-            <p><FaStar className="icon" /> <strong>GPA:</strong> {selectedStudent.gpa}</p>
-            <button className="close-btn" onClick={closeModal}>Close</button>
+            <p>
+              <strong>Name:</strong> {selectedStudent.firstName}{" "}
+              {selectedStudent.lastName}
+            </p>
+            <p>
+              <strong>Email:</strong> {selectedStudent.email}
+            </p>
+            <p>
+              <strong>Department:</strong> {selectedStudent.departmentName}
+            </p>
+            <p>
+              <strong>Semester:</strong> {selectedStudent.semesterName}
+            </p>
+            <button className="close-btn" onClick={closeModal}>
+              Close
+            </button>
           </div>
         </div>
       )}

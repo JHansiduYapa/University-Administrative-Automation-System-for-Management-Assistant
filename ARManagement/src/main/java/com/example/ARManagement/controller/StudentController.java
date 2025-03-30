@@ -1,11 +1,15 @@
 package com.example.ARManagement.controller;
 
+import com.example.ARManagement.dto.BatchDTO;
 import com.example.ARManagement.dto.StudentDTO;
 import com.example.ARManagement.entity.Student;
+import com.example.ARManagement.service.BatchService;
 import com.example.ARManagement.service.RegistrationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/students")
@@ -38,4 +42,13 @@ public class StudentController {
         Student savedStudent = registrationService.registerStudent(studentDTO);
         return ResponseEntity.ok(savedStudent);
     }
+
+    @Autowired
+    private BatchService batchService;
+
+    @GetMapping
+    public List<BatchDTO> getAllBatches() {
+        return batchService.getAllBatches();
+    }
 }
+

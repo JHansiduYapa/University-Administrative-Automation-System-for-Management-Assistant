@@ -83,6 +83,11 @@ const Sidebar = () => {
               <span className="icon logout-icon"></span> Log Out
             </Link>
           </li>
+          <li>
+            <Link to="/create-batch" onClick={closeSidebar}>
+              <span className="icon student-icon"></span> Batch Details
+            </Link>
+          </li>
         </ul>
       </nav>
     </>

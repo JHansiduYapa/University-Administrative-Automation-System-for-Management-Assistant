@@ -15,6 +15,8 @@ import Coordinator from "./Components/Coordinator/Coordinator";
 import Settings from "./Components/Settings/Settings"; 
 import LectureDetails from "./Components/LectureDetails/LectureDetails"; 
 import StudentDetails from "./Components/StudentDetails/StudentDetails";
+import CreateBatch from "./Components/Batch/CreateBatch";
+
 
 import AuthProvider, { AuthContext } from "./AuthContext";
 import ThemeProvider from "./context/ThemeContext";
@@ -105,7 +107,11 @@ function App() {
                   <Sidebar /><StudentDetails />
                 </PrivateRoute>
               } />
-
+              <Route path="/create-batch" element={
+                <PrivateRoute>
+                <Sidebar /><CreateBatch />
+                </PrivateRoute>
+              } />
               <Route path="*" element={<Navigate to="/" />} />
             </Routes>
             <Footer />

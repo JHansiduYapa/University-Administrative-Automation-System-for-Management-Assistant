@@ -1,0 +1,48 @@
+.create-batch-page {
+    padding: 20px;
+  }
+  
+  .page-title {
+    font-size: 2em;
+    margin-bottom: 20px;
+  }
+  
+  .toggle-form-button {
+    margin-bottom: 20px;
+    padding: 10px 20px;
+    font-size: 1em;
+  }
+  
+  .batch-form {
+    margin-bottom: 30px;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .batch-form div {
+    margin-bottom: 15px;
+  }
+  
+  .batch-form label {
+    margin-right: 10px;
+  }
+  
+  .batch-form input {
+    padding: 5px;
+    font-size: 1em;
+  }
+  
+  .batch-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .batch-card {
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 5px;
+    width: 250px;
+  }
+  

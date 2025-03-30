@@ -1,7 +1,8 @@
-import React from 'react'
-import axios from 'axios'
+// src/api/api.js
+import axios from "axios";
 
-export default axios.create ({
-    baseURL:'http://127.0.0.1:9090/'
+const api = axios.create({
+  baseURL: "http://localhost:8080", // Change this to your backend URL and port if needed
 });
 
+export default api;
