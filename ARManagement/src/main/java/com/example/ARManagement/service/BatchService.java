@@ -24,6 +24,9 @@ public class BatchService {
         batch.setSemester(semester);
         return batchRepo.save(batch);
     }
+    public Batch get(Long id){
+        return batchRepo.findById(id).get();
+    }
     public List<Batch> allBatches(){
         return batchRepo.findAll();
     }

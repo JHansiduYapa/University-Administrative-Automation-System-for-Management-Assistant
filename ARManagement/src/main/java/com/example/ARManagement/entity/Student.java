@@ -70,6 +70,7 @@ public class Student {
 
     @ManyToOne
     @JoinColumn(name = "batch_id")
+    @JsonIgnore
     private Batch properBatch;
 
     @ManyToOne

@@ -37,9 +37,10 @@ public class StudentRegistrationController {
      * @return the registered student with GPA set to 0.
      */
     @PostMapping("/register")
-    public ResponseEntity<Student> registerStudent(@RequestBody Student student,@RequestParam("department") String department) {
+    public ResponseEntity<Student> registerStudent(@RequestBody Student student
+            ,@RequestParam("department") String department,@RequestParam("batch") String batch) {
         // give to the service class to enter the student details to the repository
-        Student savedStudent = registrationService.registerStudent(student,department);
+        Student savedStudent = registrationService.registerStudent(student,department, Long.valueOf(batch));
 
         // response back to the ResponseEntity ok result
         return ResponseEntity.ok(savedStudent);

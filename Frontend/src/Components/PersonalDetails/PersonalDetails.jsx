@@ -1,4 +1,4 @@
-import React,{useContext} from "react";
+import React,{useContext,useEffect,useState} from "react";
 import { Form, Input, Button, Space, Select, DatePicker } from "antd";
 import "./PersonalDetails.css";
 import UserInfo from "../UserInfo/UserInfo";
@@ -8,6 +8,24 @@ import { AuthContext } from "../../AuthContext";
 
 const PersonalDetails = () => {
   const [form] = Form.useForm();
+
+  const [batches, setbatches] = useState([])
+
+  useEffect(() => {
+    const getBatches=async()=>{
+      try {
+        const response = await api.get('/api/batch/', {
+          headers: { Authorization: `Bearer ${token.data}` },
+        });
+        setbatches(response.data)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    getBatches()
+    
+  }, [])
+  
 
   const { token } = useContext(AuthContext);
 
@@ -48,14 +66,14 @@ const PersonalDetails = () => {
       gender: values.gender,
       email: values.email,
       registrationDate: values.registrationDate.format("YYYY-MM-DD"),
-      address: values.address,
+      address: values.address
     };
 
     console.log(token.data)
     console.log(formattedValues)
 
     try {
-      const response = await api.post('/api/students/register?department='+values.department, formattedValues, {
+      const response = await api.post('/api/students/register?department='+values.department+'&batch='+values.batch, formattedValues, {
         headers: { Authorization: `Bearer ${token.data}` },
       });
   
@@ -134,6 +152,21 @@ const PersonalDetails = () => {
               <Select.Option value="Female">Female</Select.Option>
             </Select>
           </Form.Item>
+
+          <Form.Item
+            name="batch"
+            label="Batch"
+            rules={[{ required: true, message: "Please choose your batch" }]}
+          >
+            <Select placeholder="Select your batch">
+              {batches.map((batch) => (
+                <Select.Option key={batch.batchId} value={batch.batchId}>
+                  {batch.batchName}
+                </Select.Option>
+              ))}
+            </Select>
+          </Form.Item>
+
 
           <Form.Item
             name="department"

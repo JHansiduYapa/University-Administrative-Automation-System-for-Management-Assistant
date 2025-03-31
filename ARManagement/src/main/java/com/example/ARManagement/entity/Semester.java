@@ -1,6 +1,7 @@
 package com.example.ARManagement.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
@@ -38,6 +39,7 @@ public class Semester {
     private int semesterNumber;
 
     @OneToOne(mappedBy = "semester",cascade = CascadeType.ALL)
+    @JsonIgnore
     private Batch batch;
 
     public Semester(LocalDate startDate, LocalDate endDate, int semesterNumber, Batch batch) {
