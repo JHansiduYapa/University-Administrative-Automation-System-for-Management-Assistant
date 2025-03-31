@@ -49,7 +49,9 @@ public class SemesterService {
         throw new RuntimeException("Semester not found");
     }
 
-    // Scheduled task (if you wish to automatically update students when semester ends)
+
+    // Run every day at midnight (00:00) -> 0 0 0 * * ?
+    // Scheduled task (if you wish to automatically update students when semester ends) run in every minute
     @Scheduled(cron = "0 0/1 * * * ?")
     @Transactional
     public void checkAndUpdateEndedSemesters() {
