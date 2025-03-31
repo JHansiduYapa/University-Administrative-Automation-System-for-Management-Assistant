@@ -10,10 +10,10 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/results")
+@RequestMapping("/api/results-search")
 // Enable CORS for this controller or a specific endpoint. Adjust the origins as needed.
 @CrossOrigin(origins = "http://localhost:5173")
-public class ResultController {
+public class ResultSearchController {
 
     @Autowired
     private ResultSearchService resultSearchService;
