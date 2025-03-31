@@ -13,10 +13,14 @@ VALUES (1, 1,'pratheeba@uoj.lk','Pratheeba','Jeyananthan'),
 
 /* Insert sample semester data */
 INSERT INTO semester (semester_id,start_date, end_date, semester_number)
-VALUES (1,'2025-01-01', '2025-05-01', 1);
-
-INSERT INTO semester (semester_id,start_date, end_date, semester_number)
-VALUES (2,'2025-01-01', '2025-05-01', 2);
+VALUES (1,'2025-01-01', '2025-03-01', 1),
+       (2,'2025-01-01', '2025-05-01', 2),
+       (3,'2025-01-01', '2025-05-01', 3),
+       (4,'2025-01-01', '2025-05-01', 4),
+       (5,'2025-01-01', '2025-05-01', 5),
+       (6,'2025-01-01', '2025-05-01', 6),
+       (7,'2025-01-01', '2025-05-01', 7),
+       (8,'2025-01-01', '2025-05-01', 8);
 
 /* Insert sample batch data */
 INSERT INTO batch (batch_name, reg_date, student_count, semester_id,batch_id)

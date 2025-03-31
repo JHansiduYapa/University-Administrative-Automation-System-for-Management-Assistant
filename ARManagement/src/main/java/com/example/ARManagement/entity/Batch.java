@@ -1,8 +1,10 @@
 package com.example.ARManagement.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -13,6 +15,7 @@ import java.util.List;
 @Getter
 @Setter
 @Table(name = "batch")
+@AllArgsConstructor
 public class Batch {
     @Id
     @Column(name = "batch_id")
@@ -30,7 +33,8 @@ public class Batch {
     private Integer studentCount;
 
     @OneToOne
-    @JoinColumn(name = "semesterId")
+    @JoinColumn(name = "semester_id")
+    @JsonBackReference
     private Semester semester;
 
     @OneToMany(mappedBy = "academicBatch")
@@ -41,73 +45,6 @@ public class Batch {
     @JsonManagedReference
     private List<Student> properStudents;
 
-    public Batch(Long batchId, String batchName, LocalDate regDate, Integer studentCount, Semester semester, List<Student> allStudents, List<Student> properStudents) {
-        this.batchId = batchId;
-        this.batchName = batchName;
-        this.regDate = regDate;
-        this.studentCount = studentCount;
-        this.semester = semester;
-        this.allStudents = allStudents;
-        this.properStudents = properStudents;
-    }
-
     public Batch() {
     }
-
-    public Long getBatchId() {
-        return batchId;
-    }
-
-    public void setBatchId(Long batchId) {
-        this.batchId = batchId;
-    }
-
-    public String getBatchName() {
-        return batchName;
-    }
-
-    public void setBatchName(String batchName) {
-        this.batchName = batchName;
-    }
-
-    public LocalDate getRegDate() {
-        return regDate;
-    }
-
-    public void setRegDate(LocalDate regDate) {
-        this.regDate = regDate;
-    }
-
-    public Integer getStudentCount() {
-        return studentCount;
-    }
-
-    public void setStudentCount(Integer studentCount) {
-        this.studentCount = studentCount;
-    }
-
-    public Semester getSemester() {
-        return semester;
-    }
-
-    public void setSemester(Semester semester) {
-        this.semester = semester;
-    }
-
-    public List<Student> getAllStudents() {
-        return allStudents;
-    }
-
-    public void setAllStudents(List<Student> allStudents) {
-        this.allStudents = allStudents;
-    }
-
-    public List<Student> getProperStudents() {
-        return properStudents;
-    }
-
-    public void setProperStudents(List<Student> properStudents) {
-        this.properStudents = properStudents;
-    }
-
 }

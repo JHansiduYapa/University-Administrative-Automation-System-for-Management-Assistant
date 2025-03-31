@@ -16,6 +16,7 @@ import Settings from "./Components/Settings/Settings";
 import LectureDetails from "./Components/LectureDetails/LectureDetails"; 
 import StudentDetails from "./Components/StudentDetails/StudentDetails";
 import CreateBatch from "./Components/Batch/CreateBatch";
+import SemesterList from "./Components/SemesterEdit/SemesterList";
 
 
 import AuthProvider, { AuthContext } from "./AuthContext";
@@ -110,6 +111,11 @@ function App() {
               <Route path="/create-batch" element={
                 <PrivateRoute>
                 <Sidebar /><CreateBatch />
+                </PrivateRoute>
+              } />
+              <Route path="/semester-edit" element={
+                <PrivateRoute>
+                <Sidebar /><SemesterList/>
                 </PrivateRoute>
               } />
               <Route path="*" element={<Navigate to="/" />} />

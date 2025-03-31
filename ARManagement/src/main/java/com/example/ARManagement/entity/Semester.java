@@ -1,6 +1,7 @@
 package com.example.ARManagement.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
@@ -28,14 +29,15 @@ public class Semester {
     @Column(nullable = false)
     private LocalDate endDate;
 
-    @OneToMany(mappedBy = "semester")
+    @OneToMany(mappedBy = "semester", fetch = FetchType.EAGER)
     @JsonManagedReference
-    private Set<Student> students;  // A semester can have many students
+    private Set<Student> students; // A semester can have many students
 
     @Column(nullable = false)
     private int semesterNumber;
 
     @OneToOne(mappedBy = "semester",cascade = CascadeType.ALL)
+    @JsonManagedReference
     private Batch batch;
 
     public Semester(LocalDate startDate, LocalDate endDate, int semesterNumber, Batch batch) {
