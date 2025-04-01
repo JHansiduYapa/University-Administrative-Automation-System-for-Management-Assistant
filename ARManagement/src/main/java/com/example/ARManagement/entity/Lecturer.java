@@ -31,6 +31,11 @@ public class Lecturer {
     @JsonBackReference // This side will be omitted during serialization
     private Department department;
 
+    // One lecturer can coordinate many courses
+    @OneToMany(mappedBy = "coordinator")
+    @JsonManagedReference
+    private Set<Course> coordinatedCourses = new HashSet<>();
+
     @ManyToMany
     @JoinTable(
             name = "lecturer_course",

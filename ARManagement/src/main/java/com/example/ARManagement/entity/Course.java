@@ -1,6 +1,7 @@
 package com.example.ARManagement.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,6 +12,7 @@ import java.util.Set;
 @Setter
 @Entity
 @Table(name = "courses")
+@AllArgsConstructor
 public class Course {
 
     @Id
@@ -38,6 +40,11 @@ public class Course {
 
     @ManyToMany(mappedBy = "courses")
     private Set<Lecturer> lecturers = new HashSet<>();
+
+    // One Course has one coordinator (a Lecturer)
+    @ManyToOne
+    @JoinColumn(name = "coordinator_id", nullable = false)
+    private Lecturer coordinator;
 
     // Default constructor
     public Course() {

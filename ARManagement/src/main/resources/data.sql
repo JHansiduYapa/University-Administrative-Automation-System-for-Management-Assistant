@@ -28,13 +28,13 @@ VALUES ('E21', '2024-03-28', 200, 1,1);
 
 
 /* Insert sample data to course */
-INSERT INTO courses (course_id, course_name, credit, semester_id, department_id)
+INSERT INTO courses (course_id, course_name, credit, semester_id, department_id, coordinator_id)
 VALUES
-    (1, 'Data Structures', 3, 1, 1),
-    (2, 'Algorithms', 4, 1, 1),
-    (3, 'Object-Oriented Design', 3, 1, 1),
-    (4, 'Database Systems', 4, 1, 1),
-    (5, 'Operating Systems', 3, 1, 1);
+    (1, 'Data Structures', 3, 1, 1,1),
+    (2, 'Algorithms', 4, 1, 1,2),
+    (3, 'Object-Oriented Design', 3, 1, 1,2),
+    (4, 'Database Systems', 4, 1, 2,2),
+    (5, 'Operating Systems', 3, 1, 2,2);
 
 
 /* insert sample data to student */
