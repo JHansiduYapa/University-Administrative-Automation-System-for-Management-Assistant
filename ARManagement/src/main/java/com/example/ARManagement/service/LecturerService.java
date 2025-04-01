@@ -29,6 +29,7 @@ public class LecturerService {
     public LecturerDTO setAdviser(boolean adviserLec,Long id){
         Lecturer lecturer=lecturerRepository.findById(id).get();
         lecturer.setAdviserLec(adviserLec);
+        lecturerRepository.save(lecturer);
         return new LecturerDTO(
                 lecturer.getLecturerId(),
                 lecturer.getFirstName(),

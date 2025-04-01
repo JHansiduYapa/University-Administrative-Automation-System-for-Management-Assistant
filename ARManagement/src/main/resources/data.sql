@@ -6,10 +6,10 @@ VALUES (1,'Computer','Dr. (Mrs.) Pratheeba Jeyananthan'),
        (2,'Electrical and Electronic','Prof. T. Thiruvaran');
 
 /* Insert sample lecture data */
-INSERT INTO lecturer (department_id, lecturer_id, email, first_name, last_name)
-VALUES (1, 1,'pratheeba@uoj.lk','Pratheeba','Jeyananthan'),
-       (2, 2,'thiruvaran@uoj.lk','T.','Thiruvaran'),
-       (1, 3,'jananie@uoj.lk','Jananie','Segar');
+INSERT INTO lecturer (department_id, lecturer_id, email, first_name, last_name,adviser_lec)
+VALUES (1, 1,'pratheeba@uoj.lk','Pratheeba','Jeyananthan',false),
+       (2, 2,'thiruvaran@uoj.lk','T.','Thiruvaran',false),
+       (1, 3,'jananie@uoj.lk','Jananie','Segar',false);
 
 /* Insert sample semester data */
 INSERT INTO semester (semester_id,start_date, end_date, semester_number)
@@ -83,4 +83,23 @@ INSERT INTO advisor (lecturer_id, student_id)
 VALUES (3,1),
        (3,2);
 
+CREATE PROCEDURE distribute_students(IN batchId INT, IN departmentId INT)
+BEGIN
+    DECLARE advisorCount INT;
 
+    -- Count the number of advisor lecturers in the given department
+    SELECT COUNT(*) INTO advisorCount FROM lecturer
+    WHERE department_id = departmentId AND adviserLec = TRUE;
+
+    -- Distribute students equally (example logic, adjust as needed)
+    UPDATE students
+    SET adviser_id = (
+        SELECT lecturer_id
+        FROM lecturer
+        WHERE department_id = departmentId
+        AND adviserLec = TRUE
+        ORDER BY RAND()
+        LIMIT 1
+    )
+    WHERE batch_id = batchId AND department_id = departmentId;
+END;

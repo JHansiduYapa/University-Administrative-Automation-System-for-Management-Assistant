@@ -36,4 +36,8 @@ public class AdviseeService {
         )).collect(Collectors.toList());
     }
 
+    public void distributeStudents(Long batchId, Long departmentId) {
+        studentRepository.distributeStudents(batchId, departmentId);
+    }
+
 }

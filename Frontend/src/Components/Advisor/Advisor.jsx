@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./Advisor.css";
-import jsonData from "../../data.json";
-import UserInfo from "../UserInfo/UserInfo";
+import api from "../../api/api";
 
 const Advisor = () => {
   const [advisors, setAdvisors] = useState([]);
@@ -11,50 +10,106 @@ const Advisor = () => {
   const [newAdvisor, setNewAdvisor] = useState({ name: "", department: "" });
   const [availableLecturers, setAvailableLecturers] = useState([]);
 
+  // Fetch all lecturers and filter advisors
   useEffect(() => {
-    if (jsonData && jsonData.lecturers) {
-      setLecturers(jsonData.lecturers);
-    }
+    const fetchLecturers = async () => {
+      try {
+        const response = await api.get("/api/lecturers");
+        setLecturers(response.data);
+        
+        // Extract only advisers (where adviserLec is true)
+        const advisorsList = response.data
+          .filter(lecturer => lecturer.adviserLec === true)
+          .map(lecturer => ({
+            id: lecturer.id,
+            name: `${lecturer.firstName} ${lecturer.lastName}`,
+            department: lecturer.departmentName,
+          }));
+
+        setAdvisors(advisorsList);
+      } catch (error) {
+        console.error("Error fetching lecturers:", error);
+      }
+    };
+
+    fetchLecturers();
   }, []);
 
+  // Update available lecturers based on selected department
   useEffect(() => {
     if (newAdvisor.department) {
       if (newAdvisor.department === "Interdisciplinary") {
         setAvailableLecturers(lecturers);
       } else {
-        const filteredLecturers = lecturers.filter(
-          lecturer => lecturer.department === newAdvisor.department
+        setAvailableLecturers(
+          lecturers.filter(lecturer => lecturer.departmentName === newAdvisor.department)
         );
-        setAvailableLecturers(filteredLecturers);
       }
     } else {
       setAvailableLecturers([]);
     }
   }, [newAdvisor.department, lecturers]);
 
+  // Handle department selection
   const handleDepartmentChange = (e) => {
-    const department = e.target.value;
-    setNewAdvisor({ ...newAdvisor, department, name: "" });
+    setNewAdvisor({ ...newAdvisor, department: e.target.value, name: "" });
   };
 
+  // Handle advisor name selection
   const handleNameChange = (e) => {
-    const name = e.target.value;
-    setNewAdvisor({ ...newAdvisor, name });
+    setNewAdvisor({ ...newAdvisor, name: e.target.value });
   };
 
-  const addRow = () => {
+  // Add an advisor
+  const addRow = async () => {
+    console.log("searchDepartment:", searchDepartment);
+    console.log("newAdvisor:", newAdvisor);
+    console.log("lecturers:", lecturers);
+  
     if (newAdvisor.name && newAdvisor.department) {
-      setAdvisors([...advisors, { ...newAdvisor, id: Date.now() }]);
-      setNewAdvisor({ name: "", department: "" });
+      try {
+        const selectedLecturer = lecturers.find(
+          lecturer =>
+            `${lecturer.firstName} ${lecturer.lastName}` === newAdvisor.name
+        );
+  
+        if (!selectedLecturer) {
+          alert("Invalid advisor selection");
+          return;
+        }
+  
+        console.log("Selected Lecturer:", selectedLecturer.id);
+  
+        await api.put(`/api/lecturers/setAdviser/${selectedLecturer.id}?adviserLec=true`);
+  
+        // Update advisors list
+        setAdvisors([...advisors, { 
+          id: selectedLecturer.id, 
+          name: newAdvisor.name, 
+          department: selectedLecturer.departmentName 
+        }]);
+  
+        setNewAdvisor({ name: "", department: "" });
+      } catch (error) {
+        console.error("Error adding advisor:", error);
+      }
     } else {
       alert("Please select both Department and Advisor Name");
     }
   };
+  
 
-  const deleteRow = (id) => {
-    setAdvisors(advisors.filter((advisor) => advisor.id !== id));
+  // Remove an advisor
+  const deleteRow = async (id) => {
+    try {
+      await api.put(`/api/lecturers/setAdviser/${id}?adviserLec=${false}`);
+      setAdvisors(advisors.filter((advisor) => advisor.id !== id));
+    } catch (error) {
+      console.error("Error deleting advisor:", error);
+    }
   };
 
+  // Filter advisors based on search criteria
   const filteredAdvisors = advisors.filter(
     (advisor) =>
       advisor.name.toLowerCase().includes(searchName.toLowerCase()) &&
@@ -65,6 +120,7 @@ const Advisor = () => {
     <div className="advisor-container">
       <h2 className="advisor-title">Advisor List</h2>
 
+      {/* Search Section */}
       <div className="search-section">
         <input
           type="text"
@@ -79,14 +135,15 @@ const Advisor = () => {
           className="search-select"
         >
           <option value="">All Departments</option>
-          <option value="Computer Engineering">Computer Engineering</option>
-          <option value="Civil Engineering">Civil Engineering</option>
-          <option value="Mechanical Engineering">Mechanical Engineering</option>
-          <option value="Electrical Engineering">Electrical Engineering</option>
+          <option value="Computer">Computer Engineering</option>
+          <option value="Civil">Civil Engineering</option>
+          <option value="Mechanical">Mechanical Engineering</option>
+          <option value="Electrical">Electrical Engineering</option>
           <option value="Interdisciplinary">Interdisciplinary</option>
         </select>
       </div>
 
+      {/* Advisors Table */}
       <table className="advisor-table">
         <thead>
           <tr>
@@ -110,6 +167,7 @@ const Advisor = () => {
         </tbody>
       </table>
 
+      {/* Add Advisor Section */}
       <div className="add-advisor">
         <select
           value={newAdvisor.department}
@@ -117,10 +175,10 @@ const Advisor = () => {
           className="department-input"
         >
           <option value="">Select Department</option>
-          <option value="Computer Engineering">Computer Engineering</option>
-          <option value="Civil Engineering">Civil Engineering</option>
-          <option value="Mechanical Engineering">Mechanical Engineering</option>
-          <option value="Electrical Engineering">Electrical Engineering</option>
+          <option value="Computer">Computer Engineering</option>
+          <option value="Civil">Civil Engineering</option>
+          <option value="Mechanical">Mechanical Engineering</option>
+          <option value="Electrical and Electronic">Electrical and Electronic</option>
           <option value="Interdisciplinary">Interdisciplinary</option>
         </select>
         
@@ -132,8 +190,8 @@ const Advisor = () => {
         >
           <option value="">Select Advisor Name</option>
           {availableLecturers.map((lecturer) => (
-            <option key={lecturer.id} value={lecturer.name}>
-              {lecturer.name}
+            <option key={lecturer.id} value={`${lecturer.firstName} ${lecturer.lastName}`}>
+              {lecturer.firstName} {lecturer.lastName}
             </option>
           ))}
         </select>

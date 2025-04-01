@@ -24,7 +24,9 @@ public class LecturerController {
     }
 
     @PutMapping("/setAdviser/{id}")
+
     public LecturerDTO updateAdviserStatus(@PathVariable Long id, @RequestParam boolean adviserLec) {
+        System.out.println(id+""+adviserLec);
         return lecturerService.setAdviser(adviserLec,id);
     }
 }
