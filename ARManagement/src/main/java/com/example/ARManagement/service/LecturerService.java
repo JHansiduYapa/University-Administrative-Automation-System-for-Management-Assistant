@@ -22,7 +22,20 @@ public class LecturerService {
                 lecturer.getFirstName(),
                 lecturer.getLastName(),
                 lecturer.getEmail(),
-                lecturer.getDepartment().getDepartmentName() // assuming getDepartmentName() exists
+                lecturer.getDepartment().getDepartmentName(), // assuming getDepartmentName() exists
+                lecturer.isAdviserLec()
         )).collect(Collectors.toList());
+    }
+    public LecturerDTO setAdviser(boolean adviserLec,Long id){
+        Lecturer lecturer=lecturerRepository.findById(id).get();
+        lecturer.setAdviserLec(adviserLec);
+        return new LecturerDTO(
+                lecturer.getLecturerId(),
+                lecturer.getFirstName(),
+                lecturer.getLastName(),
+                lecturer.getEmail(),
+                lecturer.getDepartment().getDepartmentName(), // assuming getDepartmentName() exists
+                lecturer.isAdviserLec()
+        );
     }
 }

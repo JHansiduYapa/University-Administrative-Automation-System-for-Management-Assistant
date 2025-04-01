@@ -79,6 +79,12 @@ public class Student {
     @JsonBackReference
     private Batch academicBatch;
 
+    @ManyToOne
+    @JoinColumn(name= "adviser_id")
+    @JsonBackReference
+    private Lecturer adviser;
+
+
     // Default constructor
     public Student() {}
 
