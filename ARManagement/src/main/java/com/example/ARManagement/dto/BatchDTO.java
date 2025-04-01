@@ -10,6 +10,7 @@ import java.time.LocalDate;
 @Setter
 @AllArgsConstructor
 public class BatchDTO {
+    private Long batchId;
     private String batchName;
     @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate regDate;

@@ -35,7 +35,8 @@ public class RegistrationService {
         student.setDateOfBirth(dto.getDateOfBirth());
         student.setGender(dto.getGender());
         student.setEmail(dto.getEmail());
-        student.setGpa(dto.getGpa());
+        // default set to the  gpa 0
+        student.setGpa(0.0);
         student.setRegistrationDate(dto.getRegistrationDate());
         student.setAddress(dto.getAddress());
 
@@ -44,7 +45,8 @@ public class RegistrationService {
                 .orElseThrow(() -> new RuntimeException("Department not found"));
         student.setDepartment(department);
 
-        Semester semester = semesterRepository.findById(dto.getSemesterId())
+        // Default set the semester to 1 because all are register in semester 1
+        Semester semester = semesterRepository.findById(1L)
                 .orElseThrow(() -> new RuntimeException("Semester not found"));
         student.setSemester(semester);
 
@@ -52,7 +54,9 @@ public class RegistrationService {
                 .orElseThrow(() -> new RuntimeException("Batch not found"));
         student.setProperBatch(properBatch);
 
-        Batch academicBatch = batchRepository.findById(dto.getAcademicBatchId())
+        // always student are in registered batch at the start
+        // academic batch same as proper batch
+        Batch academicBatch = batchRepository.findById(dto.getBatchId())
                 .orElseThrow(() -> new RuntimeException("Academic batch not found"));
         student.setAcademicBatch(academicBatch);
 

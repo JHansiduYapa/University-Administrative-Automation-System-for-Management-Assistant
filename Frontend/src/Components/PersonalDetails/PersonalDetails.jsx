@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Form, Input, Button, Space, Select, DatePicker, InputNumber } from 'antd';
 import axios from 'axios';
 import './PersonalDetails.css';
@@ -8,6 +8,19 @@ const api = "http://localhost:9080/api/";
 
 const PersonalDetails = () => {
   const [form] = Form.useForm();
+  const [batches, setBatches] = useState([]);
+
+  // Fetch batches from backend on mount
+  useEffect(() => {
+    axios.get(api + "students")
+      .then(response => {
+        // Assuming response.data is an array of batch objects with keys batchId and batchName
+        setBatches(response.data);
+      })
+      .catch(error => {
+        console.error('Error fetching batches:', error);
+      });
+  }, []);
 
   const onFinish = (values) => {
     // Map the form values to the JSON body expected by the backend.
@@ -15,7 +28,6 @@ const PersonalDetails = () => {
       firstName: values.firstName,
       middleName: values.middleName,
       lastName: values.lastName,
-      semesterId: values.semesterId,
       dateOfBirth: values.dateOfBirth.format('YYYY-MM-DD'),
       gender: values.gender,
       email: values.email,
@@ -23,27 +35,26 @@ const PersonalDetails = () => {
       registrationDate: values.registrationDate.format('YYYY-MM-DD'),
       departmentId: values.departmentId,
       address: values.address,
-      batchId: values.batchId,
-      academicBatchId: values.academicBatchId,
+      batchId: values.batchId // selected batch id from dropdown
     };
 
     axios.post(api + "students/register", payload)
       .then(response => {
         console.log('Student registered successfully:', response.data);
-        // You can add further actions on success (e.g., redirect or a success message)
+        // Further actions on success (e.g., redirect or display a success message)
       })
       .catch(error => {
         console.error('Error registering student:', error);
-        // Handle error appropriately here (e.g., display an error message)
+        // Handle error appropriately (e.g., display an error message)
       });
   };
 
   // Custom submit button that only enables submission when the form is valid
   const SubmitButton = ({ children }) => {
-    const [submittable, setSubmittable] = React.useState(false);
+    const [submittable, setSubmittable] = useState(false);
     const values = Form.useWatch([], form);
 
-    React.useEffect(() => {
+    useEffect(() => {
       form
         .validateFields({ validateOnly: true })
         .then(() => setSubmittable(true))
@@ -92,15 +103,7 @@ const PersonalDetails = () => {
           >
             <Input />
           </Form.Item>
-
-          <Form.Item
-            name="semesterId"
-            label="Semester"
-            rules={[{ required: true, message: 'Please enter the semester!' }]}
-          >
-            <InputNumber min={1} />
-          </Form.Item>
-
+          
           <Form.Item
             name="dateOfBirth"
             label="Date of Birth"
@@ -127,14 +130,6 @@ const PersonalDetails = () => {
             rules={[{ required: true, type: 'email', message: 'Please enter a valid email address!' }]}
           >
             <Input />
-          </Form.Item>
-
-          <Form.Item
-            name="gpa"
-            label="GPA"
-            rules={[{ required: true, message: 'Please enter your GPA!' }]}
-          >
-            <InputNumber min={0} max={4} step={0.1} />
           </Form.Item>
 
           <Form.Item
@@ -166,22 +161,21 @@ const PersonalDetails = () => {
             <Input />
           </Form.Item>
 
+          {/* Batch selection dropdown */}
           <Form.Item
             name="batchId"
-            label="Batch ID"
-            rules={[{ required: true, message: 'Please enter your batch id!' }]}
+            label="Batch"
+            rules={[{ required: true, message: 'Please select your batch!' }]}
           >
-            <InputNumber min={1} />
+            <Select placeholder="Select your batch">
+              {batches.map(batch => (
+                <Select.Option key={batch.batchId} value={batch.batchId}>
+                  {batch.batchName}
+                </Select.Option>
+              ))}
+            </Select>
           </Form.Item>
-
-          <Form.Item
-            name="academicBatchId"
-            label="Academic Batch ID"
-            rules={[{ required: true, message: 'Please enter your academic batch id!' }]}
-          >
-            <InputNumber min={1} />
-          </Form.Item>
-
+          
           <Form.Item>
             <Space>
               <SubmitButton>Submit</SubmitButton>

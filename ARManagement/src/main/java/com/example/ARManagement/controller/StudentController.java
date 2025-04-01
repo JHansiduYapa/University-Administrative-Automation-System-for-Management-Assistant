@@ -20,7 +20,6 @@ public class StudentController {
     ///     "firstName": "Janith",
     ///     "middleName": "Hansidu",
     ///     "lastName": "Yapa",
-    ///     "semesterId": 1,
     ///     "dateOfBirth": "2001-01-15",
     ///     "gender": "Male",
     ///     "email": "janithhansiduya@gmail.com", /// email should be different from person to person foreign key contrain
@@ -28,7 +27,6 @@ public class StudentController {
     ///     "registrationDate": "2021-02-07",
     ///     "departmentId": 1,
     ///     "address": "110/B/1, Ja ela road, Akarawita",
-    ///     "roleId": 1,
     ///     "batchId": 1,
     ///     "academicBatchId": 1
     /// }

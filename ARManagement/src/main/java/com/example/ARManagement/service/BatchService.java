@@ -39,6 +39,7 @@ public class BatchService{
     // Conversion methods
     private BatchDTO convertEntityToDTO(Batch batch) {
         return new BatchDTO(
+                batch.getBatchId(),
                 batch.getBatchName(),
                 batch.getRegDate(),
                 batch.getStudentCount()
