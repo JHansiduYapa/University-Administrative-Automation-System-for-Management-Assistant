@@ -4,7 +4,6 @@ import com.example.ARManagement.dto.StudentDTO;
 import com.example.ARManagement.entity.*;
 import com.example.ARManagement.repository.BatchRepository;
 import com.example.ARManagement.repository.DepartmentRepository;
-import com.example.ARManagement.repository.RoleRepository;
 import com.example.ARManagement.repository.SemesterRepository;
 import com.example.ARManagement.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,9 +20,6 @@ public class RegistrationService {
 
     @Autowired
     private SemesterRepository semesterRepository;
-
-    @Autowired
-    private RoleRepository roleRepository;
 
     @Autowired
     private BatchRepository batchRepository;
@@ -51,10 +47,6 @@ public class RegistrationService {
         Semester semester = semesterRepository.findById(dto.getSemesterId())
                 .orElseThrow(() -> new RuntimeException("Semester not found"));
         student.setSemester(semester);
-
-        Role role = roleRepository.findById(dto.getRoleId())
-                .orElseThrow(() -> new RuntimeException("Role not found"));
-        student.setRole(role);
 
         Batch properBatch = batchRepository.findById(dto.getBatchId())
                 .orElseThrow(() -> new RuntimeException("Batch not found"));

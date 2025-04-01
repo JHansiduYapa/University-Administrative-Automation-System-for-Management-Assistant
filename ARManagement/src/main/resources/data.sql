@@ -36,22 +36,17 @@ VALUES
     (4, 'Database Systems', 4, 1, 1),
     (5, 'Operating Systems', 3, 1, 1);
 
-/* Create sample roles */
-INSERT INTO roles (role_id, role_name)
-VALUES (1, 'Student'),
-       (2, 'Lecturer'),
-       (3, 'Admin');
 
 /* insert sample data to student */
 INSERT INTO students (student_id, address, date_of_birth, department_id, email, first_name,
-                      gender, gpa, last_name, middle_name, registration_date, semester_id, role_id, batch_id, academic_batch)
+                      gender, gpa, last_name, middle_name, registration_date, semester_id, batch_id, academic_batch)
 VALUES (1, '110/B/1, Ja ela road, Akarawita', '2001-01-15', 1, 'janithhansiduyapa1@gmail.com', 'Janith',
-           'Male', 0.0, 'Yapa', 'Hansidu', '2021-02-07', 1, 1, 1,1);
+           'Male', 0.0, 'Yapa', 'Hansidu', '2021-02-07', 1,  1,1);
 
 INSERT INTO students (student_id, address, date_of_birth, department_id, email, first_name,
-                      gender, gpa, last_name, middle_name, registration_date, semester_id, role_id, batch_id, academic_batch)
+                      gender, gpa, last_name, middle_name, registration_date, semester_id, batch_id, academic_batch)
 VALUES (2, '120/C/2, Colombo road, Kaduwela', '2000-05-10', 2, 'ashanodi@gmail.com', 'Ashan',
-           'Male', 3.8, 'Odi', 'Ashan', '2021-03-01', 1, 1, 1, 1);
+           'Male', 3.8, 'Odi', 'Ashan', '2021-03-01', 1,  1, 1);
 
 /* Register above two users as users */
 -- Insert User for 'Janith'

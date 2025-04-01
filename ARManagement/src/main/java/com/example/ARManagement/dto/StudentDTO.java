@@ -24,7 +24,6 @@ public class StudentDTO {
     private LocalDate registrationDate;
     private Long departmentId;        // maps to Department entity
     private String address;
-    private Long roleId;              // maps to Role entity
     private Long batchId;             // maps to properBatch (Batch entity)
     private Long academicBatchId;     // maps to academicBatch (Batch entity)
 }

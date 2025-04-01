@@ -23,7 +23,6 @@ const PersonalDetails = () => {
       registrationDate: values.registrationDate.format('YYYY-MM-DD'),
       departmentId: values.departmentId,
       address: values.address,
-      roleId: values.roleId,
       batchId: values.batchId,
       academicBatchId: values.academicBatchId,
     };
@@ -165,14 +164,6 @@ const PersonalDetails = () => {
             rules={[{ required: true, message: 'Please enter your permanent address!' }]}
           >
             <Input />
-          </Form.Item>
-
-          <Form.Item
-            name="roleId"
-            label="Role ID"
-            rules={[{ required: true, message: 'Please enter your role id!' }]}
-          >
-            <InputNumber min={1} />
           </Form.Item>
 
           <Form.Item

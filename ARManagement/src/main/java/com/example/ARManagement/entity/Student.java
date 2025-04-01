@@ -3,6 +3,7 @@ package com.example.ARManagement.entity;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -13,6 +14,7 @@ import java.util.Set;
 @Getter
 @Setter
 @Entity
+@AllArgsConstructor
 @Table(name = "students")
 public class Student {
 
@@ -67,12 +69,6 @@ public class Student {
     @JsonIgnore
     private Set<Course> courses = new HashSet<>();
 
-    // for simplicity assume only students are same class (no postgraduate students)
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "role_id")
-    @JsonBackReference
-    private Role role;
-
     @ManyToOne
     @JoinColumn(name = "batch_id")
     @JsonBackReference
@@ -104,15 +100,4 @@ public class Student {
         this.address = address;
     }
 
-    // Parameterized constructor (including collections)
-    public Student(Long studentId, String firstName, String middleName, String lastName, Semester semester,
-                   LocalDate dateOfBirth, String gender, String email, Double gpa, LocalDate registrationDate,
-                   Department department, String address, Set<Course> courses, Role role,
-                   Batch properBatch, Batch academicBatch) {
-        this(studentId, firstName, middleName, lastName, semester, dateOfBirth, gender, email, gpa, registrationDate, department, address);
-        this.courses = courses;
-        this.role = role;
-        this.properBatch = properBatch;
-        this.academicBatch = academicBatch;
-    }
 }
