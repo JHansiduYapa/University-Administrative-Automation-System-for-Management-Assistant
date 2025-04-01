@@ -83,23 +83,56 @@ INSERT INTO advisor (lecturer_id, student_id)
 VALUES (3,1),
        (3,2);
 
+DELIMITER $$
+
 CREATE PROCEDURE distribute_students(IN batchId INT, IN departmentId INT)
 BEGIN
     DECLARE advisorCount INT;
+    DECLARE studentCount INT;
+    DECLARE studentsPerAdvisor INT;
+    DECLARE remainingStudents INT;
+    DECLARE advisorIndex INT DEFAULT 0;
 
-    -- Count the number of advisor lecturers in the given department
-    SELECT COUNT(*) INTO advisorCount FROM lecturer
-    WHERE department_id = departmentId AND adviserLec = TRUE;
+    -- Get the number of advisor lecturers in the department
+    SELECT COUNT(*) INTO advisorCount
+    FROM lecturer
+    WHERE adviserLec = TRUE AND department_id = departmentId;
 
-    -- Distribute students equally (example logic, adjust as needed)
-    UPDATE students
-    SET adviser_id = (
-        SELECT lecturer_id
-        FROM lecturer
-        WHERE department_id = departmentId
-        AND adviserLec = TRUE
-        ORDER BY RAND()
-        LIMIT 1
-    )
+    -- Get the total number of students in the given batch and department
+    SELECT COUNT(*) INTO studentCount
+    FROM students
     WHERE batch_id = batchId AND department_id = departmentId;
-END;
+
+    -- Avoid division by zero
+    IF advisorCount = 0 OR studentCount = 0 THEN
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'No advisors or students found for the given batch and department.';
+    END IF;
+
+    -- Calculate number of students per advisor
+    SET studentsPerAdvisor = studentCount DIV advisorCount;
+    SET remainingStudents = studentCount MOD advisorCount;
+
+    -- Create a temporary table to store advisors in order
+    CREATE TEMPORARY TABLE temp_advisors AS
+    SELECT lecturer_id FROM lecturer WHERE adviserLec = TRUE AND department_id = departmentId ORDER BY lecturer_id;
+
+    -- Assign students to advisors in a round-robin fashion
+    SET @rownum = 0;
+    UPDATE students s
+    JOIN (
+        SELECT student_id, (@rownum := @rownum + 1) AS row_number
+        FROM students
+        WHERE batch_id = batchId AND department_id = departmentId
+    ) AS sorted_students
+    ON s.student_id = sorted_students.student_id
+    JOIN temp_advisors a
+    ON MOD(sorted_students.row_number, advisorCount) = a.lecturer_id
+    SET s.adviser_id = a.lecturer_id;
+
+    -- Drop the temporary table
+    DROP TEMPORARY TABLE temp_advisors;
+END $$
+
+DELIMITER ;
+
