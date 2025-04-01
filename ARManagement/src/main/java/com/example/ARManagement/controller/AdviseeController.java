@@ -1,11 +1,10 @@
 package com.example.ARManagement.controller;
 
 import com.example.ARManagement.dto.AdvisorStudentDTO;
+import com.example.ARManagement.service.AdviseeService;
 import com.example.ARManagement.service.AdvisorService;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -14,14 +13,24 @@ import java.util.List;
 @CrossOrigin(origins = "http://localhost:5173")
 public class AdviseeController {
 
-    private final AdvisorService advisorService;
+    @Autowired
+    private AdviseeService adviseeService;
 
-    public AdviseeController(AdvisorService advisorService) {
-        this.advisorService = advisorService;
+    //    private final AdvisorService advisorService;
+//
+//    public AdviseeController(AdvisorService advisorService) {
+//        this.advisorService = advisorService;
+//    }
+//
+//    @GetMapping
+//    public List<AdvisorStudentDTO> getAdvisorStudentInfos() {
+//        return advisorService.getAdvisorStudentInfos();
+//    }
+    @GetMapping("/")
+    public List<AdvisorStudentDTO> getAdvisees(
+            @RequestParam Long batch,
+            @RequestParam(required = false) Long department) {
+        return adviseeService.getAdvisees(batch, department);
     }
 
-    @GetMapping
-    public List<AdvisorStudentDTO> getAdvisorStudentInfos() {
-        return advisorService.getAdvisorStudentInfos();
-    }
 }
