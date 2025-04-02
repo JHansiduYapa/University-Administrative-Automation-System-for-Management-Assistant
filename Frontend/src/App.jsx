@@ -18,6 +18,7 @@ import StudentDetails from "./Components/StudentDetails/StudentDetails";
 import CreateBatch from "./Components/Batch/CreateBatch";
 import SemesterManager from "./Components/SemesterEdit/SemesterManager";
 import CSVUpload from "./Components/ResultUpload/CSVUpload";
+import LectureRegistration from "./Components/LectureRegistration/LectureRegistration";
 
 
 import AuthProvider, { AuthContext } from "./AuthContext";
@@ -122,6 +123,11 @@ function App() {
               <Route path="/result-upload" element={
                 <PrivateRoute>
                 <Sidebar /><CSVUpload/>
+                </PrivateRoute>
+              } />
+              <Route path="/Lecture-registration" element={
+                <PrivateRoute>
+                <Sidebar /><LectureRegistration/>
                 </PrivateRoute>
               } />
               <Route path="*" element={<Navigate to="/" />} />
