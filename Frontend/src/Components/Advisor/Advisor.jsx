@@ -21,7 +21,7 @@ const Advisor = () => {
         const advisorsList = response.data
           .filter(lecturer => lecturer.adviserLec === true)
           .map(lecturer => ({
-            id: lecturer.id,
+            id: lecturer.lecturerId,
             name: `${lecturer.firstName} ${lecturer.lastName}`,
             department: lecturer.departmentName,
           }));
@@ -115,6 +115,7 @@ const Advisor = () => {
       advisor.name.toLowerCase().includes(searchName.toLowerCase()) &&
       (searchDepartment === "" || advisor.department === searchDepartment)
   );
+
 
   return (
     <div className="advisor-container">
