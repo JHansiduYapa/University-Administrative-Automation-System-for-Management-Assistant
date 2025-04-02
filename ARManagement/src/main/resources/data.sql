@@ -7,9 +7,9 @@ VALUES (1,'Computer','Dr. (Mrs.) Pratheeba Jeyananthan'),
 
 /* Insert sample lecture data */
 INSERT INTO lecturer (department_id, lecturer_id, email, first_name, last_name,adviser_lec)
-VALUES (1, 1,'pratheeba@uoj.lk','Pratheeba','Jeyananthan',false),
-       (2, 2,'thiruvaran@uoj.lk','T.','Thiruvaran',false),
-       (1, 3,'jananie@uoj.lk','Jananie','Segar',false);
+VALUES (1, 1,'pratheeba@uoj.lk','Pratheeba','Jeyananthan',true),
+       (2, 2,'thiruvaran@uoj.lk','T.','Thiruvaran',true),
+       (1, 3,'jananie@uoj.lk','Jananie','Segar',true);
 
 /* Insert sample semester data */
 INSERT INTO semester (semester_id,start_date, end_date, semester_number)
