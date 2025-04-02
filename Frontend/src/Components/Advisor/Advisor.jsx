@@ -78,9 +78,9 @@ const Advisor = () => {
           return;
         }
   
-        console.log("Selected Lecturer:", selectedLecturer.id);
+        console.log("Selected Lecturer:", selectedLecturer.lecturerId);
   
-        await api.put(`/api/lecturers/setAdviser/${selectedLecturer.id}?adviserLec=true`);
+        await api.put(`/api/lecturers/setAdviser/${selectedLecturer.lecturerId}?adviserLec=true`);
   
         // Update advisors list
         setAdvisors([...advisors, { 
