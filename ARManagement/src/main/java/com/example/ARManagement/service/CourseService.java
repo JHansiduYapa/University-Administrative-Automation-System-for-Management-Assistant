@@ -40,7 +40,8 @@ public class CourseService{
                         course.getCoordinator().getFirstName(),
                         course.getCoordinator().getLastName(),
                         course.getCoordinator().getEmail(),
-                        course.getCoordinator().getDepartment().getDepartmentName()
+                        course.getCoordinator().getDepartment().getDepartmentName(),
+                        course.getCoordinator().isAdviserLec()
                 )
                         : null
         );
@@ -54,7 +55,8 @@ public class CourseService{
                         lecturer.getFirstName(),
                         lecturer.getLastName(),
                         lecturer.getEmail(),
-                        lecturer.getDepartment().getDepartmentName()
+                        lecturer.getDepartment().getDepartmentName(),
+                        lecturer.isAdviserLec()
                 ))
                 .collect(Collectors.toList());
 
