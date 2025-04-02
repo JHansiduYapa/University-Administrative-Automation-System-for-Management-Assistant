@@ -34,6 +34,11 @@ const Sidebar = () => {
             </Link>
           </li>
           <li>
+            <Link to="/create-batch" onClick={closeSidebar}>
+              <span className="icon student-icon"></span> Create Batch
+            </Link>
+          </li>
+          <li>
             <Link to="/personal-details" onClick={closeSidebar}>
               <span className="icon newstudent-icon"></span> New Student
             </Link>
@@ -59,6 +64,11 @@ const Sidebar = () => {
             </Link>
           </li>
           <li>
+            <Link to="/Lecture-registration" onClick={closeSidebar}>
+              <span className="icon student-icon"></span> Lecture Registration
+            </Link>
+          </li>
+          <li>
             <Link to="/lecture-details" onClick={closeSidebar}>
               <span className="icon lecture-icon"></span> Lecture Details
             </Link>
@@ -76,16 +86,6 @@ const Sidebar = () => {
           <li>
             <Link to="/settings" onClick={closeSidebar}>
               <span className="icon settings-icon"></span> Settings
-            </Link>
-          </li>
-          <li>
-            <Link to="/create-batch" onClick={closeSidebar}>
-              <span className="icon student-icon"></span> Create Batch
-            </Link>
-          </li>
-          <li>
-            <Link to="/Lecture-registration" onClick={closeSidebar}>
-              <span className="icon student-icon"></span> Lecture Registration
             </Link>
           </li>
           <li>

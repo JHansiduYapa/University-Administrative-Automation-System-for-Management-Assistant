@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Form, Input, Button, Space, Select, DatePicker, InputNumber } from 'antd';
+import { Form, Input, Button, Space, Select, DatePicker, notification } from 'antd';
 import axios from 'axios';
 import './PersonalDetails.css';
 import UserInfo from "../UserInfo/UserInfo";
@@ -31,7 +31,6 @@ const PersonalDetails = () => {
       dateOfBirth: values.dateOfBirth.format('YYYY-MM-DD'),
       gender: values.gender,
       email: values.email,
-      gpa: parseFloat(values.gpa),
       registrationDate: values.registrationDate.format('YYYY-MM-DD'),
       departmentId: values.departmentId,
       address: values.address,
@@ -41,11 +40,21 @@ const PersonalDetails = () => {
     axios.post(api + "students/register", payload)
       .then(response => {
         console.log('Student registered successfully:', response.data);
-        // Further actions on success (e.g., redirect or display a success message)
+        // Show a success notification
+        notification.success({
+          message: 'Registration Successful',
+          description: 'Student registered successfully.'
+        });
+        // Clear all fields after successful registration
+        form.resetFields();
       })
       .catch(error => {
         console.error('Error registering student:', error);
-        // Handle error appropriately (e.g., display an error message)
+        // Optionally display an error notification
+        notification.error({
+          message: 'Registration Failed',
+          description: 'There was an error registering the student. Please try again.'
+        });
       });
   };
 
@@ -70,7 +79,6 @@ const PersonalDetails = () => {
 
   return (
     <>
-      <UserInfo username="John Doe" profilePicture="https://via.placeholder.com/40" />
       <div className="personal-details-container">
         <h1 className="form-title">New Student - Create Account</h1>
         <Form

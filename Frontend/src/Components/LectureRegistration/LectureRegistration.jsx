@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Form, Input, Button, Space, Select } from 'antd';
+import { Form, Input, Button, Space, Select, notification } from 'antd';
 import axios from 'axios';
 import './LectureRegistration.css';
 
@@ -32,10 +32,21 @@ const LectureRegistration = () => {
     axios.post(api + "lecturers/register", payload)
       .then(response => {
         console.log("Lecturer registered successfully:", response.data);
-        // Additional actions (redirect, success message, etc.) can be implemented here.
+        // Display success notification
+        notification.success({
+          message: "Registration Successful",
+          description: "Lecturer registered successfully.",
+        });
+        // Optionally reset form fields
+        form.resetFields();
       })
       .catch(error => {
         console.error("Error registering lecturer:", error);
+        // Display error notification
+        notification.error({
+          message: "Registration Failed",
+          description: "There was an error registering the lecturer. Please try again.",
+        });
       });
   };
 
@@ -98,4 +109,4 @@ const LectureRegistration = () => {
   );
 };
 
-export default LectureRegistration;
+export default LectureRegistration
