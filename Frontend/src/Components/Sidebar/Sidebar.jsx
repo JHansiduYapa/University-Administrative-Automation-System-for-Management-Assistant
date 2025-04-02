@@ -38,11 +38,11 @@ const Sidebar = () => {
               <span className="icon newstudent-icon"></span> New Student
             </Link>
           </li>
-          <li>
+          {/* <li>
             <Link to="/grades" onClick={closeSidebar}>
               <span className="icon grades-icon"></span> Grades
             </Link>
-          </li>
+          </li> */}
           <li>
             <Link to="/advisor" onClick={closeSidebar}>
               <span className="icon advisor-icon"></span> Advisor
