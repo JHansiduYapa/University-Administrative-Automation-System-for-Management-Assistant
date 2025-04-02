@@ -15,6 +15,7 @@ import Coordinator from "./Components/Coordinator/Coordinator";
 import Settings from "./Components/Settings/Settings"; 
 import LectureDetails from "./Components/LectureDetails/LectureDetails"; 
 import StudentDetails from "./Components/StudentDetails/StudentDetails";
+import New_Lecture_Registration from "./Components/New_Lecture_Registration/New_Lecture_Registration";
 
 import AuthProvider, { AuthContext } from "./AuthContext";
 import ThemeProvider from "./context/ThemeContext";
@@ -35,16 +36,15 @@ function App() {
           <div className="app-content">
             <Header />
             <Routes>
-
-            <Route path="/" element={<SignInPage />} />
-            <Route path="/register-ma" element={<RegisterMA />} />
-            <Route path="/contact-us" element={<ContactUs />} />
-            <Route path="/settings" element={<Settings />} />
-            <Route path="/ma-page" element={
-              <PrivateRoute>
-                <MAPage />
-              </PrivateRoute>
-            } />
+              <Route path="/" element={<SignInPage />} />
+              <Route path="/register-ma" element={<RegisterMA />} />
+              <Route path="/contact-us" element={<ContactUs />} />
+              <Route path="/settings" element={<Settings />} />
+              <Route path="/ma-page" element={
+                <PrivateRoute>
+                  <MAPage />
+                </PrivateRoute>
+              } />
 
               <Route path="/personal-details" element={
                 <PrivateRoute>
@@ -85,6 +85,12 @@ function App() {
               <Route path="/coordinator" element={
                 <PrivateRoute>
                   <Sidebar /><Coordinator />
+                </PrivateRoute>
+              } />
+
+              <Route path="/new-lecture-registration" element={
+                <PrivateRoute>
+                  <Sidebar /><New_Lecture_Registration />
                 </PrivateRoute>
               } />
 

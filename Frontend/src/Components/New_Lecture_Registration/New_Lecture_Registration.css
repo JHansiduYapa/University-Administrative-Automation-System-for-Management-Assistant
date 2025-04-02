@@ -1,0 +1,135 @@
+.lecture-registration-container {
+  font-family: 'Arial', sans-serif;
+  max-width: 700px;
+  margin: 20px auto;
+  padding: 20px 30px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.lecture-registration-container h2 {
+  color: #003366;
+  text-align: center;
+  margin-bottom: 15px;
+  font-size: 24px;
+  border-bottom: 2px solid #3949ab;
+  padding-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.header-icon {
+  margin-right: 10px;
+  color: #3949ab;
+  font-size: 24px;
+}
+
+.registration-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 3px;
+}
+
+.form-row {
+  display: flex;
+  gap: 15px;
+  width: 100%;
+}
+
+.form-group label {
+  font-weight: 600;
+  margin-bottom: 5px;
+  color: #333;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+}
+
+.input-icon {
+  margin-right: 8px;
+  color: #3949ab;
+  font-size: 16px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 14px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.helper-text {
+  font-size: 11px;
+  color: #666;
+  margin-top: 3px;
+  font-style: italic;
+}
+
+.form-actions {
+  display: flex;
+  gap: 15px;
+  margin-top: 15px;
+  justify-content: center;
+}
+
+.submit-btn,
+.reset-btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.submit-btn {
+  background-color: #3949ab;
+  color: white;
+  flex: 2;
+}
+
+.reset-btn {
+  background-color: #f1f1f1;
+  color: #333;
+  flex: 1;
+}
+
+@media (max-width: 768px) {
+  .lecture-registration-container {
+    margin: 10px;
+    padding: 15px;
+  }
+  
+  .form-row {
+    flex-direction: column;
+    gap: 10px;
+  }
+}

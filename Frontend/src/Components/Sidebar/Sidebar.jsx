@@ -39,6 +39,11 @@ const Sidebar = () => {
             </Link>
           </li>
           <li>
+            <Link to="/new-lecture-registration" onClick={closeSidebar}>
+              <span className="icon newlecturer-icon"></span> New Lecturer
+            </Link>
+          </li>
+          <li>
             <Link to="/grades" onClick={closeSidebar}>
               <span className="icon grades-icon"></span> Grades
             </Link>
