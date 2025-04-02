@@ -8,6 +8,8 @@ import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
+import java.util.List;
+
 public interface LecturerRepository extends JpaRepository<Lecturer, Long> {
 
     @Query("SELECT l FROM Lecturer l WHERE l.adviserLec = true AND l.department.departmentId = :departmentId")
@@ -15,4 +17,6 @@ public interface LecturerRepository extends JpaRepository<Lecturer, Long> {
 
     @Query("SELECT l FROM Lecturer l WHERE l.adviserLec = true")
     List<Lecturer> findAdviserLecturers();
+  
+    List<Lecturer> findByDepartmentDepartmentId(Long departmentId);
 }

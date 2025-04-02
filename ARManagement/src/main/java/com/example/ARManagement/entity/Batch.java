@@ -19,7 +19,7 @@ import java.util.List;
 public class Batch {
     @Id
     @Column(name = "batch_id")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long batchId;
 
     @Column(name = "batch_name", nullable = false)

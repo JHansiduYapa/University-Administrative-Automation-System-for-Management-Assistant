@@ -16,7 +16,7 @@ import java.util.Set;
 public class Lecturer {
     @Id
     @Column(name = "lecturer_id")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long lecturerId;
 
     @Column(name = "first_name", nullable = false)
@@ -34,6 +34,11 @@ public class Lecturer {
     @JoinColumn(name = "department_id", nullable = false)
     @JsonBackReference // This side will be omitted during serialization
     private Department department;
+
+    // One lecturer can coordinate many courses
+    @OneToMany(mappedBy = "coordinator")
+    @JsonManagedReference
+    private Set<Course> coordinatedCourses = new HashSet<>();
 
     @ManyToMany
     @JoinTable(
