@@ -2,9 +2,7 @@ package com.example.ARManagement.controller;
 
 import com.example.ARManagement.dto.AdvisorStudentDTO;
 import com.example.ARManagement.service.AdviseeService;
-import com.example.ARManagement.service.AdvisorService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -34,12 +32,12 @@ public class AdviseeController {
         return adviseeService.getAdvisees(batch, department);
     }
     @PostMapping("/distribute")
-    public ResponseEntity<String> distributeStudents(
+    public List<AdvisorStudentDTO> distributeStudents(
             @RequestParam Long batchId,
-            @RequestParam Long departmentId) {
+            @RequestParam(required = false) Long departmentId) {
 
         adviseeService.distributeStudents(batchId, departmentId);
-        return ResponseEntity.ok("Students have been distributed successfully.");
+        return adviseeService.getAdvisees(batchId, departmentId);
     }
 
 }

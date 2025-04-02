@@ -45,14 +45,16 @@ const Advisee = () => {
 
   const reassign =async ()=>{
     try {
-
+      
       // Making the POST request with parameters
       const response = await api.post('/api/advisor-info/distribute', null, {
-        params: { batch:batch, department:department },
+        params: { batchId:batch, departmentId:department },
       });
+      setAdvisees(response.data);
+      
 
       // Handling successful response
-      alert(response.data);  // Or any other action you want on success
+      alert("assined successfuly");  // Or any other action you want on success
     } catch (error) {
       // Handling errors
       console.error("Error distributing students:", error);

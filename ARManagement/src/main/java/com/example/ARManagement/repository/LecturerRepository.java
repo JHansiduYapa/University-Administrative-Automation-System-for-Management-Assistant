@@ -10,6 +10,9 @@ import java.util.List;
 
 public interface LecturerRepository extends JpaRepository<Lecturer, Long> {
 
-    @Query("SELECT l FROM Lecturer l WHERE l.adviserLec = true AND (:departmentId IS NULL OR l.department.departmentId = :departmentId)")
+    @Query("SELECT l FROM Lecturer l WHERE l.adviserLec = true AND l.department.departmentId = :departmentId")
     List<Lecturer> findAdviserLecturersByDepartment(@Param("departmentId") Long departmentId);
+
+    @Query("SELECT l FROM Lecturer l WHERE l.adviserLec = true")
+    List<Lecturer> findAdviserLecturers();
 }

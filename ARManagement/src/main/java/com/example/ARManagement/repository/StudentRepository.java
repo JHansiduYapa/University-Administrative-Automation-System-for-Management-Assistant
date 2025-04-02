@@ -19,8 +19,4 @@ public interface StudentRepository extends JpaRepository<Student, String> {
     @Query("SELECT s FROM Student s WHERE s.properBatch.id = :batchId")
     List<Student> findByBatch(@Param("batchId") Long batchId);
 
-    @Transactional
-    @Modifying
-    @Query(value = "CALL distribute_students(:batchId, :departmentId)", nativeQuery = true)
-    void distributeStudents(@Param("batchId") Long batchId, @Param("departmentId") Long departmentId);
 }

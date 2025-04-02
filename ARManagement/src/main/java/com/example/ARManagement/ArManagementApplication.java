@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
 @SpringBootApplication
-// @EnableScheduling // uncomment to enable scheduling
+@EnableScheduling // uncomment to enable scheduling
 public class ArManagementApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(ArManagementApplication.class, args);

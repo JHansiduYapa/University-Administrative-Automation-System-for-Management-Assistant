@@ -138,7 +138,7 @@ const Advisor = () => {
           <option value="Computer">Computer Engineering</option>
           <option value="Civil">Civil Engineering</option>
           <option value="Mechanical">Mechanical Engineering</option>
-          <option value="Electrical">Electrical Engineering</option>
+          <option value="Electrical and Electronic">Electrical Engineering</option>
           <option value="Interdisciplinary">Interdisciplinary</option>
         </select>
       </div>
@@ -153,7 +153,8 @@ const Advisor = () => {
           </tr>
         </thead>
         <tbody>
-          {filteredAdvisors.map((advisor) => (
+          {filteredAdvisors
+          .map((advisor) => (
             <tr key={advisor.id}>
               <td>{advisor.name}</td>
               <td>{advisor.department}</td>
@@ -189,7 +190,9 @@ const Advisor = () => {
           disabled={!newAdvisor.department}
         >
           <option value="">Select Advisor Name</option>
-          {availableLecturers.map((lecturer) => (
+          {availableLecturers
+          .filter(lecturer => lecturer.adviserLec === false)
+          .map((lecturer) => (
             <option key={lecturer.id} value={`${lecturer.firstName} ${lecturer.lastName}`}>
               {lecturer.firstName} {lecturer.lastName}
             </option>

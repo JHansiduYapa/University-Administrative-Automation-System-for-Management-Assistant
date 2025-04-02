@@ -1,6 +1,7 @@
 package com.example.ARManagement.controller;
 
 import com.example.ARManagement.dto.SemesterDTO;
+import com.example.ARManagement.dto.SemesterDatesDto;
 import com.example.ARManagement.entity.Semester;
 import com.example.ARManagement.service.SemesterService;
 import org.springframework.web.bind.annotation.*;
@@ -35,5 +36,11 @@ public class SemesterController {
     public Semester updateSemester(@PathVariable("id") long id, @RequestBody SemesterDTO dto) {
         dto.setSemesterId(id); // Ensure the ID in URL and DTO are consistent
         return semesterService.updateSemester(dto);
+    }
+    @PutMapping("/dates")
+    public List<Semester> updateSemesterDates(@RequestBody SemesterDatesDto dto) {
+        System.out.println(dto.getEndDate());
+        System.out.println(dto.getStartDate());
+        return semesterService.updateSemesterDates(dto);
     }
 }

@@ -44,7 +44,7 @@ public class AdviseeService {
 
         if (departmentId == null) {
             students = studentRepository.findByBatch(batchId);
-            lecturerList = lecturerRepository.findAdviserLecturersByDepartment(null); // Get all lecturers
+            lecturerList = lecturerRepository.findAdviserLecturers();
         } else {
             students = studentRepository.findByDepartmentAndBatch(departmentId, batchId);
             lecturerList = lecturerRepository.findAdviserLecturersByDepartment(departmentId);
