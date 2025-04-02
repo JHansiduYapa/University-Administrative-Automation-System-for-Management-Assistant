@@ -1,0 +1,59 @@
+/* LectureRegistration.css */
+
+.lecture-registration-container {
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .lecture-registration-container h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #333;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  .ant-form-item {
+    margin-bottom: 20px;
+  }
+  
+  .ant-form-item label {
+    font-weight: 600;
+    color: #555;
+  }
+  
+  .ant-input,
+  .ant-select-selector {
+    border-radius: 4px;
+  }
+  
+  .ant-btn {
+    min-width: 100px;
+  }
+  
+  .ant-btn-primary {
+    background-color: #1890ff;
+    border-color: #1890ff;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+  }
+  
+  .ant-btn-primary:hover,
+  .ant-btn-primary:focus {
+    background-color: #40a9ff;
+    border-color: #40a9ff;
+  }
+  
+  .ant-btn:not(.ant-btn-primary) {
+    border-color: #d9d9d9;
+  }
+  
+  @media (max-width: 576px) {
+    .lecture-registration-container {
+      margin: 20px;
+      padding: 20px;
+    }
+  }
+  

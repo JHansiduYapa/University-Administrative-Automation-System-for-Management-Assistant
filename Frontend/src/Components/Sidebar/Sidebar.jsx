@@ -79,13 +79,18 @@ const Sidebar = () => {
             </Link>
           </li>
           <li>
-            <Link to="/SignInPage" onClick={closeSidebar}>
-              <span className="icon logout-icon"></span> Log Out
+            <Link to="/create-batch" onClick={closeSidebar}>
+              <span className="icon student-icon"></span> Create Batch
             </Link>
           </li>
           <li>
-            <Link to="/create-batch" onClick={closeSidebar}>
-              <span className="icon student-icon"></span> Batch Details
+            <Link to="/Lecture-registration" onClick={closeSidebar}>
+              <span className="icon student-icon"></span> Lecture Registration
+            </Link>
+          </li>
+          <li>
+            <Link to="/SignInPage" onClick={closeSidebar}>
+              <span className="icon logout-icon"></span> Log Out
             </Link>
           </li>
         </ul>
