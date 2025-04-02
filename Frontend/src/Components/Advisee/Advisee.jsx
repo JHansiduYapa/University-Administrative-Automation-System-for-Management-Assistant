@@ -120,7 +120,6 @@ const Advisee = () => {
               <th>ID</th>
               <th>Name</th>
               <th>Advisor Name</th>
-              <th>Advisor Role</th>
             </tr>
           </thead>
           <tbody>
@@ -129,7 +128,6 @@ const Advisee = () => {
                 <td>{student.studentId}</td>
                 <td>{student.studentName}</td>
                 <td>{student.lecturerName || "No Advisor Assigned"}</td>
-                <td>{student.advisorRole || "N/A"}</td>
               </tr>
             ))}
           </tbody>

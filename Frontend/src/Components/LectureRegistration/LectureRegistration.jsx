@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Form, Input, Button, Space, Select } from 'antd';
 import axios from 'axios';
+import './LectureRegistration.css';
 
 const api = "http://localhost:9080/api/";
 
