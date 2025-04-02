@@ -28,6 +28,8 @@ public class Lecturer {
     @Column(name = "email", nullable = false)
     private String email;
 
+    private boolean adviserLec=false;
+
     @ManyToOne
     @JoinColumn(name = "department_id", nullable = false)
     @JsonBackReference // This side will be omitted during serialization
@@ -47,8 +49,8 @@ public class Lecturer {
     private Set<Course> courses = new HashSet<>();
 
     // ad
-    @OneToMany(mappedBy = "studentId")
+    @OneToMany(mappedBy = "adviser")
     @JsonManagedReference
-    private Set<Student> Advisee= new HashSet<>();
+    private Set<Student> advisee= new HashSet<>();
 
 }

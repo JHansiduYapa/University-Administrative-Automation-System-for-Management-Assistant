@@ -6,10 +6,10 @@ VALUES (1,'Computer','Dr. (Mrs.) Pratheeba Jeyananthan'),
        (2,'Electrical and Electronic','Prof. T. Thiruvaran');
 
 /* Insert sample lecture data */
-INSERT INTO lecturer (department_id, lecturer_id, email, first_name, last_name)
-VALUES (1, 1,'pratheeba@uoj.lk','Pratheeba','Jeyananthan'),
-       (2, 2,'thiruvaran@uoj.lk','T.','Thiruvaran'),
-       (1, 3,'jananie@uoj.lk','Jananie','Segar');
+INSERT INTO lecturer (department_id, lecturer_id, email, first_name, last_name,adviser_lec)
+VALUES (1, 1,'pratheeba@uoj.lk','Pratheeba','Jeyananthan',false),
+       (2, 2,'thiruvaran@uoj.lk','T.','Thiruvaran',false),
+       (1, 3,'jananie@uoj.lk','Jananie','Segar',false);
 
 /* Insert sample semester data */
 INSERT INTO semester (semester_id,start_date, end_date, semester_number)
@@ -77,10 +77,3 @@ INSERT INTO results (result_id, course_id, department_id, batch_id, student_id, 
 VALUES (1,1,1,1, 1, 'A', 90),
        (2,2,1, 1,1, 'A_PLUS', 96),
        (3,3,1,1, 1, 'A_PLUS', 98);
-
-/* add adviser advisee relation data */
-INSERT INTO advisor (lecturer_id, student_id)
-VALUES (3,1),
-       (3,2);
-
-

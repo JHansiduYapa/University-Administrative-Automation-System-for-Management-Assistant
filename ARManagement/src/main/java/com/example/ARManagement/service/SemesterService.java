@@ -1,6 +1,7 @@
 package com.example.ARManagement.service;
 
 import com.example.ARManagement.dto.SemesterDTO;
+import com.example.ARManagement.dto.SemesterDatesDto;
 import com.example.ARManagement.entity.Semester;
 import com.example.ARManagement.entity.Student;
 import com.example.ARManagement.repository.SemesterRepository;
@@ -47,6 +48,17 @@ public class SemesterService {
             return semesterRepository.save(semester);
         }
         throw new RuntimeException("Semester not found");
+    }
+
+    public List<Semester> updateSemesterDates(SemesterDatesDto dto){
+        List<Semester> semesters=semesterRepository.findAll();
+        for (Semester semester:semesters) {
+            semester.setStartDate(dto.getStartDate());
+            semester.setEndDate(dto.getEndDate());
+        }
+        System.out.println(dto.getEndDate());
+        System.out.println(dto.getStartDate());
+        return semesterRepository.saveAll(semesters);
     }
 
 

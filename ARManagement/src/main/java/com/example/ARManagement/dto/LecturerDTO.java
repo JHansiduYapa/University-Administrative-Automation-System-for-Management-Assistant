@@ -15,4 +15,5 @@ public class LecturerDTO {
     private String lastName;
     private String email;
     private String departmentName;
+    private boolean adviserLec;
 }

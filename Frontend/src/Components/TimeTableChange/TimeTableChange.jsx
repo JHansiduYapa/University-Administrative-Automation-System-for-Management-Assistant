@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState ,useEffect} from 'react';
 import { useNavigate } from "react-router-dom"; // Import useNavigate for navigation
 import './TimeTableChange.css';
+import api from "../../api/api"
 
 const TimeTableChange = () => {
     const navigate = useNavigate(); // Initialize navigation hook
@@ -15,6 +16,34 @@ const TimeTableChange = () => {
     endDate: new Date(2025, 5, 30).toISOString().substr(0, 10),
   });
 
+  useEffect(() => {
+    const getDates = async () => {
+      try {
+        const response = await api.get("/api/semesters/1");
+        console.log(response.data); // Debugging log
+
+        // Convert date strings to JavaScript Date objects
+        const formattedSemester = {
+          startDate: parseDate(response.data.startDate),
+          endDate: parseDate(response.data.endDate),
+        };
+
+        setCurrentSemester(formattedSemester);
+      } catch (error) {
+        console.error("Error fetching semester data:", error);
+      }
+    };
+
+    getDates();
+  }, []);
+
+  const parseDate = (dateString) => {
+    const [day, month, year] = dateString.split("/").map(Number);
+    console.log(day,month,year)
+    return new Date(year, month-1 , day+1).toISOString().substr(0, 10);
+  };
+  
+
   const handleInputChange = (semesterType, field, value) => {
     if (semesterType === 'current') {
       setCurrentSemester({ ...currentSemester, [field]: value });
@@ -25,8 +54,15 @@ const TimeTableChange = () => {
 
   const handleSave = () => {
     // Simulate saving logic (can be replaced with API calls)
-    console.log("Saved Changes:", { currentSemester, nextSemester });
-
+    const setDates=async ()=>{
+      const responce=await api.put("/api/semesters/dates",{
+        startDate:currentSemester.startDate,
+        endDate:currentSemester.endDate
+      })
+      console.log("Saved Changes:", { currentSemester, nextSemester });
+      console.log(responce)
+    }
+    setDates()
     // Navigate back to TimeTable page
     navigate("/time-table");
   };

@@ -1,10 +1,22 @@
 package com.example.ARManagement.repository;
 
 import com.example.ARManagement.entity.Lecturer;
+import com.example.ARManagement.entity.Student;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+
+import java.util.List;
 
 import java.util.List;
 
 public interface LecturerRepository extends JpaRepository<Lecturer, Long> {
+
+    @Query("SELECT l FROM Lecturer l WHERE l.adviserLec = true AND l.department.departmentId = :departmentId")
+    List<Lecturer> findAdviserLecturersByDepartment(@Param("departmentId") Long departmentId);
+
+    @Query("SELECT l FROM Lecturer l WHERE l.adviserLec = true")
+    List<Lecturer> findAdviserLecturers();
+  
     List<Lecturer> findByDepartmentDepartmentId(Long departmentId);
 }
