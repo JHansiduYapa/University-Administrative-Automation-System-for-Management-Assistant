@@ -22,7 +22,7 @@ public class StudentRegistrationService {
     @Transactional
     public Student registerStudent(Student student) {
         // ensure GPA is initially 0
-        student.setGpa(0.0);
+       // student.setGpa(0.0);
         // save the student to the database
         return studentRepository.save(student);
     }
