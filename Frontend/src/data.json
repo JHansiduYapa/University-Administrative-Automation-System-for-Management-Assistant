@@ -1,99 +1,137 @@
 {
-    "managementAssistants": [
-      {
-        "name": "A.K.Pushpa",
-        "MA Id": "M001", 
-        "email": "admin@example.com",
-        "password": "23"
-      },
-      {
-        "name": "L.P.Shali",
-        "MA Id": "M002", 
-        "email": "dimuthushali2021@gmail.com",
-        "password": "d"
-      }
-    ],
-    "students": [
-      {
-        "id": 1,
-        "batch": "E21",
-        "name": "John Doe",
-        "registration_number": "2021/E/124",
-        "department": "Computer Engineering",
-        "semester": 4,
-        "email": "john.doe@example.com",
-        "dob": "2002-05-12",
-        "phone": "+94 71 234 5678",
-        "gpa": 3.8,
-        "address": "123 Main Street, Colombo"
-      },
-      {
-        "id": 2,
-        "batch": "E22",
-        "name": "Jane Smith",
-        "registration_number": "2021/C/105",
-        "department": "Civil Engineering",
-        "semester": 3,
-        "email": "jane.smith@example.com",
-        "dob": "2003-02-20",
-        "phone": "+94 77 654 3210",
-        "gpa": 3.5,
-        "address": "456 Green Road, Kandy"
-      }
-    ],
-    "lecturers": [
-      {
-        "id": 201,
-        "name": "Dr. Smith",
-        "qualifications": [
-          "B.Sc (Hons) in Computer Science (Jaffna)",
-          "PhD (Southampton, UK)"
-        ],
-        "post": "Senior Lecturer Grade II",
-        "department": "Computer Engineering",
-        "email": "smith@example.com",
-        "phone": "+94 71 123 4567"
-       
-      },
-      {
-        "id": 202,
-        "name": "Dr. Williams",
-        "qualifications": [
-          "B.Sc (Hons) in Civil Engineering (Peradeniya)",
-          "PhD (Tokyo, Japan)"
-        ],
-        "post": "Professor",
-        "department": "Civil Engineering",
-        "email": "williams@example.com",
-        "phone": "+94 76 456 7890"
-       
-      }
-    ],
-    "courses": [
-      {
-        "course_code": "CMD3210",
-        "course_name": "Data Structures and Algorithms",
-        "department": "Computer Engineering",
-        "semester": 3
-      },
-      {
-        "course_code": "ED3210",
-        "course_name": "Digital Electronics",
-        "department": "Electrical Engineering",
-        "semester": 3
-      },
-      {
-        "course_code": "CD3210",
-        "course_name": "Structural Engineering",
-        "department": "Civil Engineering",
-        "semester": 4
-      },
-      {
-        "course_code": "MD3210",
-        "course_name": "Thermodynamics",
-        "department": "Mechanical Engineering",
-        "semester": 4
-      }
-    ]
-  }
-  
+  "managementAssistants": [
+    {
+      "name": "A.K.Pushpa",
+      "MA Id": "M001", 
+      "email": "admin@example.com",
+      "password": "23"
+    },
+    {
+      "name": "L.M.Shanika",
+      "MA Id": "M002", 
+      "email": "MA2@eng.jfn.ac.lk",
+      "password": "ma2"
+    }
+  ],
+  "students": [
+    {
+      "id": 1,
+      "batch": "E21",
+      "name": "Anjalika Ekanayaka",
+      "registration_number": "2021/E/013",
+      "department": "Computer Engineering",
+      "semester": 7,
+      "email": "2021e013@eng.jfn.ac.lk",
+      "dob": "2002-05-12",
+      "phone": "+94 71 234 5678",
+      "gpa": 3.2,
+      "address": "123 Main Street, Colombo"
+    },
+    {
+      "id": 2,
+      "batch": "E22",
+      "name": "Gayathri Dias",
+      "registration_number": "2022/E/105",
+      "department": "Civil Engineering",
+      "semester": 5,
+      "email": "2022e105@eng.jfn.ac.lk",
+      "dob": "2003-02-20",
+      "phone": "+94 77 534 2110",
+      "gpa": 2.5,
+      "address": "456 Green Road, Kandy"
+    },
+    {
+      "id": 3,
+      "batch": "E21",
+      "name": "Dimuthu Rajamuni",
+      "registration_number": "2021/E/124",
+      "department": "Computer Engineering",
+      "semester": 7,
+      "email": "2021e124@eng.jfn.ac.lk",
+      "dob": "2000-02-20",
+      "phone": "+94 77 654 3210",
+      "gpa": 3.6,
+      "address": "113A, Sugaara road, Kandy"
+    },
+    {
+      "id": 4,
+      "batch": "E23",
+      "name": "Lakshika Sathiyamugan",
+      "registration_number": "2023/E/078",
+      "department": "-",
+      "semester": 3,
+      "email": "2023e078@eng.jfn.ac.lk",
+      "dob": "2003-02-20",
+      "phone": "+94 77 954 3215",
+      "gpa": 3.0,
+      "address": "R. Bay Road, Hatton"
+    }
+  ],
+  "lecturers": [
+    {
+      "id": 201,
+      "name": "Dr. A. Kaneswaran",
+      "qualifications": [
+        "B.Sc.Eng(Hons)(Peradeniya)",
+        "PhD(QUT, Australia)"
+      ],
+      "post": "Senior Lecturer Grade II",
+      "department": "Computer Engineering",
+      "email": "kanesh@eng.jfn.ac.lk",
+      "phone": "+94-21-228-2211"
+     
+    },
+    {
+      "id": 202,
+      "name": "Daniel N Subramaniam",
+      "qualifications": [
+        "B.Sc.Eng(Hons)(Moratuwa)",
+        "M.Sc.(Southampton, UK), PhD(QUT, Australia)"
+      ],
+      "post": "Professor",
+      "department": "Civil Engineering",
+      "email": "daniel.subramaniam@gmail.com",
+      "phone": "+94-21-206-0167"
+     
+    },
+    {
+      "id": 202,
+      "name": "Prof. T. Thiruvaran",
+      "qualifications": [
+        "B.Sc.Eng.(Peradeniya), PhD(UNSW, Australia)",
+        "AMIE(SL), Member of the IEEE"
+      ],
+      "post": "Professor",
+      "department": "Electrical Engineering",
+      "email": "thiruvaran@eng.jfn.ac.lk",
+      "phone": "+94-21-228-2209"
+     
+    }
+  ],
+  "courses": [
+    {
+      "course_code": "CMD4210",
+      "course_name": "Data Structures and Algorithms",
+      "department": "Computer Engineering",
+      "semester": 444
+    },
+    {
+      "course_code": "ED6210",
+      "course_name": "Digital Electronics",
+      "department": "Electrical Engineering",
+      "semester": 6
+    },
+    {
+      "course_code": "CD1220",
+      "course_name": "Structural Engineering",
+      "department": "Civil Engineering",
+      "semester": 1
+    },
+    {
+      "course_code": "MD3010",
+      "course_name": "Thermodynamics",
+      "department": "Mechanical Engineering",
+      "semester": 3
+    }
+  ]
+}

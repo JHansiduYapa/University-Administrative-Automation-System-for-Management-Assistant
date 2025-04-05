@@ -35,12 +35,12 @@ const Sidebar = () => {
           </li>
           <li>
             <Link to="/personal-details" onClick={closeSidebar}>
-              <span className="icon newstudent-icon"></span> New Student
+              <span className="icon student-icon"></span> Create Batch
             </Link>
           </li>
           <li>
-            <Link to="/new-lecture-registration" onClick={closeSidebar}>
-              <span className="icon newlecturer-icon"></span> New Lecturer
+            <Link to="/personal-details" onClick={closeSidebar}>
+              <span className="icon newstudent-icon"></span> New Student
             </Link>
           </li>
           <li>
@@ -61,6 +61,11 @@ const Sidebar = () => {
           <li>
             <Link to="/coordinator" onClick={closeSidebar}>
               <span className="icon coordinator-icon"></span> Coordinator
+            </Link>
+          </li>
+          <li>
+            <Link to="/new-lecture-registration" onClick={closeSidebar}>
+              <span className="icon student-icon"></span> Lecturer Registration
             </Link>
           </li>
           <li>
