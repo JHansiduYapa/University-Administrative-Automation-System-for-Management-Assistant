@@ -21,13 +21,6 @@ This project, *Automate Management Assistant*, automates administrative tasks fo
 * **Frontend**: React.js
 * **Database**: MySQL
 
-## 📋 Responsibilities (as Team Lead / Manager / Developer)
-
-* Planning, sprint and backlog tracking using Jira
-* Agile workflow management and sprint planning
-* Team coordination via regular meetings and progress updates
-* Leading development efforts using Agile methodology
-
 ## 🚀 What We Learned
 
 * Real‑world problem solving via software
