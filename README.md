@@ -1,6 +1,4 @@
----
-
-# University Administrative Automation System — Management Assistant
+# University Administrative Automation System Management Assistant
 
 **Semester 6 Software Engineering Project**
 **Team Lead / Project Manager / Developer: Janith Hansidu Yapa**
