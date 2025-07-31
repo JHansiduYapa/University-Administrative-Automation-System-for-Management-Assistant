@@ -1,7 +1,6 @@
 # University Administrative Automation System Management Assistant
 
 **Semester 6 Software Engineering Project**
-**Team Lead / Project Manager / Developer: Janith Hansidu Yapa**
 
 ## 🎯 Overview
 
@@ -31,10 +30,11 @@ This project, *Automate Management Assistant*, automates administrative tasks fo
 
 🙌 **Big thanks to my amazing team for their dedication:**
 
-* **Kavindu Ishara** – Backend Developer
-* **Dimuthu Shalinda** – UI/UX & Frontend
-* **Ashan Odithya Sirisena** – Backend Developer
-* **Anjalika Ekanayake** – UI/UX & Frontend
+* **Janith Hansidu Yapa** - Project Manager / Backend Developer
+* **Kavindu Ishara** - Backend Developer
+* **Dimuthu Shalinda** - UI/UX & Frontend
+* **Ashan Odithya Sirisena** - Backend Developer
+* **Anjalika Ekanayake** - UI/UX & Frontend
 
 ## 📂 Project Structure
 
